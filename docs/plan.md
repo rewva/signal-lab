@@ -37,15 +37,14 @@ This is a **discovery engine, not the destination.** One great channel beats ten
 - Intent: click-through to an off-platform destination we own (the real predictor of monetizability).
 - A channel "wins" only if it shows *intent signal*, not just vanity reach.
 
-## The GK candidate (locked as a test bet)
+## The GK candidate (locked as a test bet — design approved)
 
-- **Concept:** daily GK / current-affairs question video = distribution; a **verified, always-fresh exam question bank / current-affairs tool** = the money + moat.
-- **Why it can have a moat:** competitive-exam current affairs change daily; ChatGPT/Gemini are stale and unreliable on the latest exam-relevant material. A verified, daily-updated bank is **OWN-DATA** — the operator's exact strength.
-- **Open decision — target market** (shapes content, competition, monetization):
-  - India current-affairs exams (SSC / Banking / Railways) — biggest audience, perfect content fit, money via paid app at scale, but crowded (Testbook, Adda247, Oliveboard); needs a sharp edge (accuracy/verification, freshness, underserved exam/state/language).
-  - India UPSC — premium, highest WTP, very crowded/serious, deeper content.
-  - Abroad exam-prep — adapt the daily-quiz format to a Western exam (US/UK citizenship, NCLEX, SAT/GRE); higher WTP/USD but not "GK," different content.
-  - Global trivia/quiz (entertainment) — easiest to grow, hardest to monetize beyond ads.
+**Full approved design:** `docs/specs/2026-06-04-daily-gk-quiz-design.md` (`daily-gk-quiz` Claude Code skill). Treat as serious/approved, not a draft.
+
+- **Concept:** a `/daily-gk-quiz` skill where Claude researches + writes one MCQ, the operator verifies the fact against a cited source, the skill renders an animated quiz Short, and (after a second approval gate) posts to YouTube Shorts + Instagram Reels + Facebook Reels. Infra cost ~$0 (Claude session is the orchestrator; Kokoro TTS + Remotion render, both local/free).
+- **Why it can have a moat:** competitive-exam current affairs change daily; ChatGPT/Gemini are stale and unreliable on the latest material. The wedge is **format (interactive MCQ) + reliability (cited, operator-verified facts)** — the operator's exact strength. Reliability is **OWN-DATA**-flavored and should become the brand.
+- **Target market — RESOLVED:** English, broad daily GK / current affairs, Indian competitive-exam aspirants, single-MCQ format, **audience-first** (monetization deferred to a later Telegram funnel phase — correct given tiny Indian Shorts RPM).
+- **Biggest gating risk (validate FIRST):** Meta App Review + Business Verification for a solo operator (controls IG/FB API posting). Everything else is gated on proving publish access — see the design's build order.
 
 ## Next steps
 
