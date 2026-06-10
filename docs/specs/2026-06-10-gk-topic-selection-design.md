@@ -116,6 +116,25 @@ from the verified analysis: **~50% basic, 35% intermediate, 15% advanced.** Sele
 level whose recent share (derived from the history log) is furthest below target, so the
 rotation self-corrects without a separate counter file. Each video is tagged with its level.
 
+### 3.5 Question bank -- hybrid (pre-built static + live current affairs)
+
+`domains.json` is the topic *plan*, not the questions. Questions come from two lanes:
+
+**`state/question-bank.json`** -- a growing, pre-built bank of **verified STATIC-GK MCQs**
+(history, polity, geography, science, static GK, etc.). Each entry is a full, already-verified
+question (same shape as a history record, minus `date`/`posted`) carrying `domain`,
+`difficulty`, `exam_relevance`, `fact_key`, `answer`, 3 distractors, and both `sources`. Built
+in batches up front and **replenished when it runs low**, so a static-GK day never starts cold
+and questions can be quality-reviewed in batches rather than one-at-a-time at 7am.
+
+**Current-affairs lane** -- generated **live** each morning (CA must be fresh; a stored bank
+goes stale). Drawn from the last ~6 months.
+
+Why hybrid: with the §3.1 weights, ~70% of days are static -> the bank covers them with a
+buffer; only the ~30% current-affairs days need live work. The bank is a *buffer*, not a
+schedule -- the daily algorithm (§4) still picks domain + difficulty, then either pulls a
+matching unused entry from the bank or (CA, or bank-miss) generates live.
+
 ---
 
 ## 4. The daily selection algorithm (step 1, before the gate)
@@ -126,8 +145,12 @@ rotation self-corrects without a separate counter file. Each video is tagged wit
    favouring the one whose recent share is furthest below target; prefer a strong
    *current-affairs* item if the day has an exam-relevant one. Independently pick the
    **difficulty** whose recent share is furthest below the 50/35/15 target (§3.4).
-3. **Draft the MCQ** (question + correct answer + 3 distractors) at the chosen domain +
-   difficulty; compute its `fact_key` and set `exam_relevance`.
+3. **Source the MCQ** at the chosen domain + difficulty:
+   - **Current-affairs lane:** generate live from the last ~6 months.
+   - **Static lane:** pull a matching unused entry from `question-bank.json`; if the bank has
+     none at that domain+difficulty (a bank miss), generate live as a fallback.
+   Either way, compute/confirm its `fact_key` and `exam_relevance`. (Bank entries are
+   pre-verified, so steps 5-6 are a re-confirm, not first-time work.)
 4. **Dedupe gate (hard).** If `fact_key` appears in history within the window (default
    **120 days**; current-affairs facts effectively never recur), discard and draft another.
 5. **Correctness gate.** Corroborate the fact across **>=2 independent reputable sources**,
@@ -155,16 +178,46 @@ rotation self-corrects without a separate counter file. Each video is tagged wit
 
 ---
 
-## 6. What this does NOT change
+## 6. Engagement & retention design (not-boring + comments)
 
-- Render (Remotion quiz card), TTS (Kokoro), captions, and the three posting scripts are
-  unchanged from the parent design.
+The format only works if people watch to the reveal and comment. Three levers, baked into the
+per-day output:
+
+**Retention -- the video must not feel templated.**
+- **Rotating hook (first ~1.5s).** A pattern-interrupt opener that varies daily so the channel
+  never reads as a fixed template (also satisfies the anti-slop "materially varied" rule):
+  e.g. *"This came in SSC CGL 2024,"* *"90% pick the wrong option,"* *"Only toppers solve this
+  in 5 seconds."* Stored as a small rotating set; the skill picks a fresh one per day.
+- **Tension mechanics.** Countdown with a ticking sound, a *ding* on reveal, tight 15-20s
+  pacing, and the parent design's 2-3 rotating card layouts/colours.
+- **Payoff.** A satisfying answer reveal + the one-line "why it matters / exam relevance" --
+  the bit that makes it educational, not slop.
+
+**Comments -- the rotating CTA, which doubles as the channel's intent signal.**
+- Core: *"Comment your answer (A/B/C/D) before the reveal."*
+- Key move: rotate in *"Comment which exam you're prepping -- SSC / Banking / Railways."* This
+  drives comments AND surfaces which exam segment dominates the audience -- the exact data that
+  triggers the deferred per-exam-split decision (`plan.md`). One CTA serves engagement, the
+  algorithm, and strategy at once.
+- Difficulty-bragging: *"Comment 'GOT IT' if you solved it in 3 seconds."*
+- Operator posts a **pinned comment** (the answer + a teaser for tomorrow) and replies to the
+  first few comments -- a light manual action that meaningfully lifts ranking.
+
+These touch the render template and the caption/CTA (parent-design territory); this spec
+specifies the *rotation logic + the exam-segment CTA*, the parent design implements the card.
+
+---
+
+## 7. What this does NOT change
+
+- Render (Remotion quiz card), TTS (Kokoro), captions, and the three posting scripts keep their
+  parent-design structure (this spec adds the rotating hook + CTA logic they render).
 - The two approval gates stay manual.
 - No scheduler, no extra API cost (Claude in-session remains the brain).
 
 ---
 
-## 7. Out of scope (YAGNI)
+## 8. Out of scope (YAGNI)
 
 - Semantic-similarity dedupe (embedding model) -- the `fact_key` slug is sufficient and free;
   revisit only if reworded repeats still slip through in practice.
@@ -173,7 +226,7 @@ rotation self-corrects without a separate counter file. Each video is tagged wit
 
 ---
 
-## 8. Open questions
+## 9. Open questions
 
 - **`fact_key` collisions / drift:** Claude must slug consistently (same fact -> same key
   across days). Mitigation: at selection time, show Claude the recent `fact_key` list so it
