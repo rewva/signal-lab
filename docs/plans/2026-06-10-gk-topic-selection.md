@@ -456,9 +456,10 @@ def test_empty_history_picks_highest_weight():
     assert pick_domain([], WEIGHTS, date(2026, 6, 10), window_days=120) == "current-affairs"
 
 def test_picks_domain_furthest_below_its_weight():
-    # current-affairs already over-covered; static-gk untouched -> static-gk most under target
+    # current-affairs over-covered -> the highest-target untouched domain (general-science,
+    # target 0.30 > static-gk 0.20) has the largest deficit and wins
     hist = [_rec("current-affairs", "2026-06-08"), _rec("current-affairs", "2026-06-09")]
-    assert pick_domain(hist, WEIGHTS, date(2026, 6, 10), window_days=120) == "static-gk"
+    assert pick_domain(hist, WEIGHTS, date(2026, 6, 10), window_days=120) == "general-science"
 
 def test_ignores_history_outside_window():
     hist = [_rec("current-affairs", "2025-01-01")]  # stale, ignored
@@ -534,9 +535,10 @@ def test_empty_history_picks_basic():
     assert pick_difficulty([], DEFAULT_MIX, date(2026, 6, 10), window_days=120) == "basic"
 
 def test_picks_level_furthest_below_target():
-    # all-basic recent history -> advanced (0% vs 15% target) is most under
+    # all-basic recent history -> intermediate (target 0.35, share 0) is the largest deficit,
+    # ahead of advanced (target 0.15); so the rotation self-corrects toward intermediate first
     hist = [_rec("basic", f"2026-06-0{n}") for n in range(1, 6)]
-    assert pick_difficulty(hist, DEFAULT_MIX, date(2026, 6, 10), window_days=120) == "advanced"
+    assert pick_difficulty(hist, DEFAULT_MIX, date(2026, 6, 10), window_days=120) == "intermediate"
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
