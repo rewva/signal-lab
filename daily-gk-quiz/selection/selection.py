@@ -31,3 +31,11 @@ def pick_domain(history: list[HistoryRecord], weights: dict[str, float],
     shares = recent_shares(seen, weights.keys())
     deficits = {k: targets[k] - shares[k] for k in weights}
     return max(deficits, key=lambda k: (deficits[k], weights[k]))
+
+def pick_difficulty(history: list[HistoryRecord], target_mix: dict[str, float],
+                    today: date, window_days: int = 120) -> str:
+    seen = [r.question.difficulty for r in _recent(history, today, window_days)]
+    shares = recent_shares(seen, target_mix.keys())
+    order = {"basic": 3, "intermediate": 2, "advanced": 1}  # tie-break toward basic
+    deficits = {k: target_mix[k] - shares[k] for k in target_mix}
+    return max(deficits, key=lambda k: (deficits[k], order[k]))
