@@ -48,3 +48,15 @@ def draw_from_bank(bank: list[Question], domain: str, difficulty: str,
                 and q.fact_key not in used_fact_keys):
             return q
     return None
+
+def pick_rotation(pool: list[str], recent: list[str]) -> str:
+    """Least-recently-used item in `pool`. `recent` is oldest-to-newest usage."""
+    if len(pool) == 1:
+        return pool[0]
+    def last_used(item: str) -> int:
+        # higher index = used more recently; -1 = never used
+        for i in range(len(recent) - 1, -1, -1):
+            if recent[i] == item:
+                return i
+        return -1
+    return min(pool, key=last_used)
