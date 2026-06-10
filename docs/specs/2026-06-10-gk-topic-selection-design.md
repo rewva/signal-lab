@@ -41,31 +41,32 @@ Two files do all the work.
 
 ### 3.1 `topics/domains.json` -- the curated plan (hand-authored once, edited rarely)
 
-A bank of GK domains for Indian competitive exams. Each static domain lists sub-topics and a
-selection weight. **Weights are tuned to the SSC / Banking / Railways GA syllabus** -- those
-sections are current-affairs-heavy with a substantial static-GK base, so Current Affairs
-carries the highest weight and the static domains are weighted by how often they appear in
-those papers (Static GK, Polity, History, Geography are heavily tested; Economy matters more
-for Banking). Current Affairs is NOT enumerated -- it is the "search the last 48-72h" lane.
+A bank of GK domains for Indian competitive exams, each with sub-topics and a **selection
+weight**. The weights are **evidence-based**, derived from a verified exam-pattern analysis
+across all the target exams (`docs/ga-exam-pattern-research.md`) -- not a hand-guess. Current
+Affairs is NOT enumerated; it is the "search the last ~6 months" lane (recency matters --
+banking CA runs ~4-6 months back, Railways ~6-8).
 
-Static domains (initial set, weighted for the GA tier):
+| Domain | Weight | Exam relevance (for the caption tag) |
+|---|---|---|
+| Current Affairs (last ~6 months) | **30%** | universal (all exams) |
+| General Science | **18%** | universal; **Railways-heavy** |
+| Static GK (awards, books, days, dances...) | 12% | universal |
+| History | 10% | core-academic (SSC-heavy) |
+| Polity & Constitution | 8% | core-academic |
+| Geography (Indian + world, physical) | 8% | core-academic |
+| Economy | 7% | core-academic |
+| Banking / Financial Awareness | 5% | **exam-specific -- IBPS/SBI only** |
+| Sports / Awards / Misc | 2% | universal |
 
-```
-History            -- ancient / medieval / modern, freedom struggle
-Polity & Constitution
-Geography          -- Indian + world, physical
-Economy            -- (weighted up for Banking: banking awareness, RBI, schemes)
-General Science    -- physics / chemistry / biology
-Static GK          -- awards, books-authors, important days, dances, etc.
-```
+Two relevance rules fall out of the analysis and drive selection:
+- **Banking/Financial Awareness is IBPS/SBI-only.** On a banking-relevant day it's tagged for
+  IBPS/SBI; it is never presented as relevant to SSC/RRB. Kept modest (5%) so a channel serving
+  all families doesn't over-index on banking.
+- **General Science skews Railways.** Tag GS questions as especially relevant to RRB.
 
-Plus the rolling lane (highest weight -- GA sections lean current-affairs):
-
-```
-Current Affairs    -- schemes, appointments, sports, summits, science & tech,
-                      defence, reports / indices, banking & economy news
-                      (sourced live, not enumerated)
-```
+Each question carries an **`exam_relevance`** tag (which of SSC / IBPS-SBI / RRB it maps to),
+surfaced in the caption ("relevant for SSC CGL, RRB NTPC") to raise perceived value.
 
 ### 3.2 `state/question-history.json` -- append-only, single source of truth
 
@@ -78,11 +79,17 @@ second file to drift out of sync.
   "domain": "polity",
   "fact_key": "polity/article-21-right-to-life",
   "entity": "Article 21",
+  "difficulty": "intermediate",
+  "exam_relevance": ["SSC", "RRB"],
   "question": "...",
   "answer": "...",
   "sources": ["https://primary.gov.in/...", "https://second-source/..."]
 }
 ```
+
+`difficulty` is one of `basic` / `intermediate` / `advanced`; `exam_relevance` is the subset of
+`SSC` / `IBPS-SBI` / `RRB` the fact maps to. Both are derived from history for rotation/balance
+(below) and shown in the caption.
 
 ### 3.3 The `fact_key` -- the spine
 
@@ -101,16 +108,26 @@ history/battle-of-plassey-1757
 
 One concept, three concerns covered.
 
+### 3.4 Difficulty dimension (basic / intermediate / advanced)
+
+Format stays **1 question per video**; difficulty **rotates across days** so the channel serves
+the whole tier (entry-level Railways/CHSL through CGL-Tier-2 / Banking-PO depth). Target mix,
+from the verified analysis: **~50% basic, 35% intermediate, 15% advanced.** Selection picks the
+level whose recent share (derived from the history log) is furthest below target, so the
+rotation self-corrects without a separate counter file. Each video is tagged with its level.
+
 ---
 
 ## 4. The daily selection algorithm (step 1, before the gate)
 
-1. **Load history.** Read `question-history.json`; compute which static domains are
-   least-recently covered.
-2. **Choose the lane.** Prefer a strong *current-affairs* item if the day has one that is
-   exam-relevant; otherwise pick an **under-covered static domain** from the bank (this keeps
-   the rotation balanced instead of drifting to easy topics).
-3. **Draft the MCQ** (question + correct answer + 3 distractors) and compute its `fact_key`.
+1. **Load history.** Read `question-history.json`; compute the recent shares of (a) each
+   domain, and (b) each difficulty level.
+2. **Choose domain + difficulty.** Pick the domain by the evidence-based weights (§3.1),
+   favouring the one whose recent share is furthest below target; prefer a strong
+   *current-affairs* item if the day has an exam-relevant one. Independently pick the
+   **difficulty** whose recent share is furthest below the 50/35/15 target (§3.4).
+3. **Draft the MCQ** (question + correct answer + 3 distractors) at the chosen domain +
+   difficulty; compute its `fact_key` and set `exam_relevance`.
 4. **Dedupe gate (hard).** If `fact_key` appears in history within the window (default
    **120 days**; current-affairs facts effectively never recur), discard and draft another.
 5. **Correctness gate.** Corroborate the fact across **>=2 independent reputable sources**,
@@ -118,9 +135,10 @@ One concept, three concerns covered.
    cannot be corroborated, **discard the question -- do not weaken the standard.**
 6. **Distractor sanity check.** Confirm none of the 3 wrong options is also defensibly correct.
 7. **Present to the operator (gate #2).** Show: question, correct answer, the 3 distractors,
-   `domain`, `fact_key`, and **both** source URLs. Nothing renders until the operator confirms.
-8. **Record on success.** After posting, append the full record (with `fact_key` + both
-   sources) to `question-history.json`.
+   `domain`, `difficulty`, `exam_relevance`, `fact_key`, and **both** source URLs. Nothing
+   renders until the operator confirms.
+8. **Record on success.** After posting, append the full record (with `fact_key`, `difficulty`,
+   `exam_relevance`, and both sources) to `question-history.json`.
 
 ---
 
@@ -131,6 +149,9 @@ One concept, three concerns covered.
 | Dedupe window | **120 days** | Static facts blocked for this long; current-affairs facts rarely recur regardless. |
 | Min independent sources | **2** | At least one should be primary/official where one exists. |
 | Lane preference | current-affairs first, else under-covered static | Soft rule; a thin-news day falls back to static GK. |
+| Topic weights | §3.1 blueprint | Evidence-based (`docs/ga-exam-pattern-research.md`); tune to the dominant audience segment. |
+| Difficulty mix | **50% basic / 35% intermediate / 15% advanced** | Self-correcting from history. |
+| Current-affairs recency | **~6 months** | Banking ~4-6mo, Railways ~6-8mo; 6mo is the blend. |
 
 ---
 
