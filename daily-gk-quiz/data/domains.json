@@ -1,0 +1,24 @@
+{
+  "weights": {
+    "current-affairs": 30,
+    "general-science": 18,
+    "static-gk": 12,
+    "history": 10,
+    "polity": 8,
+    "geography": 8,
+    "economy": 7,
+    "banking-financial-awareness": 5,
+    "sports-awards-misc": 2
+  },
+  "exam_relevance": {
+    "current-affairs": ["SSC", "IBPS-SBI", "RRB"],
+    "general-science": ["SSC", "RRB"],
+    "static-gk": ["SSC", "IBPS-SBI", "RRB"],
+    "history": ["SSC", "RRB"],
+    "polity": ["SSC", "RRB"],
+    "geography": ["SSC", "RRB"],
+    "economy": ["SSC", "IBPS-SBI", "RRB"],
+    "banking-financial-awareness": ["IBPS-SBI"],
+    "sports-awards-misc": ["SSC", "IBPS-SBI", "RRB"]
+  }
+}
