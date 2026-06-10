@@ -83,13 +83,17 @@ second file to drift out of sync.
   "exam_relevance": ["SSC", "RRB"],
   "question": "...",
   "answer": "...",
+  "explanation": "why the answer is right / exam relevance (the added-value line)",
+  "mnemonic": "optional memory aid, or null",
   "sources": ["https://primary.gov.in/...", "https://second-source/..."]
 }
 ```
 
 `difficulty` is one of `basic` / `intermediate` / `advanced`; `exam_relevance` is the subset of
-`SSC` / `IBPS-SBI` / `RRB` the fact maps to. Both are derived from history for rotation/balance
-(below) and shown in the caption.
+`SSC` / `IBPS-SBI` / `RRB` the fact maps to (both derived from history for rotation/balance and
+shown in the caption). `explanation` is **required** (the per-video pedagogy the anti-slop policy
+demands, §6); `mnemonic` is optional. A fact is only renderable once verified (>=2 sources, §4),
+which drives the on-screen verified-source badge.
 
 ### 3.3 The `fact_key` -- the spine
 
@@ -178,33 +182,48 @@ matching unused entry from the bank or (CA, or bank-miss) generates live.
 
 ---
 
-## 6. Engagement & retention design (not-boring + comments)
+## 6. Differentiation, engagement & anti-slop design
 
-The format only works if people watch to the reveal and comment. Three levers, baked into the
-per-day output:
+Grounded in verified research (`docs/engagement-antislop-research.md`). The hard finding: the
+generic "single-prompt A/B/C/D card + countdown" is a textbook match for YouTube's **channel-
+fatal** "inauthentic content" category (Meta runs a parallel crackdown). The escape -- consistent
+across both platforms -- is **genuine per-video value + visibly varied substance + careful
+production**. AI is fine; carelessness is what's punished. So differentiation is survival, and
+v1 builds it as **verified + varied + pedagogical text** (no stock imagery yet).
 
-**Retention -- the video must not feel templated.**
-- **Rotating hook (first ~1.5s).** A pattern-interrupt opener that varies daily so the channel
-  never reads as a fixed template (also satisfies the anti-slop "materially varied" rule):
-  e.g. *"This came in SSC CGL 2024,"* *"90% pick the wrong option,"* *"Only toppers solve this
-  in 5 seconds."* Stored as a small rotating set; the skill picks a fresh one per day.
-- **Tension mechanics.** Countdown with a ticking sound, a *ding* on reveal, tight 15-20s
-  pacing, and the parent design's 2-3 rotating card layouts/colours.
-- **Payoff.** A satisfying answer reveal + the one-line "why it matters / exam relevance" --
-  the bit that makes it educational, not slop.
+### 6.1 The differentiation layer (v1)
 
-**Comments -- the rotating CTA, which doubles as the channel's intent signal.**
-- Core: *"Comment your answer (A/B/C/D) before the reveal."*
-- Key move: rotate in *"Comment which exam you're prepping -- SSC / Banking / Railways."* This
-  drives comments AND surfaces which exam segment dominates the audience -- the exact data that
-  triggers the deferred per-exam-split decision (`plan.md`). One CTA serves engagement, the
-  algorithm, and strategy at once.
-- Difficulty-bragging: *"Comment 'GOT IT' if you solved it in 3 seconds."*
-- Operator posts a **pinned comment** (the answer + a teaser for tomorrow) and replies to the
-  first few comments -- a light manual action that meaningfully lifts ranking.
+- **Block-composed structure (not one flat template).** Each video is assembled from declarative
+  *blocks* (question-hero, difficulty-badge, options, reveal, explanation, source-citation,
+  mnemonic) composed/varied per question -- the operator's proven block-resolver technique ported
+  to Remotion. Systematic *material variation*, the literal antidote to "templated sameness."
+  (Render-side; see the parent design. This spec supplies the per-block content fields.)
+- **Visible verification badge.** An on-screen "verified -- <source>" badge driven by field-trust
+  gating (unverified facts never render). Visible added value a slop farm cannot fake; the
+  OWN-DATA reliability moat made tangible.
+- **Per-video pedagogy.** Every question carries an `explanation` ("why the answer is right /
+  exam relevance") and, where it helps, a `mnemonic`. This is the "added value" the policy
+  requires -- not a swapped fact in an identical card.
+- **Edited captions** (not raw automated AI captions -- Meta flags those).
 
-These touch the render template and the caption/CTA (parent-design territory); this spec
-specifies the *rotation logic + the exam-segment CTA*, the parent design implements the card.
+### 6.2 Engagement / comments (verified levers only)
+
+- **Retention-first:** hard hook in the first 1-3s, tight pacing, the reveal as payoff.
+  Short-form ranking rewards completion over raw views.
+- **CTA rotation toward what's verified to drive comments: forced-choice + mild-disagreement.**
+  Rotate (LRU): *"Which did you pick -- A or B?"*, *"Most people get this wrong -- do you
+  disagree?"*, *"Got it in 3 seconds? Comment your time."* Avoid repeated single-token bait.
+- **Audience-profiling CTA** (*"which exam are you prepping -- SSC / Banking / Railways?"*) is
+  used **occasionally** as a periodic intent-signal read (feeds the deferred per-exam-split
+  decision in `plan.md`). Cadence is a **guess to A/B test, not a finding** -- the research did
+  not quantify a safe frequency.
+
+### 6.3 Untested hypotheses (NOT evidence-backed -- flagged honestly)
+
+Adversarial verification **refuted** the evidence for these; keep them as experiments, not facts:
+the **cliffhanger / "bonus question, come back tomorrow"** mechanic, **serialization/daily-cadence
+as a return hook**, and **exam-segmentation as a proven wedge**. May still work; A/B test before
+relying on them.
 
 ---
 

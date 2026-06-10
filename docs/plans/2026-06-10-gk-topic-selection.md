@@ -43,6 +43,9 @@
 #   distractors: list[str]           exactly 3 wrong options
 #   exam_relevance: list[str]        subset of ["SSC", "IBPS-SBI", "RRB"]
 #   sources: list[str]               >= 2 URLs
+#   explanation: str = ""            REQUIRED at validate() time: "why right / exam relevance"
+#   mnemonic: str | None = None      optional memory aid
+#   (trailing defaults so positional construction in tests stays valid)
 
 # HistoryRecord: a posted Question stamped with a date.
 #   date: str                        ISO "YYYY-MM-DD"
@@ -132,6 +135,8 @@ def _q(**over):
         distractors=["Equality", "Freedom of speech", "Property"],
         exam_relevance=["SSC", "RRB"],
         sources=["https://a.gov.in", "https://b.org"],
+        explanation="Article 21 protects life and personal liberty.",
+        mnemonic=None,
     )
     base.update(over)
     return Question(**base)
@@ -152,6 +157,16 @@ def test_question_rejects_bad_difficulty():
     with pytest.raises(ValueError, match="difficulty"):
         _q(difficulty="impossible").validate()
 
+def test_question_requires_explanation():
+    with pytest.raises(ValueError, match="explanation is required"):
+        _q(explanation="").validate()
+
+def test_question_keeps_explanation_and_mnemonic_through_dict():
+    q = _q(explanation="Article 21 covers life and liberty.", mnemonic="21 = to-live")
+    back = Question.from_dict(q.to_dict())
+    assert back.explanation == "Article 21 covers life and liberty."
+    assert back.mnemonic == "21 = to-live"
+
 def test_history_record_roundtrips_flat():
     rec = HistoryRecord(date="2026-06-10", question=_q())
     d = rec.to_dict()
@@ -171,7 +186,8 @@ Expected: FAIL — `ModuleNotFoundError: No module named 'selection.models'`
 ```python
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict, field
+from dataclasses import dataclass, asdict
+from typing import Optional
 
 DIFFICULTIES = ("basic", "intermediate", "advanced")
 EXAMS = ("SSC", "IBPS-SBI", "RRB")
@@ -187,6 +203,8 @@ class Question:
     distractors: list[str]
     exam_relevance: list[str]
     sources: list[str]
+    explanation: str = ""          # trailing defaults keep positional construction valid
+    mnemonic: Optional[str] = None
 
     def validate(self) -> "Question":
         if self.difficulty not in DIFFICULTIES:
@@ -195,6 +213,8 @@ class Question:
             raise ValueError("a question needs exactly 3 distractors")
         if len(self.sources) < 2:
             raise ValueError("a question needs at least 2 sources")
+        if not self.explanation.strip():
+            raise ValueError("explanation is required (per-video pedagogy)")
         bad = [e for e in self.exam_relevance if e not in EXAMS]
         if bad:
             raise ValueError(f"unknown exam_relevance {bad}; allowed {EXAMS}")
@@ -210,6 +230,7 @@ class Question:
             entity=d["entity"], question=d["question"], answer=d["answer"],
             distractors=list(d["distractors"]), exam_relevance=list(d["exam_relevance"]),
             sources=list(d["sources"]),
+            explanation=d.get("explanation", ""), mnemonic=d.get("mnemonic"),
         )
 
 @dataclass
@@ -885,13 +906,18 @@ Expected: FAIL — `FileNotFoundError` for `data/domains.json`
     "Most aspirants get this wrong -- do you?"
   ],
   "ctas": [
-    "Comment your answer (A/B/C/D) before the reveal!",
-    "Comment which exam you're prepping -- SSC / Banking / Railways.",
-    "Comment 'GOT IT' if you solved it in 3 seconds.",
-    "Follow for one verified GA question every day."
+    "Which did you pick -- A or B? Comment before the reveal.",
+    "Most aspirants get this wrong -- do you disagree? Comment.",
+    "Got it in 3 seconds? Comment your time.",
+    "Which exam are you prepping -- SSC / Banking / Railways?"
   ]
 }
 ```
+
+CTA design follows verified findings (`docs/engagement-antislop-research.md`): forced-choice and
+mild-disagreement prompts out-drive generic single-token bait. The exam-profiling CTA (last one)
+is the periodic intent-signal read -- rotate it in only occasionally (cadence is a guess to A/B
+test). The refuted cliffhanger/serialization tactics are intentionally NOT seeded here.
 
 `daily-gk-quiz/state/question-history.json`:
 ```json
@@ -953,7 +979,9 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
    - Else if `bank_candidate` is not None: use it (already verified — re-confirm in step 4).
    - Else (bank miss): draft a fresh static MCQ at the target domain + difficulty.
    Set a canonical `fact_key`; if the fact matches one already in `recent_fact_keys`, pick a
-   different fact (dedupe). Set `exam_relevance` from `data/domains.json`.
+   different fact (dedupe). Set `exam_relevance` from `data/domains.json`. Write a required
+   `explanation` ("why the answer is right / exam relevance" -- the anti-slop added value) and,
+   where useful, a `mnemonic`.
 
 3. **Distractor sanity check.** Confirm none of the 3 wrong options is also defensibly correct.
 
@@ -962,13 +990,15 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
    operator: question, correct answer, 3 distractors, `domain`, `difficulty`, `exam_relevance`,
    `fact_key`, and BOTH source URLs. **Do not proceed until the operator confirms the fact.**
 
-5. **Hand off to render** with the approved question + the `hook` and `cta` from step 1
-   (render/voice/post are out of this skill's scope — see the parent design).
+5. **Hand off to render** with the approved question + the `hook` and `cta` from step 1.
+   Render is **block-composed** (varied structure per question) with an on-screen
+   **verified-source badge** and **edited captions** -- the differentiation layer (parent design
+   §9 / spec §6). Render/voice/post implementation are out of this skill's scope.
 
 6. **Review gate (#2)** and posting happen downstream. **Only after a successful post**, append
    the question to history:
    ```bash
-   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...']).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q))"
+   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q))"
    ```
    If a bank candidate was used, also remove it from `question-bank.json` (rewrite the bank
    without that `fact_key`) and replenish the bank when it runs low.

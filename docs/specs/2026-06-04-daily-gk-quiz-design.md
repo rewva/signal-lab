@@ -166,6 +166,15 @@ accounts you don't own). **Precondition:** add own FB Page + IG accounts as role
   educational value (real exam prep). Both met by design. Additionally, the skill **rotates
   2-3 card layout/color variants** and writes a fresh per-day "why" line so output isn't one
   identical visual template.
+- **Differentiation layer (REFINED 2026-06-10, verified -- `docs/engagement-antislop-research.md`):**
+  the generic single-prompt A/B/C/D card is a *channel-fatal* match for YouTube/Meta's
+  "inauthentic content" rules; the escape is genuine per-video value + visibly varied substance.
+  v1 builds **verified + varied + pedagogical text**: block-composed card structure (the
+  operator's block-resolver technique ported to Remotion -> material variation), an on-screen
+  **verified-source badge** (field-trust gating), a required `explanation`/optional `mnemonic`
+  per video, edited captions, and rotated forced-choice/disagreement CTAs. No stock imagery in
+  v1 (keeps the text-first, copyright-safe choice). Details in
+  `docs/specs/2026-06-10-gk-topic-selection-design.md` §6.
 - **Accuracy:** every fact carries a cited source the operator verifies at gate #2.
 - **AI disclosure:** if a realistic synthetic voice narrates, enable YouTube's synthetic-media
   toggle (safe default). AI used only for scripting/research is exempt. Re-verify Meta's 2026
