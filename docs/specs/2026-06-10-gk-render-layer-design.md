@@ -5,6 +5,12 @@
 **Owner:** sdevendran
 **Relates to:** `docs/specs/2026-06-04-daily-gk-quiz-design.md` (parent), `docs/specs/2026-06-10-gk-topic-selection-design.md` (feeds it), `docs/engagement-antislop-research.md` (why differentiation = survival)
 
+**Revision (2026-06-10, post-review):** faster ~12-14s timeline; added a "Lock your answer"
+beat before reveal; added a visible **difficulty indicator** (Easy/Medium/Hard); added
+**answer-key balancing** (even correct-position distribution over the last 30); trick hooks
+**rotated from a pool, never hardcoded**; source line more prominent at reveal; WhyBlock allows
+1-2 sentences.
+
 ---
 
 ## 1. What this is
@@ -43,15 +49,25 @@ Dark duotone, modern, highest-contrast, readable at thumbnail size.
 | Type | heavy grotesk (Arial/Helvetica bold; a licensed grotesk may replace later), tight tracking |
 
 Anatomy (top -> bottom): brand header ("Daily GK" + Day N pill) -> big **Day-number** + category
-band -> **question** -> 4 **option pills** (A-D) -> **countdown ring** + small VERIFIED-SOURCE
-badge -> CTA + **source line**.
+band + **difficulty chip** -> **question** -> 4 **option pills** (A-D) -> **countdown ring** +
+small VERIFIED-SOURCE badge -> CTA + **source line**. At reveal the **source line is promoted**
+(larger/brighter) -- trust is the headline differentiator for aspirants.
+
+Difficulty chip colours (mapped from the data model's difficulty): `basic` -> green `#3ddc84`
+(Easy), `intermediate` -> amber `#f4c430` (Medium), `advanced` -> red `#ff5a5f` (Hard). Rendered
+as a coloured dot + label, optionally prefixed with the top exam ("SSC - Easy").
 
 ### 2.2 Trick variant -- "Poster" (20% of posts)
 
 Reserved for misconception / current-affairs-trap / tricky questions only (so the hook keeps
 its credibility). Cream `#fbe6c9`, charcoal `#171410`, condensed Impact headline, hard-shadow
 panel, accents teal `#16a085` + red `#e2402b` + marigold `#e9b949`, slanted sticker badge.
-Hook rotates: "90% Get This Wrong", "Most SSC Aspirants Miss This", "Easy But Confusing".
+
+**The hook is NOT hardcoded** -- it is drawn from a rotated pool (LRU, via the existing
+`pick_rotation`) so it never wears out. Pool: "Most Aspirants Miss This", "Common Exam Trap",
+"Easy But Confusing", "Don't Rush This One", "Looks Easy, Isn't", "SSC Favourite Trap",
+"UPSC Asked a Similar Concept", "90% Get This Wrong". Lives in `data/prompts.json` under a
+`trick_hooks` key.
 
 ### 2.3 Brand-name
 
@@ -103,50 +119,73 @@ Each block is a focused React component with typed props; a template composes th
 
 - `BrandHeader` -- "Daily GK" wordmark + Day-N pill (constant brand row)
 - `DayNumber` -- the large day number (Standard) -- brand anchor
-- `CategoryBand` -- category + difficulty (e.g. "Polity - Basic")
+- `CategoryBand` -- category (e.g. "Polity")
+- `DifficultyChip` -- coloured dot + Easy/Medium/Hard (mapped from difficulty), optional exam prefix
 - `QuestionBlock` -- the question text (auto-fit sizing for length)
 - `Options` -- A-D pills; render state = `asked` | `revealed` (correct highlighted, others dimmed)
 - `Countdown` -- 3-2-1 ring (Standard) / circle (Trick)
+- `LockBeat` -- a brief "Lock your answer..." card shown after the countdown, before reveal (builds anticipation, drives comments)
 - `AnswerReveal` -- the correct option callout
-- `WhyBlock` -- the one-line "why it matters / exam relevance" (the added-value pedagogy)
+- `WhyBlock` -- the "why it matters / exam relevance" explanation; supports **1-2 sentences** of real learning (the added-value pedagogy, the key differentiator)
 - `VerifiedBadge` -- small "VERIFIED SOURCE" chip (trust signal; only shown when sourced)
-- `SourceLine` -- the cited source text (e.g. "Source: Constitution of India, Art. 21")
+- `SourceLine` -- the cited source text (e.g. "Source: Constitution of India, Art. 21"); **promoted (larger) during reveal**
 - `CTA` -- rotating call-to-action ("Comment A or B", etc.)
-- `Hook` -- the trick-variant headline (Trick template only)
+- `Hook` -- the trick-variant headline (Trick template only; rotated, never hardcoded)
 
 `VerifiedBadge`/`SourceLine` render only when the question is verified (trust-gate: never show
 an unsourced claim) -- the field-trust principle ported from the operator's pipeline.
 
 ---
 
-## 5. Scene / animation timeline (~15-20s, 30fps)
+## 5. Scene / animation timeline (~12-14s, 30fps)
+
+Faster than the first draft -- for daily Shorts/Reels in 2026, faster wins. Total ~12-14s.
 
 | t (s) | Scene | Motion |
 |---|---|---|
-| 0.0-1.5 | Hook / question entrance | brand header static; question words stagger in (the 1-second stop) |
-| 1.5-6 | Options appear | A-D pills slide/fade in sequentially |
-| 6-9 | Countdown | ring counts 3-2-1 with a tick; CTA "Comment A or B" visible |
-| 9-15 | Answer reveal | correct pill turns lime + scales (a *ding*); others dim |
-| 12-18 | Why it matters | WhyBlock fades in under the reveal; VerifiedBadge + SourceLine settle |
+| 0.0-0.8 | Hook / question entrance | brand header + difficulty chip static; question words stagger in fast (the 1-second stop) |
+| 0.8-3.3 | Options appear | A-D pills slide/fade in quickly; CTA "Comment A or B" visible |
+| 3.3-5.3 | Countdown | ring counts 3-2-1 with a tick |
+| 5.3-6.1 | **Lock your answer** | brief "Lock your answer..." card -- a ~0.8s anticipation beat |
+| 6.1-10 | Answer reveal | correct pill turns lime + scales (a *ding*); others dim; **source line promoted** |
+| 9-13 | Why it matters | WhyBlock fades in (1-2 sentences); VerifiedBadge + SourceLine settle |
 | end | CTA hold | final CTA + source on screen ~1.5s |
 
-Timings are defaults (tunable). Audio (Kokoro TTS narration + captions) layers onto this
-timeline but is specced/built separately (parent design); the render must leave room for
-burned-in captions and expose timing markers.
+Timings are defaults (tunable per the post-review table; faster preferred). Audio (Kokoro TTS
+narration + captions) layers onto this timeline but is specced/built separately (parent design);
+the render must leave room for burned-in captions and expose timing markers.
 
 ---
 
-## 6. Template selection -- the 80/20 rule
+## 6. Selection rules (template + answer-key balancing)
+
+### 6.1 Template -- the 80/20 rule
 
 A question carries an **`is_trick`** boolean (set during selection: misconception, common
 confusion, or current-affairs trap). The planner sets `DayPlan.template`:
 
-- `is_trick == true` -> `"trick"` (Poster), with a rotated trick-hook.
+- `is_trick == true` -> `"trick"` (Poster), with a trick-hook rotated from `trick_hooks`.
 - otherwise -> `"standard"` (Design 1).
 
-This wires into the existing `DayPlan` (add `template` + `hook`/`cta` already present). Target
+This wires into the existing `DayPlan` (add `template`; `hook`/`cta` already present). Target
 mix is ~80/20; if trick questions are scarce, standard simply dominates (no forcing). `is_trick`
 is added to the `Question` model + surfaced at the operator accuracy gate.
+
+### 6.2 Answer-key balancing (even A/B/C/D over the last 30)
+
+Aspirants pattern-detect: if the correct answer is "B" too often, the channel looks rigged and
+guessable. So the **position of the correct option (A/B/C/D) is balanced**, not the answer text.
+
+- History stores `answer_position` (the A/B/C/D slot the correct option occupied) per posted record.
+- When assembling the 4 options for a video, place the correct option in the position whose
+  count is **lowest over the last 30 posts** (ties -> stable order), then fill the other three
+  slots with the distractors. Deterministic.
+- Exposed to the operator at the accuracy gate (so they see the final A/B/C/D order).
+
+This is a small extension to the **selection/planner layer** (it owns history): add
+`answer_position` to the history record + a `balance_answer_position(history, today)` helper, and
+have `plan_today` emit the chosen slot. The render just consumes the already-ordered options.
+(Update `docs/specs/2026-06-10-gk-topic-selection-design.md` accordingly when planned.)
 
 ---
 
@@ -163,7 +202,9 @@ frames (question, countdown, reveal) -> a Claude pass scores:
 | Credibility | Looks like a verified educational brand, not AI trivia? VERIFIED badge + source present? |
 | Brand consistency | Masthead, lime accent, Day-N, layout match the locked template? |
 | Accuracy surface | Correct option highlighted matches the approved answer; source line correct? |
-| Frame pacing | Does info land legibly at each scene (no overcrowding/overflow)? |
+| Metadata surface | Difficulty chip present + correct colour; category + Day-N shown? |
+| Answer-key balance | Correct position not clustering (checked against the last-30 distribution)? |
+| Frame pacing | Does info land legibly at each scene (no overcrowding/overflow); total <= ~14s? |
 
 Below-bar -> flag for fix. This is the render-side analogue of the topic-layer accuracy gate.
 
