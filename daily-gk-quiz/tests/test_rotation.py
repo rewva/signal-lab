@@ -1,3 +1,4 @@
+import pytest
 from selection.selection import pick_rotation
 
 POOL = ["hook-a", "hook-b", "hook-c"]
@@ -14,3 +15,7 @@ def test_empty_recent_returns_first():
 
 def test_single_item_pool_returns_it():
     assert pick_rotation(["only"], recent=["only"]) == "only"
+
+def test_empty_pool_raises():
+    with pytest.raises(ValueError, match="must not be empty"):
+        pick_rotation([], recent=[])

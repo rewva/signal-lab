@@ -1,6 +1,6 @@
 from datetime import date
 from selection.models import Question, HistoryRecord
-from selection.selection import pick_domain
+from selection.selection import pick_domain, recent_shares
 
 def _rec(domain, d):
     q = Question(domain, "basic", f"{domain}/x-{d}", "X", "q?", "a",
@@ -19,3 +19,8 @@ def test_picks_domain_furthest_below_its_weight():
 def test_ignores_history_outside_window():
     hist = [_rec("current-affairs", "2025-01-01")]  # stale, ignored
     assert pick_domain(hist, WEIGHTS, date(2026, 6, 10), window_days=120) == "current-affairs"
+
+def test_recent_shares_ignores_out_of_universe_values():
+    shares = recent_shares(["a", "a", "unknown"], ["a", "b"])
+    assert shares["a"] == 1.0
+    assert shares["b"] == 0.0

@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: daily-gk-quiz-selection
+Version: 0.1.0
+Summary: Deterministic topic-selection layer for the daily-gk-quiz skill
+Requires-Python: >=3.12
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"

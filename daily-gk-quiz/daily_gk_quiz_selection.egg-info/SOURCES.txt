@@ -1,0 +1,8 @@
+pyproject.toml
+daily_gk_quiz_selection.egg-info/PKG-INFO
+daily_gk_quiz_selection.egg-info/SOURCES.txt
+daily_gk_quiz_selection.egg-info/dependency_links.txt
+daily_gk_quiz_selection.egg-info/requires.txt
+daily_gk_quiz_selection.egg-info/top_level.txt
+selection/__init__.py
+tests/test_smoke.py

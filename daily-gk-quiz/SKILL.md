@@ -39,11 +39,12 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
    Render is **block-composed** (varied structure per question) with an on-screen
    **verified-source badge** and **edited captions** -- the differentiation layer (parent design
    sec 9 / spec sec 6). Render/voice/post implementation are out of this skill's scope.
+   Record the `hook` and `cta` you used when appending to history (step 6) so the rotation can avoid repeating them.
 
 6. **Review gate (#2)** and posting happen downstream. **Only after a successful post**, append
    the question to history:
    ```bash
-   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q))"
+   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q, hook='<the hook used>', cta='<the cta used>'))"
    ```
    If a bank candidate was used, also remove it from `question-bank.json` (rewrite the bank
    without that `fact_key`) and replenish the bank when it runs low.

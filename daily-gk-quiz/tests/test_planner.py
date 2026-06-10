@@ -1,5 +1,5 @@
 from datetime import date
-from selection.models import Question
+from selection.models import Question, HistoryRecord
 from selection.planner import plan_today, DayPlan
 
 WEIGHTS = {"current-affairs": 30, "general-science": 18, "static-gk": 12, "history": 10}
@@ -38,3 +38,11 @@ def test_current_affairs_never_pulls_from_bank():
                       today=date(2026, 6, 10), window_days=120)
     assert plan.domain == "current-affairs"
     assert plan.bank_candidate is None  # CA is always generated live
+
+def test_rotation_avoids_recently_used_hook_and_cta():
+    rec = HistoryRecord("2026-06-09", _q("history", "basic", "history/x"),
+                        hook="h1", cta="c1")
+    plan = plan_today(history=[rec], bank=[], weights=WEIGHTS, target_mix=MIX,
+                      hooks=["h1", "h2"], ctas=["c1", "c2"],
+                      today=date(2026, 6, 10), window_days=120)
+    assert plan.hook == "h2" and plan.cta == "c2"

@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, timedelta
 from typing import Optional
 
-from selection.models import HistoryRecord, Question
+from selection.models import HistoryRecord, Question, DIFFICULTIES
 
 def is_duplicate(fact_key: str, history: list[HistoryRecord],
                  today: date, window_days: int = 120) -> bool:
@@ -18,11 +18,15 @@ def _recent(history: list[HistoryRecord], today: date, window_days: int) -> list
     return [r for r in history if date.fromisoformat(r.date) >= cutoff]
 
 def recent_shares(values: list[str], universe) -> dict[str, float]:
-    """Normalized frequency of each value, 0 for unseen members of `universe`."""
-    total = len(values) or 1
+    """Normalized frequency of each `universe` member among the in-universe values.
+    Values not in `universe` are ignored entirely (not counted, not in the denominator)."""
     counts = {k: 0 for k in universe}
+    in_universe = 0
     for v in values:
-        counts[v] = counts.get(v, 0) + 1
+        if v in counts:
+            counts[v] += 1
+            in_universe += 1
+    total = in_universe or 1
     return {k: counts[k] / total for k in counts}
 
 def pick_domain(history: list[HistoryRecord], weights: dict[str, float],
@@ -37,7 +41,7 @@ def pick_difficulty(history: list[HistoryRecord], target_mix: dict[str, float],
                     today: date, window_days: int = 120) -> str:
     seen = [r.question.difficulty for r in _recent(history, today, window_days)]
     shares = recent_shares(seen, target_mix.keys())
-    order = {"basic": 3, "intermediate": 2, "advanced": 1}  # tie-break toward basic
+    order = {d: len(DIFFICULTIES) - i for i, d in enumerate(DIFFICULTIES)}  # tie-break toward basic
     deficits = {k: target_mix[k] - shares[k] for k in target_mix}
     return max(deficits, key=lambda k: (deficits[k], order[k]))
 
@@ -51,6 +55,8 @@ def draw_from_bank(bank: list[Question], domain: str, difficulty: str,
 
 def pick_rotation(pool: list[str], recent: list[str]) -> str:
     """Least-recently-used item in `pool`. `recent` is oldest-to-newest usage."""
+    if not pool:
+        raise ValueError("pick_rotation: pool must not be empty")
     if len(pool) == 1:
         return pool[0]
     def last_used(item: str) -> int:
