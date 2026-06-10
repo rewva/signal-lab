@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# runtime state -- never commit secrets or local data
+vault/
+*.enc
+*.db
+work/
