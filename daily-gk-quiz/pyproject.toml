@@ -1,0 +1,13 @@
+[project]
+name = "daily-gk-quiz-selection"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+packages = ["selection"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
