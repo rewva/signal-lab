@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from datetime import date, timedelta
+from typing import Optional
 
-from selection.models import HistoryRecord
+from selection.models import HistoryRecord, Question
 
 def is_duplicate(fact_key: str, history: list[HistoryRecord],
                  today: date, window_days: int = 120) -> bool:
@@ -39,3 +40,11 @@ def pick_difficulty(history: list[HistoryRecord], target_mix: dict[str, float],
     order = {"basic": 3, "intermediate": 2, "advanced": 1}  # tie-break toward basic
     deficits = {k: target_mix[k] - shares[k] for k in target_mix}
     return max(deficits, key=lambda k: (deficits[k], order[k]))
+
+def draw_from_bank(bank: list[Question], domain: str, difficulty: str,
+                   used_fact_keys: set[str]) -> Optional[Question]:
+    for q in bank:
+        if (q.domain == domain and q.difficulty == difficulty
+                and q.fact_key not in used_fact_keys):
+            return q
+    return None
