@@ -53,7 +53,7 @@ this design is built around:
 | Goal | Audience growth; monetization deferred |
 | Niche | Daily GK + current affairs for Indian competitive-exam aspirants |
 | Language | **English** (better TTS quality, easier fact-checking, higher-value audience) |
-| Exam target | Broad daily GK / current affairs (widest audience) |
+| Exam target | **REFINED 2026-06-10: SSC / Banking / Railways "General Awareness" tier** (SSC CGL/CHSL, IBPS/SBI, RRB) -- was "broad daily GK (widest audience)"; narrowed for intent signal + exact GA-section format fit. UPSC excluded (poor quiz-short fit). See `docs/specs/2026-06-10-gk-topic-selection-design.md`. |
 | Format wedge | **Interactive MCQ quiz** — Q -> countdown -> answer + one-line why |
 | Questions per video | **1** (punchy, high completion rate, drives comments) |
 | Content mix | **Ad-hoc** — best available question each day (current affairs or static GK) |
@@ -146,13 +146,17 @@ daily-gk-quiz/
 
 | Platform | API | Daily limit | Access requirement |
 |---|---|---|---|
-| YouTube Shorts | Data API v3 (`videos.insert`) | 1600 quota units/upload; ~6/day; hard cap 100 inserts/day | Google Cloud project + OAuth. Don't assume 10,000/day quota (refuted in research) — confirm allocation. |
+| YouTube Shorts | Data API v3 (`videos.insert`) | hard cap **100 videos.insert/day** (separate allocation, not the unit pool) | Google Cloud project + OAuth. Confirmed 2026-06-08: default 10,000 units/day + dedicated 100 inserts/day. 1/day trivially fine; no increase needed. |
 | Instagram Reels | Graph API (`media_type=REELS`) | ~100 posts/24h | **Business/Creator account linked to a Facebook Page** + content-publish permission. Personal accounts can't post via API. |
 | Facebook Reels | Pages API (`/{page_id}/video_reels`) | 30 posts/24h | Page access token + `pages_manage_posts`, `pages_read_engagement`, `pages_show_list`. |
 
-**Biggest upfront hurdle:** Meta production posting requires **App Review + Business
-Verification** for Advanced Access. *Validate this is achievable for a solo operator before
-building anything else.*
+**Biggest upfront hurdle — RESOLVED 2026-06-08 (GO):** Self-posting to the operator's OWN
+FB Page + IG Business/Creator accounts does **NOT** require App Review or Business
+Verification. Role-holder-only apps stay in **Standard Access** (all permissions grantable,
+no review). App Review + Business Verification only apply to **Advanced Access** (acting on
+accounts you don't own). **Precondition:** add own FB Page + IG accounts as role-holders
+(Admin/Dev/Tester) on the Meta app; accept ~25 IG posts/24h Standard Access limit (fine for
+1/day). See `docs/posting-pipeline-api-research.md`.
 
 ---
 
@@ -191,20 +195,20 @@ quiz compilations / affiliate to test-series platforms (Testbook-style) / eventu
 
 **Risks**
 1. **Hallucinated facts** — mitigated by the cited-source accuracy gate (operator verifies).
-2. **Meta App Review / Business Verification** for a solo operator — feasibility unconfirmed; the biggest unknown.
+2. ~~**Meta App Review / Business Verification** for a solo operator — feasibility unconfirmed; the biggest unknown.~~ **RESOLVED 2026-06-08 (GO):** not required for self-posting (Standard Access via role-holder app). See `docs/posting-pipeline-api-research.md`.
 3. **Saturated niche** — wedge is interactive format + reliability; expect format iteration.
 4. **Remotion learning curve / Kokoro English quality** — fallbacks defined (FFmpeg+PNG; music-only).
 
-**Open questions to resolve before/early in build**
-- Can a solo operator without a registered business clear Meta Business Verification?
-- Actual YouTube quota allocation for the project (don't hard-code 10,000).
-- Current 2026 Meta AI-disclosure requirements for automated Reels.
+**Open questions — status (resolved 2026-06-08, see `docs/posting-pipeline-api-research.md`)**
+- ~~Can a solo operator without a registered business clear Meta Business Verification?~~ **RESOLVED:** not needed for self-posting (Standard Access via role-holder app).
+- ~~Actual YouTube quota allocation.~~ **RESOLVED:** 10,000 units/day + 100 videos.insert/day cap; no increase needed.
+- **Current 2026 Meta AI-disclosure requirements for automated Reels — STILL OPEN.** YouTube side resolved (own/cloned voice + AI scripts exempt); Meta "AI info" label + API field unresolved, needs a dedicated pass.
 
 ---
 
 ## 13. Build order (when implementation begins)
 
-1. **Prove publish access** on YouTube + Meta (especially Meta verification). Gate everything on this.
+1. **Prove publish access** on YouTube + Meta. ~~Meta verification~~ confirmed not required (2026-06-08); reduced to a setup step: create the Meta app, add own FB Page + IG Business/Creator as role-holders, accept role invites, generate page + IG tokens. Create the Google Cloud project + OAuth client for YouTube. Do this first.
 2. Write `SKILL.md` + the Remotion quiz-card template + `state/` files.
 3. Test one end-to-end video locally (pick question -> voice -> render -> review).
 4. Wire the three posting scripts; test against the operator's own accounts.

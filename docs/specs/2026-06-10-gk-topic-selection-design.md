@@ -27,6 +27,7 @@ The spine that ties all three together is a single concept: the **`fact_key`**.
 
 | Pillar | Decision |
 |---|---|
+| Target market | **SSC / Banking / Railways "General Awareness" tier** (SSC CGL/CHSL, IBPS/SBI, RRB). Refines the parent design's "broad general GK" -- narrower for *intent signal* (the metric `plan.md` uses to pick a winner), still a huge pool, and an exact format fit: those exams' GA section IS static-GK + current-affairs MCQs. UPSC deliberately excluded (analytical/long-form, poor quiz-short fit). |
 | Topic sourcing | **Curated topic plan + live news feed.** A hand-authored bank of static GK domains, plus a current-affairs lane that searches the day's exam-relevant news. Claude picks from a planned space. |
 | Dedupe level | **Fact/entity level.** Each question carries a canonical `fact_key`; reuse within a window is hard-blocked. Catches reworded repeats. |
 | Correctness bar | **Two-source cross-check + primary-source bias.** Corroborate across >=2 independent reputable sources, prefer a primary/official one; reject if it cannot be corroborated. |
@@ -41,24 +42,29 @@ Two files do all the work.
 ### 3.1 `topics/domains.json` -- the curated plan (hand-authored once, edited rarely)
 
 A bank of GK domains for Indian competitive exams. Each static domain lists sub-topics and a
-selection weight. Current Affairs is NOT enumerated -- it is the "search the last 48-72h" lane.
+selection weight. **Weights are tuned to the SSC / Banking / Railways GA syllabus** -- those
+sections are current-affairs-heavy with a substantial static-GK base, so Current Affairs
+carries the highest weight and the static domains are weighted by how often they appear in
+those papers (Static GK, Polity, History, Geography are heavily tested; Economy matters more
+for Banking). Current Affairs is NOT enumerated -- it is the "search the last 48-72h" lane.
 
-Static domains (initial set):
+Static domains (initial set, weighted for the GA tier):
 
 ```
 History            -- ancient / medieval / modern, freedom struggle
 Polity & Constitution
 Geography          -- Indian + world, physical
-Economy
+Economy            -- (weighted up for Banking: banking awareness, RBI, schemes)
 General Science    -- physics / chemistry / biology
 Static GK          -- awards, books-authors, important days, dances, etc.
 ```
 
-Plus the rolling lane:
+Plus the rolling lane (highest weight -- GA sections lean current-affairs):
 
 ```
 Current Affairs    -- schemes, appointments, sports, summits, science & tech,
-                      defence, reports / indices (sourced live, not enumerated)
+                      defence, reports / indices, banking & economy news
+                      (sourced live, not enumerated)
 ```
 
 ### 3.2 `state/question-history.json` -- append-only, single source of truth
