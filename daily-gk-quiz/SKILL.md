@@ -33,18 +33,40 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
 4. **Accuracy gate (#1 -- mandatory).** Corroborate the fact across **>=2 independent reputable
    sources**, preferring a primary/official one (RBI, ISRO, PIB, gazette). Present to the
    operator: question, correct answer, 3 distractors, `domain`, `difficulty`, `exam_relevance`,
-   `fact_key`, and BOTH source URLs. **Do not proceed until the operator confirms the fact.**
+   `fact_key`, the human-readable `source_citation`, and BOTH source URLs.
+   **Do not proceed until the operator confirms the fact AND the citation.**
 
-5. **Hand off to render** with the approved question + the `hook` and `cta` from step 1.
-   Render is **block-composed** (varied structure per question) with an on-screen
-   **verified-source badge** and **edited captions** -- the differentiation layer (parent design
-   sec 9 / spec sec 6). Render/voice/post implementation are out of this skill's scope.
-   Record the `hook` and `cta` you used when appending to history (step 6) so the rotation can avoid repeating them.
+5. **Assemble + render + submit.** After the operator confirms, write the **render request** -- the verified question plus the plan fields frozen at step 1 -- to a JSON file (e.g. `approved.json`):
+
+   ```json
+   {
+     "question": { "domain": "...", "difficulty": "...", "fact_key": "...", "entity": "...",
+       "question": "...", "answer": "...", "distractors": ["...","...","..."],
+       "exam_relevance": ["SSC","RRB"], "sources": ["https://...","https://..."],
+       "explanation": "...", "source_citation": "Constitution of India, Art. 21",
+       "mnemonic": null, "is_trick": false },
+     "answer_position": "<plan.answer_position>", "hook": "<plan.hook>",
+     "cta": "<plan.cta>", "trick_hook": "<plan.trick_hook>",
+     "day_number": "<history count + 1>",
+     "description": "<the edited, varied caption you wrote -- anti-slop>",
+     "ai_disclosure": true
+   }
+   ```
+
+   Then (the publisher must be running) render the MP4 and submit the PENDING_APPROVAL job:
+
+   ```bash
+   cd daily-gk-quiz && .venv\Scripts\python.exe -m selection.build --request approved.json
+   ```
+
+   This writes `render/props.json`, renders `out/<fact_key>.mp4` (run with the Bash sandbox
+   disabled -- headless Chrome), and POSTs `/api/jobs` (default publisher URL
+   `http://127.0.0.1:8077`). Review gate #2 + posting happen in the publisher.
 
 6. **Review gate (#2)** and posting happen downstream. **Only after a successful post**, append
    the question to history:
    ```bash
-   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q, hook='<the hook used>', cta='<the cta used>'))"
+   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', source_citation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q, hook='<the hook used>', cta='<the cta used>'))"
    ```
    If a bank candidate was used, also remove it from `question-bank.json` (rewrite the bank
    without that `fact_key`) and replenish the bank when it runs low.
