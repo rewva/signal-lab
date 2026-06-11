@@ -18,4 +18,8 @@ describe("standardState (frame -> view state)", () => {
     const s = standardState(tl.lock.from + 1, tl);
     expect(s.showLock).toBe(true);
   });
+  it("countdown reaches 1 late in its window", () => {
+    expect(standardState(150, tl).countdownN).toBe(1);   // frame 150 is in the final third
+    expect(standardState(100, tl).countdownN).toBe(3);   // early in the window
+  });
 });
