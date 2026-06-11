@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-POSITIONS = ("A", "B", "C", "D")
+from dataclasses import dataclass
+
+from selection.selection import template_for, POSITIONS
 
 
 def order_options(answer: str, distractors: list[str], position: str) -> list[dict]:
@@ -16,3 +18,36 @@ def order_options(answer: str, distractors: list[str], position: str) -> list[di
         text = answer if letter == position else remaining.pop(0)
         options.append({"letter": letter, "text": text})
     return options
+
+
+@dataclass
+class RenderPlan:
+    """The subset of DayPlan frozen at planning time and needed for assembly.
+    A real DayPlan is structurally compatible (same attribute names)."""
+    answer_position: str
+    cta: str
+    trick_hook: str = ""
+
+
+def _category_label(domain: str, labels: dict) -> str:
+    if domain in labels:
+        return labels[domain]
+    return domain.replace("-", " ").title()  # fallback: "general-science" -> "General Science"
+
+
+def quiz_props(question, plan, day_number: int, labels: dict) -> dict:
+    """Map a verified Question + frozen plan fields into the renderer's QuizProps dict."""
+    return {
+        "dayNumber": day_number,
+        "category": _category_label(question.domain, labels),
+        "difficulty": question.difficulty,
+        "examPrefix": question.exam_relevance[0] if question.exam_relevance else "",
+        "template": template_for(question.is_trick),
+        "question": question.question,
+        "options": order_options(question.answer, question.distractors, plan.answer_position),
+        "correctLetter": plan.answer_position,
+        "explanation": question.explanation,
+        "sourceLine": question.source_citation,
+        "cta": plan.cta,
+        "trickHook": plan.trick_hook,
+    }

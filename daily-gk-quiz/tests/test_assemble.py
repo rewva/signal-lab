@@ -28,3 +28,70 @@ def test_position_c_layout():
 def test_rejects_wrong_distractor_count():
     with pytest.raises(ValueError):
         order_options("ANS", ["only", "two"], "A")
+
+
+from selection.assemble import quiz_props, RenderPlan
+from selection.models import Question
+
+LABELS = {"polity": "Polity", "current-affairs": "Current Affairs"}
+
+
+def _question(**over):
+    base = dict(
+        domain="polity", difficulty="basic", fact_key="polity/article-21",
+        entity="Article 21", question="Article 21 guarantees what?",
+        answer="Life and personal liberty",
+        distractors=["Equality", "Free speech", "Property"],
+        exam_relevance=["SSC", "RRB"], sources=["https://a.gov.in", "https://b.org"],
+        explanation="It protects life and personal liberty.",
+        source_citation="Constitution of India, Art. 21",
+    )
+    base.update(over)
+    return Question(**base)
+
+
+EXPECTED_PROP_KEYS = {
+    "dayNumber", "category", "difficulty", "examPrefix", "template", "question",
+    "options", "correctLetter", "explanation", "sourceLine", "cta", "trickHook",
+}
+
+
+def test_quiz_props_full_mapping():
+    plan = RenderPlan(answer_position="C", cta="Comment A or B", trick_hook="")
+    props = quiz_props(_question(), plan, day_number=47, labels=LABELS)
+    assert set(props.keys()) == EXPECTED_PROP_KEYS  # matches the zod QuizProps schema
+    assert props["dayNumber"] == 47
+    assert props["category"] == "Polity"
+    assert props["difficulty"] == "basic"
+    assert props["examPrefix"] == "SSC"
+    assert props["template"] == "standard"
+    assert props["correctLetter"] == "C"
+    assert props["options"][2] == {"letter": "C", "text": "Life and personal liberty"}
+    assert props["sourceLine"] == "Constitution of India, Art. 21"
+    assert props["cta"] == "Comment A or B"
+    assert props["trickHook"] == ""
+
+
+def test_quiz_props_trick_template_and_hook():
+    plan = RenderPlan(answer_position="A", cta="Comment A or B", trick_hook="Common Exam Trap")
+    props = quiz_props(_question(is_trick=True), plan, day_number=5, labels=LABELS)
+    assert props["template"] == "trick"
+    assert props["trickHook"] == "Common Exam Trap"
+
+
+def test_quiz_props_empty_exam_relevance_gives_blank_prefix():
+    props = quiz_props(_question(exam_relevance=[]), RenderPlan("A", "cta", ""),
+                       day_number=1, labels=LABELS)
+    assert props["examPrefix"] == ""
+
+
+def test_quiz_props_category_falls_back_to_titlecased_slug():
+    props = quiz_props(_question(domain="general-science"), RenderPlan("A", "cta", ""),
+                       day_number=1, labels=LABELS)
+    assert props["category"] == "General Science"  # slug not in LABELS -> fallback
+
+
+def test_order_options_rejects_invalid_position():
+    from selection.assemble import order_options
+    with pytest.raises(ValueError):
+        order_options("ANS", ["a", "b", "c"], "E")
