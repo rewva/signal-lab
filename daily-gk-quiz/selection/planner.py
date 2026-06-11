@@ -7,6 +7,7 @@ from typing import Optional
 from selection.models import Question, HistoryRecord
 from selection.selection import (
     pick_domain, pick_difficulty, draw_from_bank, pick_rotation, _recent,
+    balance_answer_position,
 )
 
 CURRENT_AFFAIRS = "current-affairs"
@@ -19,10 +20,12 @@ class DayPlan:
     bank_candidate: Optional[Question]
     hook: str
     cta: str
+    answer_position: str = "A"
+    trick_hook: str = ""
 
 def plan_today(*, history: list[HistoryRecord], bank: list[Question],
                weights: dict[str, float], target_mix: dict[str, float],
-               hooks: list[str], ctas: list[str],
+               hooks: list[str], ctas: list[str], trick_hooks: list[str],
                today: date, window_days: int = 120) -> DayPlan:
     domain = pick_domain(history, weights, today, window_days)
     difficulty = pick_difficulty(history, target_mix, today, window_days)
@@ -37,4 +40,8 @@ def plan_today(*, history: list[HistoryRecord], bank: list[Question],
     recent_ctas = [r.cta for r in recent_records if r.cta]
     hook = pick_rotation(hooks, recent_hooks)
     cta = pick_rotation(ctas, recent_ctas)
-    return DayPlan(domain, difficulty, recent_fact_keys, bank_candidate, hook, cta)
+    answer_position = balance_answer_position(history, today)
+    recent_trick = [r.hook for r in recent_records if r.hook]
+    trick_hook = pick_rotation(trick_hooks, recent_trick) if trick_hooks else ""
+    return DayPlan(domain, difficulty, recent_fact_keys, bank_candidate, hook, cta,
+                   answer_position=answer_position, trick_hook=trick_hook)
