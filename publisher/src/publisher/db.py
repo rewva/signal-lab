@@ -40,7 +40,9 @@ CREATE TABLE IF NOT EXISTS jobs (
     scheduled_for   TEXT,
     posted_at       TEXT,
     deleted_at      TEXT,
-    attempts        INTEGER NOT NULL DEFAULT 0
+    attempts        INTEGER NOT NULL DEFAULT 0,
+    source_citation TEXT NOT NULL DEFAULT '',
+    sources         TEXT NOT NULL DEFAULT '[]'
 );
 
 CREATE TABLE IF NOT EXISTS post_results (
@@ -149,11 +151,13 @@ class Database:
         job.id = self._write(
             "INSERT INTO jobs (channel_id, video_path, title, description, tags, "
             "platforms, per_platform, status, submitted_at, scheduled_for, posted_at, "
-            "deleted_at, attempts) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "deleted_at, attempts, source_citation, sources) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (job.channel_id, job.video_path, job.title, job.description,
              json.dumps(job.tags), json.dumps(job.platforms),
              json.dumps(job.per_platform), job.status, job.submitted_at,
-             job.scheduled_for, job.posted_at, job.deleted_at, job.attempts),
+             job.scheduled_for, job.posted_at, job.deleted_at, job.attempts,
+             job.source_citation, json.dumps(job.sources)),
         )
         return job
 
@@ -207,6 +211,8 @@ class Database:
             submitted_at=row["submitted_at"], scheduled_for=row["scheduled_for"],
             posted_at=row["posted_at"], deleted_at=row["deleted_at"],
             attempts=row["attempts"],
+            source_citation=row["source_citation"],
+            sources=json.loads(row["sources"]),
         )
 
     # --- post_results -------------------------------------------------------

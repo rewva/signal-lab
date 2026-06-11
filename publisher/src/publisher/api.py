@@ -29,6 +29,8 @@ class JobSubmission(BaseModel):
     tags: list[str] = Field(default_factory=list)
     platforms: list[str]
     per_platform: dict[str, Any] = Field(default_factory=dict)
+    source_citation: str = ""
+    sources: list[str] = Field(default_factory=list)
 
     @field_validator("platforms")
     @classmethod
@@ -104,6 +106,8 @@ class JobView(BaseModel):
     per_platform: dict[str, Any]
     submitted_at: str | None
     scheduled_for: str | None
+    source_citation: str
+    sources: list[str]
 
 
 def _to_view(job: Job) -> JobView:
@@ -111,6 +115,7 @@ def _to_view(job: Job) -> JobView:
         id=job.id, channel_id=job.channel_id, title=job.title, status=job.status,
         platforms=job.platforms, per_platform=job.per_platform,
         submitted_at=job.submitted_at, scheduled_for=job.scheduled_for,
+        source_citation=job.source_citation, sources=job.sources,
     )
 
 
@@ -128,6 +133,7 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
             title=submission.title, description=submission.description,
             tags=submission.tags, platforms=submission.platforms,
             per_platform=submission.per_platform, status="PENDING_APPROVAL",
+            source_citation=submission.source_citation, sources=submission.sources,
         ))
         return _to_view(job)
 

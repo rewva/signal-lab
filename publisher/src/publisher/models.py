@@ -41,6 +41,8 @@ class Job:
     posted_at: Optional[str] = None
     deleted_at: Optional[str] = None
     attempts: int = 0  # posting attempts made; drives retry-vs-fail
+    source_citation: str = ""  # review-gate citation label (for the dashboard verify tag)
+    sources: list[str] = field(default_factory=list)  # verify links the operator clicks
     id: Optional[int] = None
 
     @property

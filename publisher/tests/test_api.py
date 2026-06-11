@@ -70,3 +70,20 @@ def test_list_jobs_returns_submitted(client):
     listing = client.get("/api/jobs").json()
     assert len(listing) == 2
     assert {j["title"] for j in listing} == {"Daily GK", "Second"}
+
+
+def test_job_persists_and_returns_source_citation_and_sources(client):
+    body = _submission()
+    body["source_citation"] = "Constitution of India, Art. 21"
+    body["sources"] = ["https://a.gov.in", "https://b.org"]
+    job_id = client.post("/api/jobs", json=body).json()["id"]
+    got = client.get(f"/api/jobs/{job_id}").json()
+    assert got["source_citation"] == "Constitution of India, Art. 21"
+    assert got["sources"] == ["https://a.gov.in", "https://b.org"]
+
+
+def test_source_fields_default_to_empty_when_omitted(client):
+    job_id = client.post("/api/jobs", json=_submission()).json()["id"]
+    got = client.get(f"/api/jobs/{job_id}").json()
+    assert got["source_citation"] == ""
+    assert got["sources"] == []
