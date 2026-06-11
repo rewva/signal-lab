@@ -168,8 +168,8 @@ override, but is not required for v1.)
    sandbox disabled -- the Windows/headless-Chrome gotcha; `render.mjs` already calls
    `ensureBrowser()`).
 4. **On render success only**, `assemble.job_submission(...)` -> `POST /api/jobs` (default
-   `http://127.0.0.1:8000`). The job lands **PENDING_APPROVAL** -- this *is* review gate #2;
-   nothing posts to social here.
+   `http://127.0.0.1:8077`, the publisher's `config.py` default). The job lands
+   **PENDING_APPROVAL** -- this *is* review gate #2; nothing posts to social here.
 5. Print the job id + the video path.
 
 **Error handling**
