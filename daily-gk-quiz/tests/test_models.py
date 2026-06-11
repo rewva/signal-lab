@@ -11,6 +11,7 @@ def _q(**over):
         exam_relevance=["SSC", "RRB"],
         sources=["https://a.gov.in", "https://b.org"],
         explanation="Article 21 protects life and personal liberty.",
+        source_citation="Constitution of India, Art. 21",
         mnemonic=None,
     )
     base.update(over)
@@ -48,3 +49,13 @@ def test_history_record_roundtrips_flat():
     assert d["date"] == "2026-06-10"
     assert d["fact_key"] == "polity/article-21-right-to-life"  # flattened, not nested
     assert HistoryRecord.from_dict(d) == rec
+
+
+def test_question_requires_source_citation():
+    with pytest.raises(ValueError, match="source_citation is required"):
+        _q(source_citation="").validate()
+
+
+def test_question_keeps_source_citation_through_dict():
+    q = _q(source_citation="RBI Monetary Policy, Feb 2026")
+    assert Question.from_dict(q.to_dict()).source_citation == "RBI Monetary Policy, Feb 2026"

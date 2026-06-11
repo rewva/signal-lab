@@ -4,7 +4,8 @@ def _q(**over):
     base = dict(domain="polity", difficulty="basic", fact_key="polity/art-21",
                 entity="Article 21", question="Q?", answer="Article 21",
                 distractors=["a", "b", "c"], exam_relevance=["SSC"],
-                sources=["https://1", "https://2"], explanation="why")
+                sources=["https://1", "https://2"], explanation="why",
+                source_citation="Constitution of India, Art. 21")
     base.update(over)
     return Question(**base)
 

@@ -20,6 +20,7 @@ class Question:
     explanation: str = ""          # trailing defaults keep positional construction valid
     mnemonic: Optional[str] = None
     is_trick: bool = False
+    source_citation: str = ""      # human-readable on-screen citation (distinct from sources URLs)
 
     def validate(self) -> "Question":
         if self.difficulty not in DIFFICULTIES:
@@ -30,6 +31,8 @@ class Question:
             raise ValueError("a question needs at least 2 sources")
         if not self.explanation.strip():
             raise ValueError("explanation is required (per-video pedagogy)")
+        if not self.source_citation.strip():
+            raise ValueError("source_citation is required (on-screen citation / trust badge)")
         bad = [e for e in self.exam_relevance if e not in EXAMS]
         if bad:
             raise ValueError(f"unknown exam_relevance {bad}; allowed {EXAMS}")
@@ -47,6 +50,7 @@ class Question:
             sources=list(d["sources"]),
             explanation=d.get("explanation", ""), mnemonic=d.get("mnemonic"),
             is_trick=d.get("is_trick", False),
+            source_citation=d.get("source_citation", ""),
         )
 
 @dataclass
