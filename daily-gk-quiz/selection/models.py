@@ -19,6 +19,7 @@ class Question:
     sources: list[str]
     explanation: str = ""          # trailing defaults keep positional construction valid
     mnemonic: Optional[str] = None
+    is_trick: bool = False
 
     def validate(self) -> "Question":
         if self.difficulty not in DIFFICULTIES:
@@ -45,6 +46,7 @@ class Question:
             distractors=list(d["distractors"]), exam_relevance=list(d["exam_relevance"]),
             sources=list(d["sources"]),
             explanation=d.get("explanation", ""), mnemonic=d.get("mnemonic"),
+            is_trick=d.get("is_trick", False),
         )
 
 @dataclass

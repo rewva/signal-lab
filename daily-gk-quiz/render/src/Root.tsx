@@ -15,7 +15,7 @@ const defaultProps: QuizProps = {
   ],
   correctLetter: "B", explanation: "Article 21 protects life and personal liberty.",
   sourceLine: "Constitution of India, Art. 21", cta: "Comment A or B",
-  trickHook: "Common Exam Trap", fps: FPS,
+  trickHook: "Common Exam Trap",
 };
 
 export const RemotionRoot: React.FC = () => (

@@ -15,7 +15,6 @@ export const quizSchema = z.object({
   sourceLine: z.string().min(1),
   cta: z.string().min(1),
   trickHook: z.string(),
-  fps: z.number().int().positive(),
 });
 
 export type QuizProps = z.infer<typeof quizSchema>;
