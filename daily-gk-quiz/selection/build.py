@@ -10,6 +10,7 @@ import json
 import os
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -30,6 +31,11 @@ def _real_render(props_path: str, out_path: str,
                  render_dir: str = "render", node: str = "node") -> int:
     """Run the Remotion CLI as a subprocess (cwd=render/, since render.mjs resolves
     src/index.ts relative to cwd). Returns the process exit code."""
+    if not (Path(render_dir) / "render.mjs").is_file():
+        raise RenderFailed(
+            f"render.mjs not found under {Path(render_dir).resolve()}; "
+            "run this from the daily-gk-quiz directory"
+        )
     proc = subprocess.run(
         [node, "render.mjs", os.path.abspath(props_path), os.path.abspath(out_path)],
         cwd=render_dir,
@@ -79,8 +85,12 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     labels = json.loads(Path(args.domains).read_text(encoding="utf-8"))["labels"]
-    result = build(args.request, labels=labels, publisher_url=args.publisher_url,
-                   out_dir=args.out)
+    try:
+        result = build(args.request, labels=labels, publisher_url=args.publisher_url,
+                       out_dir=args.out)
+    except (RenderFailed, ValueError, OSError, urllib.error.URLError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     print(f"submitted job {result.get('id')} ({result.get('status')})")
     return 0
 

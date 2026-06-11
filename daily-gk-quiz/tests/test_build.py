@@ -51,9 +51,11 @@ def test_build_writes_props_renders_then_posts(tmp_path):
     props = json.loads((tmp_path / "props.json").read_text(encoding="utf-8"))
     assert props["correctLetter"] == "C"
     assert props["category"] == "Polity"
+    assert calls["render"][0] == str(tmp_path / "props.json")
     assert calls["render"][1].endswith("polity__article-21.mp4")
     assert calls["post"][0] == "http://pub/api/jobs"
     assert calls["post"][1]["source_citation"] == "Constitution of India, Art. 21"
+    assert calls["post"][1]["video_path"].endswith("polity__article-21.mp4")
     assert result["id"] == 99
 
 
