@@ -25,3 +25,8 @@ describe("piece views", () => {
     render(<CtaView cta="Comment A or B" />); expect(screen.getByText(/Comment A or B/)).toBeTruthy();
   });
 });
+
+it("source line dark tone still shows text", () => {
+  render(<SourceLineView sourceLine="X, Art. 21" promoted tone="dark" />);
+  expect(screen.getByText(/X, Art. 21/)).toBeTruthy();
+});

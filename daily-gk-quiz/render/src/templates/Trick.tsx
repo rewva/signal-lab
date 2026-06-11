@@ -24,18 +24,18 @@ export const Trick: React.FC<QuizProps> = (props) => {
       <TrickHookView trickHook={props.trickHook} />
       <div style={{ marginTop: 30, border: `8px solid ${TRICK.ink}`, background: "#fff7e8",
                     boxShadow: `16px 16px 0 ${TRICK.ink}`, padding: "40px 36px" }}>
-        <div style={{ marginBottom: 22 }}><QuestionView question={props.question} /></div>
-        <OptionsView options={props.options} correctLetter={props.correctLetter} revealed={s.revealed} />
+        <div style={{ marginBottom: 22 }}><QuestionView question={props.question} tone="dark" /></div>
+        <OptionsView options={props.options} correctLetter={props.correctLetter} revealed={s.revealed} tone="dark" />
         <div style={{ marginTop: 28, display: "flex", gap: 26, alignItems: "center" }}>
           {s.inCountdown && <CountdownView n={s.countdownN} />}
           {s.showLock && <LockBeatView />}
-          {s.revealed && <VerifiedBadgeView />}
+          {s.revealed && <VerifiedBadgeView tone="dark" />}
         </div>
-        {s.showWhy && <div style={{ marginTop: 24 }}><WhyView explanation={props.explanation} /></div>}
+        {s.showWhy && <div style={{ marginTop: 24 }}><WhyView explanation={props.explanation} tone="dark" /></div>}
       </div>
       <div style={{ marginTop: "auto" }}>
-        <CtaView cta={props.cta} />
-        <SourceLineView sourceLine={props.sourceLine} promoted={s.revealed} />
+        <CtaView cta={props.cta} tone="dark" />
+        <SourceLineView sourceLine={props.sourceLine} promoted={s.revealed} tone="dark" />
       </div>
     </AbsoluteFill>
   );
