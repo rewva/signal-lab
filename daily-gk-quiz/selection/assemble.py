@@ -51,3 +51,35 @@ def quiz_props(question, plan, day_number: int, labels: dict) -> dict:
         "cta": plan.cta,
         "trickHook": plan.trick_hook,
     }
+
+
+DEFAULT_PLATFORMS = ("youtube", "facebook", "instagram")
+DEFAULT_CHANNEL_ID = "daily-gk-quiz"
+
+
+def _hashtag(text: str) -> str:
+    """A compact alphanumeric hashtag: 'IBPS-SBI' -> '#IBPSSBI'."""
+    cleaned = "".join(ch for ch in text if ch.isalnum())
+    return "#" + cleaned
+
+
+def job_submission(question, day_number: int, video_path: str, description: str,
+                   ai_disclosure: bool, labels: dict,
+                   channel_id: str = DEFAULT_CHANNEL_ID,
+                   platforms: list[str] | None = None) -> dict:
+    """Build the POST /api/jobs body for one verified, rendered question."""
+    category = _category_label(question.domain, labels)
+    tags = [_hashtag(e) for e in question.exam_relevance]
+    tags += [_hashtag(category), "#DailyGK", "#GKQuiz"]
+    full_description = f"{description}\n\nSource: {question.source_citation}"
+    return {
+        "channel_id": channel_id,
+        "video_path": video_path,
+        "title": f"Daily GK #{day_number} - {category}",
+        "description": full_description,
+        "tags": tags,
+        "platforms": list(platforms) if platforms is not None else list(DEFAULT_PLATFORMS),
+        "per_platform": {"youtube": {"ai_disclosure": ai_disclosure}},
+        "source_citation": question.source_citation,
+        "sources": list(question.sources),
+    }

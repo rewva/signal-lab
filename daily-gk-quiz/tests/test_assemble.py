@@ -95,3 +95,35 @@ def test_order_options_rejects_invalid_position():
     from selection.assemble import order_options
     with pytest.raises(ValueError):
         order_options("ANS", ["a", "b", "c"], "E")
+
+
+from selection.assemble import job_submission
+
+
+def test_job_submission_full_body():
+    body = job_submission(
+        _question(), day_number=47, video_path="out/polity__article-21.mp4",
+        description="Did you know Article 21 covers privacy?",
+        ai_disclosure=True, labels=LABELS,
+    )
+    assert body["channel_id"] == "daily-gk-quiz"
+    assert body["platforms"] == ["youtube", "facebook", "instagram"]
+    assert body["video_path"] == "out/polity__article-21.mp4"
+    assert body["title"] == "Daily GK #47 - Polity"
+    assert body["description"].startswith("Did you know Article 21 covers privacy?")
+    assert "Source: Constitution of India, Art. 21" in body["description"]
+    assert body["tags"] == ["#SSC", "#RRB", "#Polity", "#DailyGK", "#GKQuiz"]
+    assert body["per_platform"] == {"youtube": {"ai_disclosure": True}}
+    # threaded for the future review dashboard
+    assert body["source_citation"] == "Constitution of India, Art. 21"
+    assert body["sources"] == ["https://a.gov.in", "https://b.org"]
+
+
+def test_job_submission_compound_category_hashtag_is_alphanumeric():
+    body = job_submission(
+        _question(domain="banking-financial-awareness", exam_relevance=["IBPS-SBI"]),
+        day_number=1, video_path="out/x.mp4", description="d",
+        ai_disclosure=False, labels={"banking-financial-awareness": "Banking & Financial Awareness"},
+    )
+    assert body["tags"] == ["#IBPSSBI", "#BankingFinancialAwareness", "#DailyGK", "#GKQuiz"]
+    assert body["per_platform"] == {"youtube": {"ai_disclosure": False}}
