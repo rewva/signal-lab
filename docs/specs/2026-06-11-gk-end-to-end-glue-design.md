@@ -137,7 +137,8 @@ plan-derived presentation fields chosen at planning time:
 
 This freezes the exact `answer_position` / `cta` / `trick_hook` from planning so `build.py`
 never re-derives them (which could drift -- e.g. a re-run `balance_answer_position` after a
-different history state). `day_number` defaults to `len(history) + 1` if omitted.
+different history state). `day_number` is supplied in the request too (the SKILL computes it as
+the current history count + 1) and is **required** -- `build.py` does not re-read history.
 
 ---
 
@@ -161,15 +162,17 @@ The `description` and `ai_disclosure` are carried **inside** the render request 
 request JSON is the single source of truth. (`--description` may be added later as an optional
 override, but is not required for v1.)
 
-1. Load `approved.json` (§5), `data/domains.json` (weights + labels), and history (for the
-   default `day_number`).
+1. Load `approved.json` (§5) and `data/domains.json` (weights + labels). (`day_number` comes
+   from the request, so no history read is needed here.)
 2. `assemble.quiz_props(...)` -> write `render/props.json`.
 3. Run `node render.mjs props.json out/<fact_key>.mp4` as a subprocess (run with the Bash
    sandbox disabled -- the Windows/headless-Chrome gotcha; `render.mjs` already calls
    `ensureBrowser()`).
 4. **On render success only**, `assemble.job_submission(...)` -> `POST /api/jobs` (default
-   `http://127.0.0.1:8077`, the publisher's `config.py` default). The job lands
-   **PENDING_APPROVAL** -- this *is* review gate #2; nothing posts to social here.
+   `http://127.0.0.1:8077`, the publisher's `config.py` default). The job's `video_path` is
+   stored **absolute** so the publisher (a separate process with its own cwd) can resolve the
+   MP4 at posting time. The job lands **PENDING_APPROVAL** -- this *is* review gate #2; nothing
+   posts to social here.
 5. Print the job id + the video path.
 
 **Error handling**

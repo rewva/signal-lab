@@ -38,7 +38,7 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
    `fact_key`, the human-readable `source_citation`, and BOTH source URLs.
    **Do not proceed until the operator confirms the fact AND the citation.**
 
-5. **Assemble + render + submit.** After the operator confirms, write the **render request** -- the verified question plus the plan fields frozen at step 1 -- to a JSON file (e.g. `approved.json`):
+5. **Assemble + render + submit.** After the operator confirms, write the **render request** -- the verified question plus the plan fields frozen at step 1 (`day_number` = current history count + 1) -- to a JSON file (e.g. `approved.json`):
 
    ```json
    {
@@ -49,7 +49,7 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
        "mnemonic": null, "is_trick": false },
      "answer_position": "<plan.answer_position>", "hook": "<plan.hook>",
      "cta": "<plan.cta>", "trick_hook": "<plan.trick_hook>",
-     "day_number": "<history count + 1>",
+     "day_number": 47,
      "description": "<the edited, varied caption you wrote -- anti-slop>",
      "ai_disclosure": true
    }
@@ -68,7 +68,7 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
 6. **Review gate (#2)** and posting happen downstream. **Only after a successful post**, append
    the question to history:
    ```bash
-   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', source_citation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q, hook='<the hook used>', cta='<the cta used>'))"
+   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import datetime; from selection.store import Store; from selection.models import Question, HistoryRecord; s=Store('state/question-history.json','state/question-bank.json'); q=Question(domain='...', difficulty='...', fact_key='...', entity='...', question='...', answer='...', distractors=['...','...','...'], exam_relevance=['...'], sources=['...','...'], explanation='...', source_citation='...', mnemonic=None).validate(); s.append_history(HistoryRecord(datetime.date.today().isoformat(), q, hook='<the hook used>', cta='<the cta used>', answer_position='<the answer_position used>', trick_hook='<the trick_hook used, or empty>'))"
    ```
    If a bank candidate was used, also remove it from `question-bank.json` (rewrite the bank
    without that `fact_key`) and replenish the bank when it runs low.
