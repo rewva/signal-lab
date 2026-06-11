@@ -1,4 +1,5 @@
 import json
+import os
 import pytest
 from selection import build
 
@@ -75,6 +76,31 @@ def test_build_aborts_post_when_render_fails(tmp_path):
                     out_dir=str(tmp_path / "out"), props_path=str(tmp_path / "props.json"),
                     render=failing_render, post=fake_post)
     assert posted == []  # never POSTed a job for a missing video
+
+
+def test_build_video_path_is_absolute(tmp_path, monkeypatch):
+    """video_path stored in the publisher job must be absolute so a separate publisher
+    process (with its own cwd) can resolve it."""
+    monkeypatch.chdir(tmp_path)
+    req_path, labels = _setup(tmp_path, _request())
+    calls = {"render": None, "post": None}
+
+    def fake_render(props_path, out_path):
+        calls["render"] = (props_path, out_path)
+        return 0
+
+    def fake_post(url, payload):
+        calls["post"] = (url, payload)
+        return {"id": 42, "status": "PENDING_APPROVAL"}
+
+    build.build(str(req_path), labels=labels, publisher_url="http://pub",
+                out_dir="out", props_path="props.json",
+                render=fake_render, post=fake_post)
+
+    assert os.path.isabs(calls["post"][1]["video_path"]), (
+        "video_path must be absolute; got: " + calls["post"][1]["video_path"]
+    )
+    assert calls["post"][1]["video_path"].endswith("polity__article-21.mp4")
 
 
 def test_build_rejects_unverified_question(tmp_path):

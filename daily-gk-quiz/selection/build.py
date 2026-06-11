@@ -65,7 +65,7 @@ def build(request_path: str, *, labels: dict, publisher_url: str,
     Path(props_path).parent.mkdir(parents=True, exist_ok=True)
     Path(props_path).write_text(json.dumps(props, indent=2), encoding="utf-8")
 
-    out_path = str(Path(out_dir) / slug_filename(question.fact_key))
+    out_path = os.path.abspath(str(Path(out_dir) / slug_filename(question.fact_key)))
     Path(out_dir).mkdir(parents=True, exist_ok=True)
     code = render(props_path, out_path)
     if code != 0:
