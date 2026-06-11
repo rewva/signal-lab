@@ -13,10 +13,12 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
 
 1. **Plan the day.** Run the planner to get today's target:
    ```bash
-   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import json,datetime; from selection.store import Store; from selection.planner import plan_today; d=json.load(open('data/domains.json')); p=json.load(open('data/prompts.json')); s=Store('state/question-history.json','state/question-bank.json'); plan=plan_today(history=s.load_history(), bank=s.load_bank(), weights=d['weights'], target_mix={'basic':0.5,'intermediate':0.35,'advanced':0.15}, hooks=p['hooks'], ctas=p['ctas'], today=datetime.date.today()); print(plan)"
+   cd daily-gk-quiz && .venv\Scripts\python.exe -c "import json,datetime; from selection.store import Store; from selection.planner import plan_today; d=json.load(open('data/domains.json')); p=json.load(open('data/prompts.json')); s=Store('state/question-history.json','state/question-bank.json'); plan=plan_today(history=s.load_history(), bank=s.load_bank(), weights=d['weights'], target_mix={'basic':0.5,'intermediate':0.35,'advanced':0.15}, hooks=p['hooks'], ctas=p['ctas'], trick_hooks=p['trick_hooks'], today=datetime.date.today()); print(plan)"
    ```
    This yields: `domain`, `difficulty`, `recent_fact_keys` (do NOT repeat these),
-   `bank_candidate` (a ready static MCQ, or None), `hook`, `cta`.
+   `bank_candidate` (a ready static MCQ, or None), `hook`, `cta`, `answer_position` (the
+   A/B/C/D slot for the correct option), and `trick_hook` (used only when the question is a
+   trick). These last two feed the render request in step 5.
 
 2. **Source the question.**
    - If `domain == current-affairs`: web-search exam-relevant news from the **last ~6 months**
