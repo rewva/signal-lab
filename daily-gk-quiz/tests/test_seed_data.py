@@ -19,3 +19,10 @@ def test_prompts_have_hooks_and_ctas():
 def test_state_files_seed_empty_lists():
     assert json.loads((STATE / "question-history.json").read_text(encoding="utf-8")) == []
     assert json.loads((STATE / "question-bank.json").read_text(encoding="utf-8")) == []
+
+def test_every_weighted_domain_has_a_label():
+    data = json.loads((DATA / "domains.json").read_text(encoding="utf-8"))
+    assert "labels" in data, "domains.json must carry a display-label map"
+    for slug in data["weights"]:
+        assert slug in data["labels"], f"missing label for domain {slug}"
+        assert data["labels"][slug].strip(), f"empty label for domain {slug}"

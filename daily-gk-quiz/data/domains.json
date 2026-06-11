@@ -20,5 +20,16 @@
     "economy": ["SSC", "IBPS-SBI", "RRB"],
     "banking-financial-awareness": ["IBPS-SBI"],
     "sports-awards-misc": ["SSC", "IBPS-SBI", "RRB"]
+  },
+  "labels": {
+    "current-affairs": "Current Affairs",
+    "general-science": "General Science",
+    "static-gk": "Static GK",
+    "history": "History",
+    "polity": "Polity",
+    "geography": "Geography",
+    "economy": "Economy",
+    "banking-financial-awareness": "Banking & Financial Awareness",
+    "sports-awards-misc": "Sports & Awards"
   }
 }
