@@ -66,3 +66,19 @@ def pick_rotation(pool: list[str], recent: list[str]) -> str:
                 return i
         return -1
     return min(pool, key=last_used)
+
+POSITIONS = ("A", "B", "C", "D")
+
+def balance_answer_position(history: list[HistoryRecord], today: date,
+                            last_n: int = 30) -> str:
+    """The A/B/C/D slot least used as the correct position over the last `last_n` posts.
+
+    `today` is accepted for signature consistency with the other selectors (unused here:
+    balancing is over the most recent posts, not a date window). Ties resolve A<B<C<D."""
+    recent = [r.answer_position for r in history[-last_n:] if r.answer_position]
+    counts = {p: recent.count(p) for p in POSITIONS}
+    order = {p: i for i, p in enumerate(POSITIONS)}
+    return min(POSITIONS, key=lambda p: (counts[p], order[p]))
+
+def template_for(is_trick: bool) -> str:
+    return "trick" if is_trick else "standard"
