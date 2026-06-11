@@ -41,7 +41,7 @@ def plan_today(*, history: list[HistoryRecord], bank: list[Question],
     hook = pick_rotation(hooks, recent_hooks)
     cta = pick_rotation(ctas, recent_ctas)
     answer_position = balance_answer_position(history, today)
-    recent_trick = [r.hook for r in recent_records if r.hook]
+    recent_trick = [r.trick_hook for r in recent_records if r.trick_hook]
     trick_hook = pick_rotation(trick_hooks, recent_trick) if trick_hooks else ""
     return DayPlan(domain, difficulty, recent_fact_keys, bank_candidate, hook, cta,
                    answer_position=answer_position, trick_hook=trick_hook)

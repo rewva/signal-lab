@@ -53,12 +53,17 @@ class HistoryRecord:
     question: Question
     hook: Optional[str] = None
     cta: Optional[str] = None
+    answer_position: Optional[str] = None
+    trick_hook: Optional[str] = None
 
     def to_dict(self) -> dict:
         return {"date": self.date, "hook": self.hook, "cta": self.cta,
+                "answer_position": self.answer_position, "trick_hook": self.trick_hook,
                 **self.question.to_dict()}
 
     @classmethod
     def from_dict(cls, d: dict) -> "HistoryRecord":
         return cls(date=d["date"], question=Question.from_dict(d),
-                   hook=d.get("hook"), cta=d.get("cta"))
+                   hook=d.get("hook"), cta=d.get("cta"),
+                   answer_position=d.get("answer_position"),
+                   trick_hook=d.get("trick_hook"))
