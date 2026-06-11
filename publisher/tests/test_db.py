@@ -63,11 +63,16 @@ def test_create_job_assigns_id_and_submitted_at(db):
 
 
 def test_get_job_roundtrips_list_and_json_fields(db):
-    job = db.create_job(_job())
+    job = db.create_job(_job(
+        source_citation="Constitution of India, Art. 21",
+        sources=["https://a.gov.in", "https://b.org"],
+    ))
     got = db.get_job(job.id)
     assert got.tags == ["gk", "quiz"]
     assert got.platforms == ["youtube", "instagram"]
     assert got.per_platform["youtube"]["title"] == "YT title"
+    assert got.source_citation == "Constitution of India, Art. 21"
+    assert got.sources == ["https://a.gov.in", "https://b.org"]
 
 
 def test_is_pending_true_for_in_flight_status(db):

@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS accounts (
 );
 
 CREATE TABLE IF NOT EXISTS jobs (
+    -- NOTE: CREATE TABLE IF NOT EXISTS won't add columns to a pre-existing DB; drop publisher.db if you hit "no column named source_citation".
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
     channel_id      TEXT NOT NULL,
     video_path      TEXT NOT NULL,
