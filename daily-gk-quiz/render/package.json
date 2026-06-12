@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@remotion/cli": "4.0.290",
+    "ffprobe-static": "^3.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "remotion": "4.0.290",

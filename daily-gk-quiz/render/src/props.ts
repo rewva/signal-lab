@@ -15,6 +15,16 @@ export const quizSchema = z.object({
   sourceLine: z.string().min(1),
   cta: z.string().min(1),
   trickHook: z.string(),
+  vo: z.object({
+    question: z.number().nonnegative(),
+    reveal: z.number().nonnegative(),
+    why: z.number().nonnegative(),
+  }).optional(),
+  audio: z.object({
+    question: z.string(),
+    reveal: z.string(),
+    why: z.string(),
+  }).partial().optional(),
 });
 
 export type QuizProps = z.infer<typeof quizSchema>;

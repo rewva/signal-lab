@@ -1,7 +1,8 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { STANDARD } from "../theme";
 import { buildTimeline, type Timeline } from "../timeline";
+import { audioCues } from "../audio-cues";
 import type { QuizProps } from "../props";
 import { BrandHeaderView, DifficultyChipView, CategoryBandView, DayNumberView } from "../blocks/StaticBlocks";
 import { QuestionView, OptionsView } from "../blocks/QuestionOptions";
@@ -24,12 +25,17 @@ export function standardState(frame: number, tl: Timeline) {
 export const Standard: React.FC<QuizProps> = (props) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const tl = buildTimeline(fps);
+  const tl = buildTimeline(fps, props.vo);
   const s = standardState(frame, tl);
   return (
     <AbsoluteFill style={{ background: STANDARD.bg, padding: "64px 60px",
                            display: "flex", flexDirection: "column",
                            fontFamily: "Arial, Helvetica, sans-serif" }}>
+      {audioCues(props, tl).map((c) => (
+        <Sequence key={c.key} from={c.from} name={`vo-${c.key}`}>
+          <Audio src={staticFile(c.src)} />
+        </Sequence>
+      ))}
       <BrandHeaderView dayNumber={props.dayNumber} />
       <div style={{ display: "flex", gap: 20, alignItems: "center", marginTop: 26 }}>
         <DayNumberView dayNumber={props.dayNumber} />

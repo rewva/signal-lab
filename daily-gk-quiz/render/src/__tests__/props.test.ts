@@ -23,4 +23,16 @@ describe("quizSchema", () => {
   it("rejects an unknown template", () => {
     expect(() => quizSchema.parse({ ...valid, template: "fancy" })).toThrow();
   });
+  it("accepts optional vo + audio fields", () => {
+    const parsed = quizSchema.parse({
+      ...valid,
+      vo: { question: 2.5, reveal: 1.8, why: 3.0 },
+      audio: { question: "vo/q.mp3", reveal: "vo/r.mp3", why: "vo/w.mp3" },
+    });
+    expect(parsed.vo?.reveal).toBe(1.8);
+    expect(parsed.audio?.why).toBe("vo/w.mp3");
+  });
+  it("is still valid with no vo/audio (silent render)", () => {
+    expect(quizSchema.parse(valid).vo).toBeUndefined();
+  });
 });
