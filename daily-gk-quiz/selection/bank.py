@@ -54,3 +54,22 @@ def is_drawable(entry: BankEntry, today: date) -> bool:
     if entry.review_due_date is None:
         return True
     return today <= date.fromisoformat(entry.review_due_date)
+
+
+def bank_health(bank: list[BankEntry], today: date, low_stock: int = 5) -> dict:
+    """Drawable counts per (domain, difficulty) + draft/expired/retired tallies + low-stock cells."""
+    drawable: dict[tuple[str, str], int] = {}
+    drafts = expired = retired = 0
+    for e in bank:
+        if e.status == "retired":
+            retired += 1
+        elif e.status == "draft":
+            drafts += 1
+        elif is_drawable(e, today):
+            key = (e.question.domain, e.question.difficulty)
+            drawable[key] = drawable.get(key, 0) + 1
+        else:  # verified but past review_due_date
+            expired += 1
+    low = [k for k, n in drawable.items() if n < low_stock]
+    return {"drawable": drawable, "drafts": drafts, "expired": expired,
+            "retired": retired, "low_stock": low}

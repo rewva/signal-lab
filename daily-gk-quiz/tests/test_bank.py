@@ -63,3 +63,23 @@ def test_is_drawable_rules():
     assert is_drawable(expiring, date(2027, 6, 12)) is True   # boundary == due date
     assert is_drawable(expiring, date(2027, 6, 13)) is False  # past due
     assert is_drawable(retire_entry(permanent), TODAY) is False
+
+
+from selection.bank import bank_health
+
+
+def test_bank_health_counts_and_low_stock():
+    bank: list[BankEntry] = []
+    # 1 drawable polity/basic
+    add_entry(bank, _entry("polity/capital-of-india"), TODAY)
+    bank[-1] = verify_entry(bank[-1], TODAY)
+    # 1 draft (not drawable, counted as draft)
+    add_entry(bank, _entry("polity/president-term-years"), TODAY)
+    # 1 retired
+    add_entry(bank, _entry("polity/rajya-sabha-total-seats"), TODAY)
+    bank[-1] = retire_entry(verify_entry(bank[-1], TODAY))
+    health = bank_health(bank, TODAY, low_stock=5)
+    assert health["drawable"][("polity", "basic")] == 1
+    assert health["drafts"] == 1
+    assert health["retired"] == 1
+    assert ("polity", "basic") in health["low_stock"]  # only 1 < 5
