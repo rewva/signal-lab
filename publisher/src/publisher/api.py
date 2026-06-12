@@ -11,6 +11,8 @@ from datetime import datetime, timezone
 from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from pathlib import Path
 from pydantic import BaseModel, Field, field_validator
 
 from publisher.approval import reject_job, schedule_job
@@ -155,6 +157,13 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
         if job is None:
             raise HTTPException(status_code=404, detail="job not found")
         return _to_view(job)
+
+    @app.get("/api/jobs/{job_id}/video")
+    def get_job_video(job_id: int) -> FileResponse:
+        job = db.get_job(job_id)
+        if job is None or not job.video_path or not Path(job.video_path).is_file():
+            raise HTTPException(status_code=404, detail="video not found")
+        return FileResponse(job.video_path, media_type="video/mp4")
 
     @app.post("/api/jobs/{job_id}/approve", response_model=JobView)
     def approve_job(job_id: int, body: ApproveRequest | None = None) -> JobView:
