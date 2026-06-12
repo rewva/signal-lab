@@ -1,7 +1,8 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { TRICK } from "../theme";
 import { buildTimeline } from "../timeline";
+import { audioCues } from "../audio-cues";
 import { standardState } from "./Standard";
 import type { QuizProps } from "../props";
 import { QuestionView, OptionsView } from "../blocks/QuestionOptions";
@@ -17,10 +18,16 @@ export const TrickHookView: React.FC<{ trickHook: string }> = ({ trickHook }) =>
 export const Trick: React.FC<QuizProps> = (props) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const s = standardState(frame, buildTimeline(fps));
+  const tl = buildTimeline(fps, props.vo);
+  const s = standardState(frame, tl);
   return (
     <AbsoluteFill style={{ background: TRICK.bg, padding: "64px 56px", display: "flex",
                            flexDirection: "column", fontFamily: "Arial, sans-serif", color: TRICK.ink }}>
+      {audioCues(props, tl).map((c) => (
+        <Sequence key={c.key} from={c.from} name={`vo-${c.key}`}>
+          <Audio src={staticFile(c.src)} />
+        </Sequence>
+      ))}
       <TrickHookView trickHook={props.trickHook} />
       <div style={{ marginTop: 30, border: `8px solid ${TRICK.ink}`, background: "#fff7e8",
                     boxShadow: `16px 16px 0 ${TRICK.ink}`, padding: "40px 36px" }}>
