@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import argparse
+import sys
 from dataclasses import replace
 from datetime import date, timedelta
 from typing import Optional
@@ -73,3 +75,43 @@ def bank_health(bank: list[BankEntry], today: date, low_stock: int = 5) -> dict:
     low = [k for k, n in drawable.items() if n < low_stock]
     return {"drawable": drawable, "drafts": drafts, "expired": expired,
             "retired": retired, "low_stock": low}
+
+
+def main(argv=None) -> int:
+    from selection.store import Store
+
+    parser = argparse.ArgumentParser(prog="selection.bank")
+    parser.add_argument("--bank", default="state/question-bank.json")
+    parser.add_argument("--history", default="state/question-history.json")
+    sub = parser.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("health")
+    vp = sub.add_parser("verify")
+    vp.add_argument("fact_key")
+    args = parser.parse_args(argv)
+
+    store = Store(args.history, args.bank)
+    bank = store.load_bank()
+    today = date.today()
+
+    if args.cmd == "health":
+        h = bank_health(bank, today)
+        print(f"drawable cells: {dict(h['drawable'])}")
+        print(f"drafts={h['drafts']} expired={h['expired']} retired={h['retired']}")
+        print(f"low_stock: {h['low_stock']}")
+        return 0
+
+    if args.cmd == "verify":
+        for i, e in enumerate(bank):
+            if e.question.fact_key == args.fact_key:
+                bank[i] = verify_entry(e, today)
+                store.save_bank(bank)
+                print(f"verified {args.fact_key}")
+                return 0
+        print(f"not found: {args.fact_key}", file=sys.stderr)
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
