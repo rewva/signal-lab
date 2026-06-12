@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import difflib
 import re
 
 from selection.models import BankEntry, STATIC_CLASSES, YIELD_WEIGHTS
@@ -53,3 +54,34 @@ def check_entry(entry: BankEntry) -> tuple[list[str], list[str]]:
             break
 
     return hard, soft
+
+
+DUP_THRESHOLD = 0.87
+NEAR_DUP_THRESHOLD = 0.80
+
+
+def normalize_stem(text: str) -> str:
+    text = re.sub(r"[^a-z0-9\s]", " ", text.lower())
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def find_duplicates(candidate: BankEntry, bank: list[BankEntry]):
+    """Returns (dups, near_dups). dup = same fact_key OR same normalized stem OR
+    difflib ratio >= 0.87. near = 0.80 <= ratio < 0.87."""
+    cand_fk = candidate.question.fact_key
+    cand_stem = normalize_stem(candidate.question.question)
+    dups: list[BankEntry] = []
+    near: list[BankEntry] = []
+    for e in bank:
+        if e is candidate:
+            continue
+        e_stem = normalize_stem(e.question.question)
+        if e.question.fact_key == cand_fk or e_stem == cand_stem:
+            dups.append(e)
+            continue
+        ratio = difflib.SequenceMatcher(None, cand_stem, e_stem).ratio()
+        if ratio >= DUP_THRESHOLD:
+            dups.append(e)
+        elif ratio >= NEAR_DUP_THRESHOLD:
+            near.append(e)
+    return dups, near
