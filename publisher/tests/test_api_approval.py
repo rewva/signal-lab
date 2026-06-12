@@ -22,16 +22,6 @@ def _submit(client, **over):
     return client.post("/api/jobs", json=base).json()["id"]
 
 
-def _submission(**over):
-    base = dict(
-        channel_id="gk-quiz", video_path="C:/v/quiz.mp4", title="Daily GK",
-        description="desc", tags=["gk", "quiz"], platforms=["youtube", "instagram"],
-        per_platform={"youtube": {"title": "YT title"}},
-    )
-    base.update(over)
-    return base
-
-
 def test_approve_without_body_schedules_job(client):
     job_id = _submit(client)
     resp = client.post(f"/api/jobs/{job_id}/approve")
@@ -72,7 +62,7 @@ def test_reject_unknown_job_is_404(client):
 
 
 def test_reject_with_reason_via_api(client):
-    job_id = client.post("/api/jobs", json=_submission()).json()["id"]
+    job_id = _submit(client)
     resp = client.post(f"/api/jobs/{job_id}/reject", json={"reason": "wrong answer"})
     assert resp.status_code == 200
     assert resp.json()["status"] == "REJECTED"
@@ -80,7 +70,7 @@ def test_reject_with_reason_via_api(client):
 
 
 def test_reject_without_body_still_works(client):
-    job_id = client.post("/api/jobs", json=_submission()).json()["id"]
+    job_id = _submit(client)
     resp = client.post(f"/api/jobs/{job_id}/reject")
     assert resp.status_code == 200
     assert resp.json()["reject_reason"] == ""
