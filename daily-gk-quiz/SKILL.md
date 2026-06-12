@@ -74,5 +74,7 @@ SELECTION + accuracy (steps 1-2); render/voice/post are separate.
    without that `fact_key`) and replenish the bank when it runs low.
 
 ## Replenishing the bank
-Periodically batch-draft + verify static MCQs across under-covered domains/difficulties and
-append them (validated) to `state/question-bank.json` so static-GK days never start cold.
+Use the **generate-bank** recipe (`skills/generate-bank.md`): target low-stock cells via
+`selection.bank health`, author + adversarially review batches with subagents, ingest as drafts via
+`selection.ingest`, and verify each at operator gate #1 (`selection.bank verify`). Only verified
+entries are ever drawn.
