@@ -14,3 +14,10 @@ Props schema: src/props.ts. Templates: standard (80%) + trick (20%, set props.te
 Design tokens: src/theme.ts. Timeline: src/timeline.ts. Output handed to the publisher.
 
 Note: the first render downloads a headless browser; render.mjs calls ensureBrowser() first.
+
+## Voice-over (edge-tts)
+The renderer narrates the question, answer, and explanation using edge-tts (free Microsoft Edge
+neural TTS). Install once: `pip install edge-tts` (into the daily-gk-quiz venv or system python on PATH).
+ffprobe is bundled via the `ffprobe-static` npm package -- no system install. Render silently with
+`node render.mjs <props.json> <out.mp4> --no-voice`. Voice/rate via env `TTS_VOICE` / `TTS_RATE`;
+`TTS=elevenlabs` is reserved for a future provider.
