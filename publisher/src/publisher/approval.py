@@ -36,12 +36,14 @@ def schedule_job(
     return db.get_job(job_id)
 
 
-def reject_job(db: Database, job_id: int) -> Job:
+def reject_job(db: Database, job_id: int, reason: str = "") -> Job:
     job = db.get_job(job_id)
     if job is None:
         raise LookupError(f"job {job_id} not found")
     validate_transition(job.status, "REJECTED")
     db.update_job_status(job_id, "REJECTED")
+    if reason:
+        db.set_reject_reason(job_id, reason)
     db.soft_delete_job(job_id)
     return db.get_job(job_id, include_deleted=True)
 

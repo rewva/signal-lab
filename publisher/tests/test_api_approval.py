@@ -59,3 +59,18 @@ def test_reject_marks_rejected_and_hides_job(client):
 
 def test_reject_unknown_job_is_404(client):
     assert client.post("/api/jobs/9999/reject").status_code == 404
+
+
+def test_reject_with_reason_via_api(client):
+    job_id = _submit(client)
+    resp = client.post(f"/api/jobs/{job_id}/reject", json={"reason": "wrong answer"})
+    assert resp.status_code == 200
+    assert resp.json()["status"] == "REJECTED"
+    assert resp.json()["reject_reason"] == "wrong answer"
+
+
+def test_reject_without_body_still_works(client):
+    job_id = _submit(client)
+    resp = client.post(f"/api/jobs/{job_id}/reject")
+    assert resp.status_code == 200
+    assert resp.json()["reject_reason"] == ""

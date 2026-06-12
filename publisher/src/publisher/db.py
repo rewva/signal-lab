@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     deleted_at      TEXT,
     attempts        INTEGER NOT NULL DEFAULT 0,
     source_citation TEXT NOT NULL DEFAULT '',
-    sources         TEXT NOT NULL DEFAULT '[]'
+    sources         TEXT NOT NULL DEFAULT '[]',
+    reject_reason   TEXT NOT NULL DEFAULT ''
 );
 
 CREATE TABLE IF NOT EXISTS post_results (
@@ -152,13 +153,13 @@ class Database:
         job.id = self._write(
             "INSERT INTO jobs (channel_id, video_path, title, description, tags, "
             "platforms, per_platform, status, submitted_at, scheduled_for, posted_at, "
-            "deleted_at, attempts, source_citation, sources) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "deleted_at, attempts, source_citation, sources, reject_reason) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (job.channel_id, job.video_path, job.title, job.description,
              json.dumps(job.tags), json.dumps(job.platforms),
              json.dumps(job.per_platform), job.status, job.submitted_at,
              job.scheduled_for, job.posted_at, job.deleted_at, job.attempts,
-             job.source_citation, json.dumps(job.sources)),
+             job.source_citation, json.dumps(job.sources), job.reject_reason),
         )
         return job
 
@@ -197,6 +198,9 @@ class Database:
     def set_posted_at(self, job_pk: int, when_iso: str) -> None:
         self._write("UPDATE jobs SET posted_at = ? WHERE id = ?", (when_iso, job_pk))
 
+    def set_reject_reason(self, job_pk: int, reason: str) -> None:
+        self._write("UPDATE jobs SET reject_reason = ? WHERE id = ?", (reason, job_pk))
+
     def soft_delete_job(self, job_pk: int) -> None:
         self._write(
             "UPDATE jobs SET deleted_at = ? WHERE id = ?", (self._now(), job_pk)
@@ -214,6 +218,7 @@ class Database:
             attempts=row["attempts"],
             source_citation=row["source_citation"],
             sources=json.loads(row["sources"]),
+            reject_reason=row["reject_reason"],
         )
 
     # --- post_results -------------------------------------------------------

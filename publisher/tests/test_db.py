@@ -116,3 +116,14 @@ def test_record_post_result_links_to_job(db):
     assert len(results) == 1
     assert results[0].post_url == "https://youtu.be/vid123"
     assert results[0].error is None
+
+
+def test_reject_reason_defaults_empty_and_persists(tmp_path):
+    from publisher.db import Database
+    from publisher.models import Job
+    db = Database(tmp_path / "pub.db"); db.init_schema()
+    job = db.create_job(Job(channel_id="gk", video_path="x.mp4", title="T", status="PENDING_APPROVAL"))
+    assert db.get_job(job.id).reject_reason == ""
+    db.set_reject_reason(job.id, "fact wrong")
+    assert db.get_job(job.id).reject_reason == "fact wrong"
+    db.close()

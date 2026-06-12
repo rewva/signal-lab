@@ -8,9 +8,11 @@ for the operator's approval gate before scheduling.
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse, HTMLResponse
 from pydantic import BaseModel, Field, field_validator
 
 from publisher.approval import reject_job, schedule_job
@@ -19,6 +21,8 @@ from publisher.lifecycle import InvalidTransition
 from publisher.models import Account, Job
 
 ALLOWED_PLATFORMS = {"youtube", "facebook", "instagram"}
+
+_REVIEW_PAGE = Path(__file__).parent / "static" / "review.html"
 
 
 class JobSubmission(BaseModel):
@@ -45,6 +49,10 @@ class JobSubmission(BaseModel):
 
 class ApproveRequest(BaseModel):
     scheduled_for: Optional[str] = None  # ISO-8601 override; omit for the next free slot
+
+
+class RejectRequest(BaseModel):
+    reason: str = ""
 
 
 class AccountCreate(BaseModel):
@@ -101,6 +109,7 @@ class JobView(BaseModel):
     id: int
     channel_id: str
     title: str
+    description: str
     status: str
     platforms: list[str]
     per_platform: dict[str, Any]
@@ -108,19 +117,26 @@ class JobView(BaseModel):
     scheduled_for: str | None
     source_citation: str
     sources: list[str]
+    reject_reason: str
 
 
 def _to_view(job: Job) -> JobView:
     return JobView(
-        id=job.id, channel_id=job.channel_id, title=job.title, status=job.status,
+        id=job.id, channel_id=job.channel_id, title=job.title,
+        description=job.description, status=job.status,
         platforms=job.platforms, per_platform=job.per_platform,
         submitted_at=job.submitted_at, scheduled_for=job.scheduled_for,
         source_citation=job.source_citation, sources=job.sources,
+        reject_reason=job.reject_reason,
     )
 
 
 def create_app(db: Database, vault: Any = None) -> FastAPI:
     app = FastAPI(title="signal-lab-publisher")
+
+    @app.get("/", response_class=HTMLResponse)
+    def review_page() -> HTMLResponse:
+        return HTMLResponse(_REVIEW_PAGE.read_text(encoding="utf-8"))
 
     @app.get("/health")
     def health() -> dict[str, str]:
@@ -138,8 +154,8 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
         return _to_view(job)
 
     @app.get("/api/jobs", response_model=list[JobView])
-    def list_jobs() -> list[JobView]:
-        return [_to_view(j) for j in db.list_jobs()]
+    def list_jobs(status: str | None = None) -> list[JobView]:
+        return [_to_view(j) for j in db.list_jobs(status=status)]
 
     @app.get("/api/jobs/{job_id}", response_model=JobView)
     def get_job(job_id: int) -> JobView:
@@ -147,6 +163,13 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
         if job is None:
             raise HTTPException(status_code=404, detail="job not found")
         return _to_view(job)
+
+    @app.get("/api/jobs/{job_id}/video")
+    def get_job_video(job_id: int) -> FileResponse:
+        job = db.get_job(job_id)
+        if job is None or not job.video_path or not Path(job.video_path).is_file():
+            raise HTTPException(status_code=404, detail="video not found")
+        return FileResponse(job.video_path, media_type="video/mp4")
 
     @app.post("/api/jobs/{job_id}/approve", response_model=JobView)
     def approve_job(job_id: int, body: ApproveRequest | None = None) -> JobView:
@@ -161,9 +184,10 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
         return _to_view(job)
 
     @app.post("/api/jobs/{job_id}/reject", response_model=JobView)
-    def reject(job_id: int) -> JobView:
+    def reject(job_id: int, body: RejectRequest | None = None) -> JobView:
+        reason = body.reason if body else ""
         try:
-            job = reject_job(db, job_id)
+            job = reject_job(db, job_id, reason=reason)
         except LookupError:
             raise HTTPException(status_code=404, detail="job not found")
         except InvalidTransition as exc:

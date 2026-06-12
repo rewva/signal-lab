@@ -43,6 +43,7 @@ class Job:
     attempts: int = 0  # posting attempts made; drives retry-vs-fail
     source_citation: str = ""  # review-gate citation label (for the dashboard verify tag)
     sources: list[str] = field(default_factory=list)  # verify links the operator clicks
+    reject_reason: str = ""  # operator's reason captured at the review gate
     id: Optional[int] = None
 
     @property
