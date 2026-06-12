@@ -87,3 +87,17 @@ def test_source_fields_default_to_empty_when_omitted(client):
     got = client.get(f"/api/jobs/{job_id}").json()
     assert got["source_citation"] == ""
     assert got["sources"] == []
+
+
+def test_jobview_exposes_description(client):
+    job_id = client.post("/api/jobs", json=_submission(description="my caption")).json()["id"]
+    assert client.get(f"/api/jobs/{job_id}").json()["description"] == "my caption"
+
+
+def test_list_jobs_filters_by_status(client):
+    client.post("/api/jobs", json=_submission(title="A"))
+    client.post("/api/jobs", json=_submission(title="B"))
+    pending = client.get("/api/jobs", params={"status": "PENDING_APPROVAL"}).json()
+    assert len(pending) == 2
+    assert client.get("/api/jobs", params={"status": "SCHEDULED"}).json() == []
+    assert len(client.get("/api/jobs").json()) == 2  # no filter == all

@@ -105,6 +105,7 @@ class JobView(BaseModel):
     id: int
     channel_id: str
     title: str
+    description: str
     status: str
     platforms: list[str]
     per_platform: dict[str, Any]
@@ -117,7 +118,8 @@ class JobView(BaseModel):
 
 def _to_view(job: Job) -> JobView:
     return JobView(
-        id=job.id, channel_id=job.channel_id, title=job.title, status=job.status,
+        id=job.id, channel_id=job.channel_id, title=job.title,
+        description=job.description, status=job.status,
         platforms=job.platforms, per_platform=job.per_platform,
         submitted_at=job.submitted_at, scheduled_for=job.scheduled_for,
         source_citation=job.source_citation, sources=job.sources,
@@ -144,8 +146,8 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
         return _to_view(job)
 
     @app.get("/api/jobs", response_model=list[JobView])
-    def list_jobs() -> list[JobView]:
-        return [_to_view(j) for j in db.list_jobs()]
+    def list_jobs(status: str | None = None) -> list[JobView]:
+        return [_to_view(j) for j in db.list_jobs(status=status)]
 
     @app.get("/api/jobs/{job_id}", response_model=JobView)
     def get_job(job_id: int) -> JobView:
