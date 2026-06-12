@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from pathlib import Path
 from pydantic import BaseModel, Field, field_validator
 
@@ -21,6 +21,8 @@ from publisher.lifecycle import InvalidTransition
 from publisher.models import Account, Job
 
 ALLOWED_PLATFORMS = {"youtube", "facebook", "instagram"}
+
+_REVIEW_PAGE = Path(__file__).parent / "static" / "review.html"
 
 
 class JobSubmission(BaseModel):
@@ -131,6 +133,10 @@ def _to_view(job: Job) -> JobView:
 
 def create_app(db: Database, vault: Any = None) -> FastAPI:
     app = FastAPI(title="signal-lab-publisher")
+
+    @app.get("/", response_class=HTMLResponse)
+    def review_page() -> HTMLResponse:
+        return HTMLResponse(_REVIEW_PAGE.read_text(encoding="utf-8"))
 
     @app.get("/health")
     def health() -> dict[str, str]:
