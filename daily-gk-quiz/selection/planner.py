@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
 from datetime import date
 from typing import Optional
 
-from selection.models import Question, HistoryRecord
+from selection.models import Question, HistoryRecord, BankEntry
 from selection.selection import (
     pick_domain, pick_difficulty, draw_from_bank, pick_rotation, _recent,
     balance_answer_position,
@@ -23,10 +24,12 @@ class DayPlan:
     answer_position: str = "A"
     trick_hook: str = ""
 
-def plan_today(*, history: list[HistoryRecord], bank: list[Question],
+def plan_today(*, history: list[HistoryRecord], bank: list[BankEntry],
                weights: dict[str, float], target_mix: dict[str, float],
                hooks: list[str], ctas: list[str], trick_hooks: list[str],
-               today: date, window_days: int = 120) -> DayPlan:
+               today: date, window_days: int = 120,
+               rng: Optional[random.Random] = None, recent_window: int = 14) -> DayPlan:
+    rng = rng or random.Random()
     domain = pick_domain(history, weights, today, window_days)
     difficulty = pick_difficulty(history, target_mix, today, window_days)
     recent_records = _recent(history, today, window_days)
@@ -34,7 +37,9 @@ def plan_today(*, history: list[HistoryRecord], bank: list[Question],
 
     bank_candidate = None
     if domain != CURRENT_AFFAIRS:  # current affairs is always generated live
-        bank_candidate = draw_from_bank(bank, domain, difficulty, recent_fact_keys)
+        recent_stems = [r.question.question for r in recent_records[-recent_window:]]
+        bank_candidate = draw_from_bank(bank, domain, difficulty, recent_fact_keys,
+                                        recent_stems, today, rng)
 
     recent_hooks = [r.hook for r in recent_records if r.hook]
     recent_ctas = [r.cta for r in recent_records if r.cta]
