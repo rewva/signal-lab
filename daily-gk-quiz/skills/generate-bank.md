@@ -53,3 +53,4 @@ subagents do the authoring + review.
    `.venv\Scripts\python.exe -m selection.bank --bank state/question-bank.json verify <fact_key>`
    (draft -> verified -> now drawable by the daily planner). Leave unconfirmed drafts as drafts;
    the daily draw never touches non-verified entries.
+

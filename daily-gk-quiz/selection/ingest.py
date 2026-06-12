@@ -46,7 +46,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="selection.ingest")
     parser.add_argument("--batch", required=True)
     parser.add_argument("--bank", default="state/question-bank.json")
-    parser.add_argument("--history", default="state/question-history.json")
+    parser.add_argument("--history", default="state/question-history.json")  # unused by ingest; required to construct Store
     args = parser.parse_args(argv)
 
     raw = json.loads(Path(args.batch).read_text(encoding="utf-8"))
