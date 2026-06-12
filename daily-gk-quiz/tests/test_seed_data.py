@@ -16,9 +16,11 @@ def test_prompts_have_hooks_and_ctas():
     p = json.loads((DATA / "prompts.json").read_text(encoding="utf-8"))
     assert len(p["hooks"]) >= 3 and len(p["ctas"]) >= 3
 
-def test_state_files_seed_empty_lists():
+def test_state_files_seed():
+    # question-history starts empty; question-bank is pre-seeded with verified anchor facts
     assert json.loads((STATE / "question-history.json").read_text(encoding="utf-8")) == []
-    assert json.loads((STATE / "question-bank.json").read_text(encoding="utf-8")) == []
+    bank = json.loads((STATE / "question-bank.json").read_text(encoding="utf-8"))
+    assert isinstance(bank, list) and len(bank) >= 16
 
 def test_every_weighted_domain_has_a_label():
     data = json.loads((DATA / "domains.json").read_text(encoding="utf-8"))

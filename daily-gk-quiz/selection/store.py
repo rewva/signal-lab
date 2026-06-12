@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from selection.models import Question, HistoryRecord
+from selection.models import Question, HistoryRecord, BankEntry
 
 class Store:
     def __init__(self, history_path, bank_path):
@@ -13,11 +13,11 @@ class Store:
     def load_history(self) -> list[HistoryRecord]:
         return [HistoryRecord.from_dict(d) for d in self._read(self._history_path)]
 
-    def load_bank(self) -> list[Question]:
-        return [Question.from_dict(d) for d in self._read(self._bank_path)]
+    def load_bank(self) -> list[BankEntry]:
+        return [BankEntry.from_dict(d) for d in self._read(self._bank_path)]
 
-    def save_bank(self, questions: list[Question]) -> None:
-        self._write(self._bank_path, [q.to_dict() for q in questions])
+    def save_bank(self, entries: list[BankEntry]) -> None:
+        self._write(self._bank_path, [e.to_dict() for e in entries])
 
     def append_history(self, record: HistoryRecord) -> None:
         rows = self._read(self._history_path)

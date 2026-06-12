@@ -1,5 +1,6 @@
+import random
 from datetime import date
-from selection.models import Question, HistoryRecord
+from selection.models import Question, HistoryRecord, BankEntry
 from selection.planner import plan_today, DayPlan
 
 WEIGHTS = {"current-affairs": 30, "general-science": 18, "static-gk": 12, "history": 10}
@@ -8,6 +9,10 @@ MIX = {"basic": 0.50, "intermediate": 0.35, "advanced": 0.15}
 def _q(domain, diff, fk):
     return Question(domain, diff, fk, "X", "q?", "a",
                     ["b", "c", "d"], ["SSC"], ["https://1", "https://2"])
+
+def _entry(domain, diff, fk):
+    return BankEntry(question=_q(domain, diff, fk), static_class="permanent", source_tier=2,
+                     yield_weight="high", status="verified", verified_date="2026-06-12")
 
 def test_plan_picks_domain_difficulty_and_recent_fact_keys():
     plan = plan_today(history=[], bank=[], weights=WEIGHTS, target_mix=MIX,
@@ -21,21 +26,21 @@ def test_plan_picks_domain_difficulty_and_recent_fact_keys():
     assert plan.bank_candidate is None         # empty bank -> live generation
 
 def test_plan_pulls_bank_candidate_when_static_match_exists():
-    bank = [_q("history", "basic", "history/plassey-1757")]
+    bank = [_entry("history", "basic", "history/plassey-1757")]
     plan = plan_today(history=[], bank=bank,
                       weights={"history": 100}, target_mix=MIX,
                       hooks=["h1"], ctas=["c1"], trick_hooks=[],
-                      today=date(2026, 6, 10), window_days=120)
+                      today=date(2026, 6, 10), window_days=120, rng=random.Random(0))
     assert plan.domain == "history" and plan.difficulty == "basic"
     assert plan.bank_candidate is not None
     assert plan.bank_candidate.fact_key == "history/plassey-1757"
 
 def test_current_affairs_never_pulls_from_bank():
-    bank = [_q("current-affairs", "basic", "current-affairs/old-news")]
+    bank = [_entry("current-affairs", "basic", "current-affairs/old-news")]
     plan = plan_today(history=[], bank=bank,
                       weights={"current-affairs": 100}, target_mix=MIX,
                       hooks=["h1"], ctas=["c1"], trick_hooks=[],
-                      today=date(2026, 6, 10), window_days=120)
+                      today=date(2026, 6, 10), window_days=120, rng=random.Random(0))
     assert plan.domain == "current-affairs"
     assert plan.bank_candidate is None  # CA is always generated live
 

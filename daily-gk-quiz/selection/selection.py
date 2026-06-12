@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import difflib
+import random
 from datetime import date, timedelta
 from typing import Optional
 
+from selection.bank import is_drawable
+from selection.bank_qa import normalize_stem
 from selection.models import HistoryRecord, Question, DIFFICULTIES
+from selection.models import BankEntry, YIELD_WEIGHTS
 
 def is_duplicate(fact_key: str, history: list[HistoryRecord],
                  today: date, window_days: int = 120) -> bool:
@@ -45,13 +50,32 @@ def pick_difficulty(history: list[HistoryRecord], target_mix: dict[str, float],
     deficits = {k: target_mix[k] - shares[k] for k in target_mix}
     return max(deficits, key=lambda k: (deficits[k], order[k]))
 
-def draw_from_bank(bank: list[Question], domain: str, difficulty: str,
-                   used_fact_keys: set[str]) -> Optional[Question]:
-    for q in bank:
-        if (q.domain == domain and q.difficulty == difficulty
-                and q.fact_key not in used_fact_keys):
-            return q
-    return None
+def draw_from_bank(bank: list[BankEntry], domain: str, difficulty: str,
+                   used_fact_keys: set[str], recent_stems: list[str],
+                   today: date, rng: random.Random) -> Optional[Question]:
+    """Yield-weighted random pick among drawable, matching, unused entries, penalising
+    candidates whose stem is similar to recently-asked stems. Returns the inner Question
+    or None on a bank miss. `rng` makes it deterministic given a seed."""
+    candidates = [
+        e for e in bank
+        if is_drawable(e, today)
+        and e.question.domain == domain
+        and e.question.difficulty == difficulty
+        and e.question.fact_key not in used_fact_keys
+    ]
+    if not candidates:
+        return None
+    norm_recent = [normalize_stem(s) for s in recent_stems]
+    weights: list[float] = []
+    for e in candidates:
+        base = YIELD_WEIGHTS[e.yield_weight]
+        stem = normalize_stem(e.question.question)
+        sim = max((difflib.SequenceMatcher(None, stem, r).ratio() for r in norm_recent),
+                  default=0.0)
+        weights.append(base * (1.0 - sim))
+    if sum(weights) <= 0:  # all candidates fully penalised -> uniform fallback
+        return rng.choice(candidates).question
+    return rng.choices(candidates, weights=weights, k=1)[0].question
 
 def pick_rotation(pool: list[str], recent: list[str]) -> str:
     """Least-recently-used item in `pool`. `recent` is oldest-to-newest usage."""
