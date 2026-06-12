@@ -52,9 +52,13 @@ if (!noVoice) {
 }
 
 // --- Render -------------------------------------------------------------------------------
-await ensureBrowser();
-const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts") });
-const composition = await selectComposition({ serveUrl, id: "Quiz", inputProps });
-await renderMedia({ serveUrl, composition, codec: "h264", outputLocation: outPath, inputProps });
-if (!noVoice && existsSync(PUBLIC_DIR)) rmSync(PUBLIC_DIR, { recursive: true, force: true });
+try {
+  await ensureBrowser();
+  const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts") });
+  const composition = await selectComposition({ serveUrl, id: "Quiz", inputProps });
+  await renderMedia({ serveUrl, composition, codec: "h264", outputLocation: outPath, inputProps });
+} finally {
+  // Clean the temp VO mp3s even if the render throws, so public/vo never lingers.
+  if (!noVoice && existsSync(PUBLIC_DIR)) rmSync(PUBLIC_DIR, { recursive: true, force: true });
+}
 console.log("rendered", outPath);

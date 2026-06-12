@@ -2,3 +2,4 @@ node_modules/
 out/
 .remotion/
 props.json
+public/vo/
