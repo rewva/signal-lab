@@ -41,3 +41,15 @@ def test_verify_unknown_fact_key_returns_one(tmp_path):
     rc = main(["--bank", str(bank), "--history", str(tmp_path / "h.json"),
                "verify", "polity/missing"])
     assert rc == 1
+
+
+def test_drafts_lists_only_draft_entries(tmp_path, capsys):
+    bank = tmp_path / "bank.json"
+    _write_bank(bank, [_entry_dict("polity/draft1", status="draft"),
+                       _entry_dict("polity/verified1", status="verified"),
+                       _entry_dict("polity/draft2", status="draft")])
+    rc = main(["--bank", str(bank), "--history", str(tmp_path / "h.json"), "drafts"])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "polity/draft1" in out and "polity/draft2" in out
+    assert "polity/verified1" not in out

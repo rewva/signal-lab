@@ -87,6 +87,7 @@ def main(argv=None) -> int:
     sub.add_parser("health")
     vp = sub.add_parser("verify")
     vp.add_argument("fact_key")
+    sub.add_parser("drafts")
     args = parser.parse_args(argv)
 
     store = Store(args.history, args.bank)
@@ -109,6 +110,12 @@ def main(argv=None) -> int:
                 return 0
         print(f"not found: {args.fact_key}", file=sys.stderr)
         return 1
+
+    if args.cmd == "drafts":
+        for e in bank:
+            if e.status == "draft":
+                print(f"{e.question.fact_key}\t{e.question.question}")
+        return 0
 
     return 0
 
