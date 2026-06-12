@@ -4,3 +4,4 @@ __pycache__/
 *.tmp
 out/
 render/props.json
+batch*.json

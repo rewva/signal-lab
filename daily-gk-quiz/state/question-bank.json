@@ -7,9 +7,20 @@
       "entity": "Article 21",
       "question": "Which Article of the Indian Constitution guarantees the Right to Life and Personal Liberty?",
       "answer": "Article 21",
-      "distractors": ["Article 19", "Article 14", "Article 32"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.constitutionofindia.net/articles/article-21-protection-of-life-and-personal-liberty/", "https://ncert.nic.in/textbook.php"],
+      "distractors": [
+        "Article 19",
+        "Article 14",
+        "Article 32"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-21-protection-of-life-and-personal-liberty/",
+        "https://ncert.nic.in/textbook.php"
+      ],
       "explanation": "Article 21 guarantees that no person shall be deprived of life or personal liberty except by procedure established by law.",
       "mnemonic": null,
       "is_trick": false,
@@ -30,9 +41,20 @@
       "entity": "Dandi Salt March",
       "question": "In which year did Mahatma Gandhi begin the Dandi Salt March?",
       "answer": "1930",
-      "distractors": ["1920", "1942", "1857"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/event/Salt-March"],
+      "distractors": [
+        "1920",
+        "1942",
+        "1857"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/event/Salt-March"
+      ],
       "explanation": "Mahatma Gandhi launched the Dandi Salt March on 12 March 1930 to protest the British salt monopoly, walking 241 miles to the sea.",
       "mnemonic": null,
       "is_trick": false,
@@ -53,9 +75,20 @@
       "entity": "Quit India Movement",
       "question": "At which venue did Mahatma Gandhi launch the Quit India Movement in 1942?",
       "answer": "Gowalia Tank Maidan, Bombay",
-      "distractors": ["Sabarmati Ashram", "Red Fort, Delhi", "Jallianwala Bagh, Amritsar"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/event/Quit-India-Movement"],
+      "distractors": [
+        "Sabarmati Ashram",
+        "Red Fort, Delhi",
+        "Jallianwala Bagh, Amritsar"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/event/Quit-India-Movement"
+      ],
       "explanation": "Gandhi delivered the famous 'Do or Die' speech at Gowalia Tank Maidan in Bombay on 8 August 1942, launching the Quit India Movement.",
       "mnemonic": null,
       "is_trick": false,
@@ -76,9 +109,20 @@
       "entity": "Indian National Congress",
       "question": "In which year was the Indian National Congress founded?",
       "answer": "1885",
-      "distractors": ["1857", "1905", "1919"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/topic/Indian-National-Congress"],
+      "distractors": [
+        "1857",
+        "1905",
+        "1919"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/topic/Indian-National-Congress"
+      ],
       "explanation": "The Indian National Congress was founded in 1885 by A.O. Hume, Dadabhai Naoroji, and Dinshaw Wacha as a platform for Indian political aspirations.",
       "mnemonic": null,
       "is_trick": false,
@@ -99,9 +143,20 @@
       "entity": "Reserve Bank of India",
       "question": "In which year was the Reserve Bank of India established?",
       "answer": "1935",
-      "distractors": ["1949", "1947", "1955"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.rbi.org.in/", "https://rbi.org.in/Scripts/briefhistory.aspx"],
+      "distractors": [
+        "1949",
+        "1947",
+        "1955"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.rbi.org.in/",
+        "https://rbi.org.in/Scripts/briefhistory.aspx"
+      ],
       "explanation": "The Reserve Bank of India was established on 1 April 1935 under the Reserve Bank of India Act, 1934, and was nationalised in 1949.",
       "mnemonic": null,
       "is_trick": false,
@@ -122,9 +177,20 @@
       "entity": "Goods and Services Tax",
       "question": "In which year was the Goods and Services Tax (GST) implemented in India?",
       "answer": "2017",
-      "distractors": ["2014", "2016", "2019"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.pib.gov.in/", "https://gstcouncil.gov.in/"],
+      "distractors": [
+        "2014",
+        "2016",
+        "2019"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.pib.gov.in/",
+        "https://gstcouncil.gov.in/"
+      ],
       "explanation": "GST was implemented in India on 1 July 2017, replacing a complex system of indirect taxes with a unified 'one nation one tax' regime.",
       "mnemonic": null,
       "is_trick": false,
@@ -145,9 +211,20 @@
       "entity": "Hirakud Dam",
       "question": "On which river is the Hirakud Dam, the longest dam in India, built?",
       "answer": "Mahanadi",
-      "distractors": ["Godavari", "Sutlej", "Narmada"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/place/Hirakud-Dam"],
+      "distractors": [
+        "Godavari",
+        "Sutlej",
+        "Narmada"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/place/Hirakud-Dam"
+      ],
       "explanation": "The Hirakud Dam in Odisha is built across the Mahanadi river and, at about 26 km, is the longest earthen dam in the world.",
       "mnemonic": null,
       "is_trick": false,
@@ -168,9 +245,20 @@
       "entity": "Kanchenjunga",
       "question": "What is the highest mountain peak in India?",
       "answer": "Kanchenjunga",
-      "distractors": ["Mount Everest", "Nanda Devi", "K2"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/place/Kanchenjunga"],
+      "distractors": [
+        "Mount Everest",
+        "Nanda Devi",
+        "K2"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/place/Kanchenjunga"
+      ],
       "explanation": "Kanchenjunga (8,586 m) is the highest mountain peak in India, located on the Sikkim-Nepal border, and is the third-highest mountain in the world.",
       "mnemonic": null,
       "is_trick": false,
@@ -191,9 +279,20 @@
       "entity": "Bharatanatyam",
       "question": "The classical dance form Bharatanatyam originated in which Indian state?",
       "answer": "Tamil Nadu",
-      "distractors": ["Kerala", "Odisha", "Andhra Pradesh"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.indiaculture.gov.in/dance", "https://www.sangeetnatak.gov.in/"],
+      "distractors": [
+        "Kerala",
+        "Odisha",
+        "Andhra Pradesh"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.indiaculture.gov.in/dance",
+        "https://www.sangeetnatak.gov.in/"
+      ],
       "explanation": "Bharatanatyam is one of India's oldest classical dance forms, originating in the temples of Tamil Nadu and codified from the Natya Shastra.",
       "mnemonic": null,
       "is_trick": false,
@@ -214,9 +313,20 @@
       "entity": "Kathakali",
       "question": "The classical dance-drama Kathakali is the traditional art form of which Indian state?",
       "answer": "Kerala",
-      "distractors": ["Tamil Nadu", "Manipur", "Assam"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.indiaculture.gov.in/dance", "https://www.sangeetnatak.gov.in/"],
+      "distractors": [
+        "Tamil Nadu",
+        "Manipur",
+        "Assam"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.indiaculture.gov.in/dance",
+        "https://www.sangeetnatak.gov.in/"
+      ],
       "explanation": "Kathakali is a highly stylised classical dance-drama from Kerala, renowned for its elaborate costumes, makeup, and enactment of stories from Hindu epics.",
       "mnemonic": null,
       "is_trick": false,
@@ -237,9 +347,20 @@
       "entity": "Wings of Fire",
       "question": "Who is the author of the autobiography Wings of Fire?",
       "answer": "A. P. J. Abdul Kalam",
-      "distractors": ["Jawaharlal Nehru", "Mahatma Gandhi", "Rabindranath Tagore"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://en.wikipedia.org/wiki/Wings_of_Fire_(autobiography)", "https://www.britannica.com/biography/A-P-J-Abdul-Kalam"],
+      "distractors": [
+        "Jawaharlal Nehru",
+        "Mahatma Gandhi",
+        "Rabindranath Tagore"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Wings_of_Fire_(autobiography)",
+        "https://www.britannica.com/biography/A-P-J-Abdul-Kalam"
+      ],
       "explanation": "Wings of Fire is the autobiography of A.P.J. Abdul Kalam, former President of India and aerospace scientist, co-written with Arun Tiwari and published in 1999.",
       "mnemonic": null,
       "is_trick": false,
@@ -260,9 +381,20 @@
       "entity": "Mitochondria",
       "question": "Which cell organelle is known as the powerhouse of the cell?",
       "answer": "Mitochondria",
-      "distractors": ["Nucleus", "Ribosome", "Chloroplast"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/science/mitochondrion"],
+      "distractors": [
+        "Nucleus",
+        "Ribosome",
+        "Chloroplast"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/mitochondrion"
+      ],
       "explanation": "Mitochondria are called the powerhouse of the cell because they generate most of the cell's supply of ATP through the process of cellular respiration.",
       "mnemonic": null,
       "is_trick": false,
@@ -283,9 +415,20 @@
       "entity": "Gold (Au)",
       "question": "What is the chemical symbol for gold?",
       "answer": "Au",
-      "distractors": ["Ag", "Gd", "Go"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://ncert.nic.in/textbook.php", "https://www.britannica.com/science/gold-chemical-element"],
+      "distractors": [
+        "Ag",
+        "Gd",
+        "Go"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/gold-chemical-element"
+      ],
       "explanation": "Gold's chemical symbol Au comes from the Latin word 'aurum', and it is element number 79 in the periodic table.",
       "mnemonic": null,
       "is_trick": false,
@@ -306,9 +449,20 @@
       "entity": "Pradhan Mantri Jan Dhan Yojana",
       "question": "In which year was the Pradhan Mantri Jan Dhan Yojana (PMJDY) launched?",
       "answer": "2014",
-      "distractors": ["2015", "2016", "2019"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.pib.gov.in/", "https://pmjdy.gov.in/"],
+      "distractors": [
+        "2015",
+        "2016",
+        "2019"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.pib.gov.in/",
+        "https://pmjdy.gov.in/"
+      ],
       "explanation": "PMJDY was launched on 28 August 2014 by Prime Minister Narendra Modi to ensure financial inclusion by providing every household access to a bank account.",
       "mnemonic": null,
       "is_trick": false,
@@ -329,9 +483,20 @@
       "entity": "Bharat Ratna",
       "question": "Which is the highest civilian award of India?",
       "answer": "Bharat Ratna",
-      "distractors": ["Padma Vibhushan", "Param Vir Chakra", "Padma Bhushan"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://awards.gov.in/", "https://www.britannica.com/topic/Bharat-Ratna"],
+      "distractors": [
+        "Padma Vibhushan",
+        "Param Vir Chakra",
+        "Padma Bhushan"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://awards.gov.in/",
+        "https://www.britannica.com/topic/Bharat-Ratna"
+      ],
       "explanation": "Bharat Ratna is the highest civilian honour in India, awarded for exceptional service of the highest order to the nation.",
       "mnemonic": null,
       "is_trick": false,
@@ -352,9 +517,20 @@
       "entity": "NITI Aayog",
       "question": "NITI Aayog replaced which earlier body in 2015?",
       "answer": "Planning Commission",
-      "distractors": ["Finance Commission", "Election Commission", "Union Public Service Commission"],
-      "exam_relevance": ["SSC", "IBPS-SBI", "RRB"],
-      "sources": ["https://www.niti.gov.in/", "https://www.pib.gov.in/"],
+      "distractors": [
+        "Finance Commission",
+        "Election Commission",
+        "Union Public Service Commission"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.niti.gov.in/",
+        "https://www.pib.gov.in/"
+      ],
       "explanation": "NITI Aayog (National Institution for Transforming India) was established on 1 January 2015, replacing the Planning Commission which had existed since 1950.",
       "mnemonic": null,
       "is_trick": false,
@@ -365,6 +541,786 @@
     "yield_weight": "medium",
     "status": "verified",
     "verified_date": "2026-06-12",
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "basic",
+      "fact_key": "history/first-war-independence-1857",
+      "entity": "Revolt of 1857",
+      "question": "In which year did the First War of Indian Independence (Sepoy Mutiny) begin?",
+      "answer": "1857",
+      "distractors": [
+        "1845",
+        "1862",
+        "1871"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook/pdf/iehh201.pdf",
+        "https://www.britannica.com/event/Indian-Mutiny"
+      ],
+      "explanation": "The Revolt of 1857 began on 10 May 1857 at Meerut and is widely regarded as the First War of Indian Independence against British rule.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT, Modern India; Britannica, Indian Mutiny"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "basic",
+      "fact_key": "history/battle-of-plassey-1757",
+      "entity": "Battle of Plassey",
+      "question": "The Battle of Plassey, which established British supremacy in Bengal, was fought in which year?",
+      "answer": "1757",
+      "distractors": [
+        "1761",
+        "1764",
+        "1749"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook/pdf/iehh201.pdf",
+        "https://www.britannica.com/event/Battle-of-Plassey"
+      ],
+      "explanation": "The Battle of Plassey was fought on 23 June 1757 between the British East India Company under Robert Clive and Siraj ud-Daulah, marking the foundation of British political rule in India.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT, Our Pasts III; Britannica, Battle of Plassey"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "basic",
+      "fact_key": "history/partition-of-bengal-1905",
+      "entity": "Partition of Bengal",
+      "question": "The Partition of Bengal was carried out by Lord Curzon in which year?",
+      "answer": "1905",
+      "distractors": [
+        "1899",
+        "1911",
+        "1916"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook/pdf/iehh202.pdf",
+        "https://www.britannica.com/event/partition-of-Bengal-1905"
+      ],
+      "explanation": "Lord Curzon partitioned Bengal on 16 October 1905 on administrative grounds, which sparked a massive nationalist protest and the Swadeshi Movement.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT, Modern India; Britannica, Partition of Bengal 1905"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "basic",
+      "fact_key": "history/jallianwala-bagh-1919",
+      "entity": "Jallianwala Bagh Massacre",
+      "question": "In which year did the Jallianwala Bagh massacre take place?",
+      "answer": "1919",
+      "distractors": [
+        "1915",
+        "1921",
+        "1923"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook/pdf/iehh202.pdf",
+        "https://www.britannica.com/event/Amritsar-Massacre"
+      ],
+      "explanation": "On 13 April 1919, General Dyer ordered troops to fire on a peaceful gathering at Jallianwala Bagh in Amritsar, killing hundreds and deeply radicalising the Indian independence movement.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT, Modern India; Britannica, Amritsar Massacre"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "basic",
+      "fact_key": "history/simon-commission-1927",
+      "entity": "Simon Commission",
+      "question": "In which year was the Simon Commission appointed by the British government?",
+      "answer": "1927",
+      "distractors": [
+        "1919",
+        "1930",
+        "1924"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook/pdf/iehh202.pdf",
+        "https://www.britannica.com/topic/Simon-Commission"
+      ],
+      "explanation": "The Simon Commission was constituted in 1927 under Sir John Simon to review the Government of India Act 1919; it was boycotted by Indians because it had no Indian members.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT, Modern India; Britannica, Simon Commission"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "medium",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "basic",
+      "fact_key": "history/indian-independence-act-1947",
+      "entity": "Indian Independence",
+      "question": "India achieved independence from British rule on which date?",
+      "answer": "15 August 1947",
+      "distractors": [
+        "26 January 1947",
+        "15 August 1946",
+        "26 November 1949"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://legislative.gov.in/sites/default/files/The-Indian-Independence-Act-1947.pdf",
+        "https://www.britannica.com/event/Indian-Independence-Act"
+      ],
+      "explanation": "India became an independent nation on 15 August 1947 under the Indian Independence Act 1947, ending nearly 200 years of British rule.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Indian Independence Act 1947; Britannica"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "basic",
+      "fact_key": "polity/article-14-equality",
+      "entity": "Article 14",
+      "question": "Which Article of the Indian Constitution guarantees the Right to Equality before law?",
+      "answer": "Article 14",
+      "distractors": [
+        "Article 12",
+        "Article 16",
+        "Article 19"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-14-equality-before-law/",
+        "https://ncert.nic.in/textbook.php"
+      ],
+      "explanation": "Article 14 of the Indian Constitution guarantees equality before the law and equal protection of the laws to all persons within the territory of India.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India, Art. 14"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "basic",
+      "fact_key": "polity/article-32-constitutional-remedies",
+      "entity": "Article 32",
+      "question": "Which Article of the Indian Constitution, called the 'Heart and Soul' of the Constitution by Dr. Ambedkar, lets a citizen move the Supreme Court directly to enforce Fundamental Rights?",
+      "answer": "Article 32",
+      "distractors": [
+        "Article 226",
+        "Article 136",
+        "Article 142"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-32-remedies-for-enforcement-of-rights-conferred-by-this-part/",
+        "https://india.gov.in/my-government/constitution-india"
+      ],
+      "explanation": "Article 32 gives citizens the right to move the Supreme Court directly for enforcement of Fundamental Rights, and Dr. B.R. Ambedkar called it the heart and soul of the Constitution.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India, Art. 32"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "basic",
+      "fact_key": "polity/article-352-national-emergency",
+      "entity": "Article 352",
+      "question": "Under which Article of the Indian Constitution can a National Emergency be proclaimed?",
+      "answer": "Article 352",
+      "distractors": [
+        "Article 356",
+        "Article 360",
+        "Article 365"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-352-proclamation-of-emergency/",
+        "https://ncert.nic.in/textbook.php"
+      ],
+      "explanation": "Article 352 empowers the President to proclaim a National Emergency if the security of India or any part of it is threatened by war, external aggression, or armed rebellion.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India, Art. 352"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "basic",
+      "fact_key": "polity/article-51a-fundamental-duties",
+      "entity": "Article 51A",
+      "question": "The Fundamental Duties of citizens are enshrined in which Article of the Indian Constitution?",
+      "answer": "Article 51A",
+      "distractors": [
+        "Article 48A",
+        "Article 44",
+        "Article 45"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-51a-fundamental-duties/",
+        "https://india.gov.in/my-government/constitution-india"
+      ],
+      "explanation": "Article 51A, added by the 42nd Constitutional Amendment in 1976, lists the Fundamental Duties of every citizen of India.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India, Art. 51A"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "basic",
+      "fact_key": "polity/rajya-sabha-council-of-states",
+      "entity": "Rajya Sabha",
+      "question": "Which house of the Indian Parliament is also known as the 'Council of States'?",
+      "answer": "Rajya Sabha",
+      "distractors": [
+        "Lok Sabha",
+        "Vidhan Sabha",
+        "Vidhan Parishad"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://sansad.in/rs",
+        "https://www.britannica.com/topic/Rajya-Sabha"
+      ],
+      "explanation": "Rajya Sabha, meaning Council of States, is the upper house of the Indian Parliament and represents the states and union territories of India.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India, Art. 80; Rajya Sabha"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "basic",
+      "fact_key": "polity/article-356-presidents-rule",
+      "entity": "Article 356",
+      "question": "Under which Article of the Indian Constitution can President's Rule be imposed in a state?",
+      "answer": "Article 356",
+      "distractors": [
+        "Article 352",
+        "Article 360",
+        "Article 355"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-356-provisions-in-case-of-failure-of-constitutional-machinery-in-states/",
+        "https://india.gov.in/my-government/constitution-india"
+      ],
+      "explanation": "Article 356 allows the President to impose President's Rule in a state if the constitutional machinery of that state has failed.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India, Art. 356"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "general-science",
+      "difficulty": "basic",
+      "fact_key": "general-science/si-unit-of-force-newton",
+      "entity": "Newton",
+      "question": "What is the SI unit of force?",
+      "answer": "Newton",
+      "distractors": [
+        "Pascal",
+        "Joule",
+        "Watt"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/newton-unit-of-measurement"
+      ],
+      "explanation": "The SI unit of force is the newton (N), defined as the force required to accelerate a mass of one kilogram at one metre per second squared.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT Science, Class 9"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "general-science",
+      "difficulty": "basic",
+      "fact_key": "general-science/vitamin-d-deficiency-rickets",
+      "entity": "Vitamin D",
+      "question": "Deficiency of which vitamin causes rickets in children?",
+      "answer": "Vitamin D",
+      "distractors": [
+        "Vitamin A",
+        "Vitamin B12",
+        "Vitamin C"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/rickets"
+      ],
+      "explanation": "Rickets is caused by deficiency of Vitamin D, which is essential for calcium absorption and proper bone mineralisation.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT Science, Class 7"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "general-science",
+      "difficulty": "basic",
+      "fact_key": "general-science/photosynthesis-gas-released",
+      "entity": "Photosynthesis",
+      "question": "Which gas is released by green plants during photosynthesis?",
+      "answer": "Oxygen",
+      "distractors": [
+        "Carbon dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/photosynthesis"
+      ],
+      "explanation": "During photosynthesis, plants absorb carbon dioxide and water and release oxygen as a by-product when sunlight splits water molecules.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT Science, Class 7"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "general-science",
+      "difficulty": "basic",
+      "fact_key": "general-science/si-unit-of-electric-current",
+      "entity": "Ampere",
+      "question": "What is the SI unit of electric current?",
+      "answer": "Ampere",
+      "distractors": [
+        "Volt",
+        "Ohm",
+        "Watt"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/ampere"
+      ],
+      "explanation": "The SI unit of electric current is the ampere (A), named after French physicist Andre-Marie Ampere.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT Science, Class 10"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "general-science",
+      "difficulty": "basic",
+      "fact_key": "general-science/atomic-number-hydrogen",
+      "entity": "Hydrogen",
+      "question": "What is the atomic number of hydrogen?",
+      "answer": "1",
+      "distractors": [
+        "2",
+        "6",
+        "8"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "RRB"
+      ],
+      "sources": [
+        "https://ncert.nic.in/textbook.php",
+        "https://www.britannica.com/science/hydrogen"
+      ],
+      "explanation": "Hydrogen has atomic number 1, meaning it has one proton in its nucleus; it is the lightest and most abundant element in the universe.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT Science, Class 9"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "static-gk",
+      "difficulty": "basic",
+      "fact_key": "static-gk/national-tree-india",
+      "entity": "National Tree of India",
+      "question": "Which tree is the National Tree of India?",
+      "answer": "Banyan",
+      "distractors": [
+        "Neem",
+        "Peepal",
+        "Sal"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.india.gov.in/india-glance/national-symbols",
+        "https://www.britannica.com/plant/banyan"
+      ],
+      "explanation": "The Banyan tree (Ficus benghalensis) is the National Tree of India, symbolising longevity and deeply rooted in Indian heritage.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "india.gov.in National Symbols"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "static-gk",
+      "difficulty": "basic",
+      "fact_key": "static-gk/national-aquatic-animal-india",
+      "entity": "National Aquatic Animal of India",
+      "question": "Which animal is the National Aquatic Animal of India?",
+      "answer": "Gangetic Dolphin",
+      "distractors": [
+        "Saltwater Crocodile",
+        "Olive Ridley Turtle",
+        "Gharial"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.india.gov.in/india-glance/national-symbols",
+        "https://www.britannica.com/animal/South-Asian-river-dolphin"
+      ],
+      "explanation": "The Gangetic River Dolphin (Platanista gangetica) was declared India's National Aquatic Animal in 2009 to promote its conservation.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "india.gov.in National Symbols"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "medium",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "static-gk",
+      "difficulty": "basic",
+      "fact_key": "static-gk/world-environment-day",
+      "entity": "World Environment Day",
+      "question": "On which date is World Environment Day observed every year?",
+      "answer": "5 June",
+      "distractors": [
+        "22 April",
+        "16 September",
+        "22 March"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.un.org/en/observances/environment-day",
+        "https://www.unep.org/events/un-day/world-environment-day"
+      ],
+      "explanation": "World Environment Day is observed on 5 June every year, established by the United Nations beginning in 1973.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "UN Observances: World Environment Day"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "static-gk",
+      "difficulty": "basic",
+      "fact_key": "static-gk/manipuri-dance-manipur",
+      "entity": "Manipuri dance",
+      "question": "The classical dance form Manipuri originates from which Indian state?",
+      "answer": "Manipur",
+      "distractors": [
+        "Assam",
+        "Tripura",
+        "Meghalaya"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.indiaculture.gov.in/dance",
+        "https://www.sangeetnatak.gov.in/"
+      ],
+      "explanation": "Manipuri is one of the eight classical dance forms of India, originating from the state of Manipur in the northeastern region.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Ministry of Culture, indiaculture.gov.in"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "static-gk",
+      "difficulty": "basic",
+      "fact_key": "static-gk/discovery-of-india-author",
+      "entity": "The Discovery of India",
+      "question": "Who authored the book 'The Discovery of India'?",
+      "answer": "Jawaharlal Nehru",
+      "distractors": [
+        "Mahatma Gandhi",
+        "Rabindranath Tagore",
+        "B. R. Ambedkar"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.britannica.com/topic/The-Discovery-of-India",
+        "https://en.wikipedia.org/wiki/The_Discovery_of_India"
+      ],
+      "explanation": "The Discovery of India was written by India's first Prime Minister Jawaharlal Nehru in 1944 while he was imprisoned at Ahmednagar Fort.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Britannica: The Discovery of India"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "medium",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "static-gk",
+      "difficulty": "basic",
+      "fact_key": "static-gk/first-woman-president-india",
+      "entity": "First woman President of India",
+      "question": "Who was the first woman to serve as President of India?",
+      "answer": "Pratibha Patil",
+      "distractors": [
+        "Droupadi Murmu",
+        "Indira Gandhi",
+        "Sarojini Naidu"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.india.gov.in/my-government/presidents-india",
+        "https://www.britannica.com/biography/Pratibha-Patil"
+      ],
+      "explanation": "Pratibha Patil served as the 12th President of India from 2007 to 2012, becoming the first woman to hold the office.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "india.gov.in: Presidents of India"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "medium",
+    "status": "draft",
+    "verified_date": null,
     "review_due_date": null
   }
 ]
