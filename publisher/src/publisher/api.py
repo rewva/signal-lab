@@ -47,6 +47,10 @@ class ApproveRequest(BaseModel):
     scheduled_for: Optional[str] = None  # ISO-8601 override; omit for the next free slot
 
 
+class RejectRequest(BaseModel):
+    reason: str = ""
+
+
 class AccountCreate(BaseModel):
     brand: str
     platform: str
@@ -108,6 +112,7 @@ class JobView(BaseModel):
     scheduled_for: str | None
     source_citation: str
     sources: list[str]
+    reject_reason: str
 
 
 def _to_view(job: Job) -> JobView:
@@ -116,6 +121,7 @@ def _to_view(job: Job) -> JobView:
         platforms=job.platforms, per_platform=job.per_platform,
         submitted_at=job.submitted_at, scheduled_for=job.scheduled_for,
         source_citation=job.source_citation, sources=job.sources,
+        reject_reason=job.reject_reason,
     )
 
 
@@ -161,9 +167,10 @@ def create_app(db: Database, vault: Any = None) -> FastAPI:
         return _to_view(job)
 
     @app.post("/api/jobs/{job_id}/reject", response_model=JobView)
-    def reject(job_id: int) -> JobView:
+    def reject(job_id: int, body: RejectRequest | None = None) -> JobView:
+        reason = body.reason if body else ""
         try:
-            job = reject_job(db, job_id)
+            job = reject_job(db, job_id, reason=reason)
         except LookupError:
             raise HTTPException(status_code=404, detail="job not found")
         except InvalidTransition as exc:

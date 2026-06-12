@@ -88,3 +88,15 @@ def test_reject_non_pending_raises(db):
     job = _pending_job(db, status="SCHEDULED")
     with pytest.raises(InvalidTransition):
         reject_job(db, job.id)
+
+
+def test_reject_job_persists_reason(tmp_path):
+    from publisher.db import Database
+    from publisher.models import Job
+    from publisher.approval import reject_job
+    db = Database(tmp_path / "pub.db"); db.init_schema()
+    job = db.create_job(Job(channel_id="gk", video_path="x.mp4", title="T", status="PENDING_APPROVAL"))
+    rejected = reject_job(db, job.id, reason="citation broken")
+    assert rejected.status == "REJECTED"
+    assert rejected.reject_reason == "citation broken"
+    db.close()
