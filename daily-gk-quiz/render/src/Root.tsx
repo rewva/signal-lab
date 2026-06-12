@@ -24,9 +24,11 @@ export const RemotionRoot: React.FC = () => (
     component={Quiz}
     schema={quizSchema}
     defaultProps={defaultProps}
-    durationInFrames={buildTimeline(FPS).totalFrames}
     fps={FPS}
     width={1080}
     height={1920}
+    calculateMetadata={({ props }: { props: QuizProps }) => ({
+      durationInFrames: buildTimeline(FPS, props.vo).totalFrames,
+    })}
   />
 );
