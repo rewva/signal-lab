@@ -38,4 +38,9 @@ describe("timeline (voice-driven beats)", () => {
     expect(t.countdown.from).toBe(Math.round(3.3 * 30));
     expect(t.why.from - t.reveal.from).toBe(Math.round(2.9 * 30));
   });
+  it("expands the ctaHold (bonus) span to fit the bonus nudge VO", () => {
+    const t = buildTimeline(30, { question: 0, reveal: 0, why: 0, bonus: 4.0 }, tail);
+    const ctaDur = t.totalFrames - t.ctaHold.from;
+    expect(ctaDur).toBe(Math.round((4.0 + tail) * 30)); // max(1.5, 4.45) = 4.45
+  });
 });

@@ -1,9 +1,8 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { TRICK } from "../theme";
-import { buildTimeline } from "../timeline";
+import { buildTimeline, type Timeline } from "../timeline";
 import { audioCues } from "../audio-cues";
-import { standardState } from "./Standard";
 import type { QuizProps } from "../props";
 import { QuestionView, OptionsView } from "../blocks/QuestionOptions";
 import { CountdownView, LockBeatView, WhyView, SourceLineView, CtaView, VerifiedBadgeView } from "../blocks/Pieces";
@@ -15,11 +14,23 @@ export const TrickHookView: React.FC<{ trickHook: string }> = ({ trickHook }) =>
   </div>
 );
 
+// Trick keeps the original single-card beat model (independent of Standard's scene model).
+function trickState(frame: number, tl: Timeline) {
+  const revealed = frame >= tl.reveal.from;
+  const showLock = frame >= tl.lock.from && frame < tl.reveal.from;
+  const inCountdown = frame >= tl.countdown.from && frame < tl.lock.from;
+  const cdWindow = tl.lock.from - tl.countdown.from;
+  const elapsed = frame - tl.countdown.from;
+  const countdownN = inCountdown ? Math.max(1, Math.min(3, 3 - Math.floor(elapsed / (cdWindow / 3)))) : 0;
+  const showWhy = frame >= tl.why.from;
+  return { revealed, showLock, inCountdown, countdownN, showWhy };
+}
+
 export const Trick: React.FC<QuizProps> = (props) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const tl = buildTimeline(fps, props.vo);
-  const s = standardState(frame, tl);
+  const s = trickState(frame, tl);
   return (
     <AbsoluteFill style={{ background: TRICK.bg, padding: "64px 56px", display: "flex",
                            flexDirection: "column", fontFamily: "Arial, sans-serif", color: TRICK.ink }}>

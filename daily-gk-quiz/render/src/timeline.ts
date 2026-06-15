@@ -23,7 +23,7 @@ const WHY_MIN = 11.5 - 9.0;       // expandable
 const CTA_HOLD = END_SECONDS - 11.5; // fixed
 const TAIL_DEFAULT = 0.45;
 
-export type VoDurations = { question?: number; reveal?: number; why?: number };
+export type VoDurations = { question?: number; reveal?: number; why?: number; bonus?: number };
 export type SceneKey = (typeof SCENES)[number]["key"];
 export type Timeline = Record<SceneKey, { from: number; durationInFrames: number }> & {
   totalFrames: number;
@@ -44,7 +44,7 @@ export function buildTimeline(fps: number, vo?: VoDurations, tail = TAIL_DEFAULT
   const lockGapF        = Math.round(LOCK_GAP * fps);
   const revealSpanF     = spanFrames(REVEAL_MIN, fps, vo?.reveal, tail);
   const whySpanF        = spanFrames(WHY_MIN, fps, vo?.why, tail);
-  const ctaHoldF        = Math.round(CTA_HOLD * fps);
+  const ctaHoldF        = spanFrames(CTA_HOLD, fps, vo?.bonus, tail); // bonus nudge plays here
 
   // Build start frames by accumulating integer segments (zero drift).
   const questionFrom  = 0;

@@ -33,4 +33,8 @@ describe("audioCues", () => {
     const cues = audioCues(props({ question: "q" }), tl);
     expect(cues.map((c) => c.key)).toEqual(["question"]);
   });
+  it("places the bonus nudge at the start of the ctaHold scene", () => {
+    const cues = audioCues(props({ bonus: "b" }), tl);
+    expect(cues).toEqual([{ key: "bonus", src: "b", from: tl.ctaHold.from }]);
+  });
 });

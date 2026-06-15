@@ -5,21 +5,28 @@ import { buildTimeline } from "../timeline";
 const tl = buildTimeline(30);
 
 describe("standardState (frame -> view state)", () => {
-  it("before reveal: not revealed, countdown counts down", () => {
-    const s = standardState(tl.countdown.from + 1, tl);
-    expect(s.revealed).toBe(false);
-    expect([3, 2, 1]).toContain(s.countdownN);
+  it("scene A spans question..why (ask + in-place reveal live here)", () => {
+    expect(standardState(0, tl).scene).toBe("A");
+    expect(standardState(tl.reveal.from + 5, tl).scene).toBe("A");
+    expect(standardState(tl.why.from - 1, tl).scene).toBe("A");
   });
-  it("after reveal frame: revealed true", () => {
-    const s = standardState(tl.reveal.from + 5, tl);
-    expect(s.revealed).toBe(true);
+  it("scene B is the answer/explanation page (why..ctaHold)", () => {
+    expect(standardState(tl.why.from, tl).scene).toBe("B");
+    expect(standardState(tl.ctaHold.from - 1, tl).scene).toBe("B");
   });
-  it("lock window shows the lock beat", () => {
-    const s = standardState(tl.lock.from + 1, tl);
-    expect(s.showLock).toBe(true);
+  it("scene C is the bonus/comment page (ctaHold..end)", () => {
+    expect(standardState(tl.ctaHold.from, tl).scene).toBe("C");
+    expect(standardState(tl.totalFrames - 1, tl).scene).toBe("C");
   });
-  it("countdown reaches 1 late in its window", () => {
-    expect(standardState(150, tl).countdownN).toBe(1);   // frame 150 is in the final third
-    expect(standardState(100, tl).countdownN).toBe(3);   // early in the window
+
+  it("not revealed before the reveal beat, revealed after", () => {
+    expect(standardState(tl.countdown.from + 1, tl).revealed).toBe(false);
+    expect(standardState(tl.reveal.from + 5, tl).revealed).toBe(true);
+  });
+
+  it("the timer counts only between countdown.from and reveal.from", () => {
+    expect(standardState(tl.countdown.from - 1, tl).counting).toBe(false);
+    expect(standardState(tl.countdown.from + 1, tl).counting).toBe(true);
+    expect(standardState(tl.reveal.from, tl).counting).toBe(false);
   });
 });

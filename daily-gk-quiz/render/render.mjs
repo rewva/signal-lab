@@ -11,6 +11,7 @@ const FFPROBE = require("ffprobe-static").path;
 
 // Narration script (kept in sync with the unit-tested src/vo.ts; inlined here because this
 // plain-Node ESM file cannot import the .ts module at runtime). Pure, ~6 lines.
+const BONUS_NUDGE = "But here is a bonus. Do you know this one? Drop your answer in the comments.";
 function voLines(props) {
   const correct = (props.options || []).find((o) => o.letter === props.correctLetter);
   const answerText = correct ? correct.text : "";
@@ -18,6 +19,7 @@ function voLines(props) {
     question: props.question,
     reveal: `The correct answer is ${props.correctLetter}. ${answerText}.`,
     why: props.explanation || "",
+    bonus: props.commentChallenge ? BONUS_NUDGE : "",  // answer-free nudge for the comment scene
   };
 }
 
@@ -39,7 +41,7 @@ if (!noVoice) {
   const lines = voLines(inputProps);
   mkdirSync(PUBLIC_DIR, { recursive: true });
   const vo = {}; const audio = {};
-  for (const key of ["question", "reveal", "why"]) {
+  for (const key of ["question", "reveal", "why", "bonus"]) {
     const text = (lines[key] || "").trim();
     if (!text) { vo[key] = 0; continue; }
     const abs = path.join(PUBLIC_DIR, `${key}.mp3`);

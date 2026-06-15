@@ -19,12 +19,15 @@ export const quizSchema = z.object({
     question: z.number().nonnegative(),
     reveal: z.number().nonnegative(),
     why: z.number().nonnegative(),
+    bonus: z.number().nonnegative().optional(),
   }).optional(),
   audio: z.object({
     question: z.string(),
     reveal: z.string(),
     why: z.string(),
+    bonus: z.string(),
   }).partial().optional(),
+  commentChallenge: z.string().optional(),  // bonus question shown at the end to bait comments
 });
 
 export type QuizProps = z.infer<typeof quizSchema>;

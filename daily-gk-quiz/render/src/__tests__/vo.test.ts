@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { voLines } from "../vo";
+import { voLines, BONUS_NUDGE } from "../vo";
 import type { QuizProps } from "../props";
 
 const base: QuizProps = {
@@ -25,5 +25,11 @@ describe("voLines", () => {
   });
   it("empty explanation yields an empty why line", () => {
     expect(voLines({ ...base, explanation: "" }).why).toBe("");
+  });
+  it("bonus nudge is present only when commentChallenge is set, and never reveals an answer", () => {
+    expect(voLines(base).bonus).toBe("");  // no commentChallenge -> no nudge
+    const withBonus = voLines({ ...base, commentChallenge: "What does Article 14 guarantee?" });
+    expect(withBonus.bonus).toBe(BONUS_NUDGE);
+    expect(withBonus.bonus).not.toContain("Article 14");  // nudge must not answer/echo the bonus
   });
 });
