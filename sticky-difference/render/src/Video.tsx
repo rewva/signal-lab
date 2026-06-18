@@ -6,6 +6,7 @@ import { audioCues } from "./audio-cues";
 import { Hook } from "./scenes/Hook";
 import { Item } from "./scenes/Item";
 import { Difference } from "./scenes/Difference";
+import { BrandHeaderView } from "./blocks/Pieces";
 import type { DiffProps } from "./props";
 
 // Pure frame -> scene-key selector (unit-tested). The cta beat is only reachable when it has a
@@ -42,6 +43,9 @@ export const DifferenceVideo: React.FC<DiffProps> = (props) => {
       {scene === "itemX" && <Item item={x} side="left" from={tl.itemX.from} />}
       {scene === "itemY" && <Item item={y} side="right" from={tl.itemY.from} />}
       {(scene === "difference" || scene === "cta") && <Difference props={props} from={tl.difference.from} />}
+
+      {/* persistent masthead across all beats (brand identity, spec 2.3) */}
+      <BrandHeaderView brandHandle={props.brandHandle} />
     </AbsoluteFill>
   );
 };
