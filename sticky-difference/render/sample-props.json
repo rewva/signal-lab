@@ -1,0 +1,10 @@
+{
+  "topic": "Coffin vs Casket",
+  "items": [
+    { "name": "Coffin", "image": "comparisons/coffin.jpg", "trait": "Tapered to the body - six sides, wide at the shoulders." },
+    { "name": "Casket", "image": "comparisons/casket.jpg", "trait": "A rectangular box with four sides and a hinged lid." }
+  ],
+  "difference": "A coffin is body-shaped (six-sided); a casket is a rectangular box.",
+  "cta": "Which did you think was which? Comment below",
+  "sourceLine": "Merriam-Webster; Britannica"
+}
