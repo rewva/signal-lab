@@ -1,14 +1,14 @@
 export const DIFF = {
-  bg: "#e6f6ef",
-  ink: "#16241f",
-  accent: "#ff6b6b",
+  bg: "#efeafd",
+  ink: "#241f33",
+  accent: "#7c5cf0",
   frame: "#ffffff",
-  frameLine: "#ff6b6b",
-  muted: "#9fb6ac",
+  frameLine: "#7c5cf0",
+  muted: "#9a90c0",
   // mascot
-  fur: "#9aa7b2",
+  fur: "#b9b3d6",
   belly: "#ffffff",
   innerEar: "#ff9eb0",
-  nose: "#ff6b6b",
-  outline: "#16241f",
+  nose: "#ff7d97",
+  outline: "#241f33",
 } as const;

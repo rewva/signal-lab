@@ -1,0 +1,24 @@
+<svg width="900" height="900" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1ecfc"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a7b3bd"/>
+      <stop offset="1" stop-color="#8b97a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <!-- classic six-sided body-shaped coffin (top view), wide at the shoulders -->
+  <g stroke="#16241f" stroke-width="10" stroke-linejoin="round">
+    <polygon points="360,150 540,150 642,320 520,770 380,770 258,320" fill="url(#wood)"/>
+    <polygon points="392,196 508,196 590,330 498,728 402,728 310,330" fill="none" stroke-width="6" opacity="0.55"/>
+    <line x1="450" y1="196" x2="450" y2="728" stroke-width="5" opacity="0.45"/>
+  </g>
+  <!-- coral cross plate, the recurring brand accent -->
+  <g fill="#7c5cf0" stroke="#16241f" stroke-width="6" stroke-linejoin="round">
+    <rect x="430" y="318" width="40" height="120" rx="6"/>
+    <rect x="396" y="352" width="108" height="40" rx="6"/>
+  </g>
+</svg>

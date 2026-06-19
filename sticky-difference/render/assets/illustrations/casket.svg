@@ -1,0 +1,24 @@
+<svg width="900" height="900" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f1ecfc"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a7b3bd"/>
+      <stop offset="1" stop-color="#8b97a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <!-- rectangular four-sided casket with a hinged lid (top view) -->
+  <g stroke="#16241f" stroke-width="10" stroke-linejoin="round">
+    <rect x="250" y="210" width="400" height="480" rx="26" fill="url(#wood)"/>
+    <line x1="250" y1="372" x2="650" y2="372" stroke-width="8" opacity="0.7"/>
+    <rect x="300" y="412" width="300" height="236" rx="14" fill="none" stroke-width="6" opacity="0.55"/>
+  </g>
+  <!-- coral side handles, the recurring brand accent -->
+  <g fill="#7c5cf0" stroke="#16241f" stroke-width="6" stroke-linejoin="round">
+    <rect x="214" y="456" width="44" height="150" rx="14"/>
+    <rect x="642" y="456" width="44" height="150" rx="14"/>
+  </g>
+</svg>

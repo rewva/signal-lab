@@ -24,7 +24,9 @@ export const Difference: React.FC<{ props: DiffProps; from: number }> = ({ props
           </div>
         ) : null}
       </div>
-      <div style={{ position: "absolute", bottom: 220, left: 0, right: 0, textAlign: "center", fontSize: 30, fontWeight: 700, color: DIFF.muted }}>
+      {/* source line sits in the open band between the payoff/CTA and the mascot so the
+          mandatory credibility stamp (spec 4) is always fully legible, never over the cat */}
+      <div style={{ position: "absolute", bottom: 920, left: 70, right: 70, textAlign: "center", fontSize: 30, fontWeight: 700, color: DIFF.muted }}>
         Source: {props.sourceLine}
       </div>
       <div style={{ position: "absolute", bottom: 110, left: 0, right: 0, display: "flex", justifyContent: "center", transform: `translateY(${bob}px)` }}>
