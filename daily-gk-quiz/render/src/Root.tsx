@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { Quiz } from "./Quiz";
 import { quizSchema, type QuizProps } from "./props";
 import { buildTimeline } from "./timeline";
+import { BrandAvatar, BrandBanner } from "./brand/Assets";
 
 const FPS = 30;
 
@@ -19,16 +20,21 @@ const defaultProps: QuizProps = {
 };
 
 export const RemotionRoot: React.FC = () => (
-  <Composition
-    id="Quiz"
-    component={Quiz}
-    schema={quizSchema}
-    defaultProps={defaultProps}
-    fps={FPS}
-    width={1080}
-    height={1920}
-    calculateMetadata={({ props }: { props: QuizProps }) => ({
-      durationInFrames: buildTimeline(FPS, props.vo).totalFrames,
-    })}
-  />
+  <>
+    <Composition
+      id="Quiz"
+      component={Quiz}
+      schema={quizSchema}
+      defaultProps={defaultProps}
+      fps={FPS}
+      width={1080}
+      height={1920}
+      calculateMetadata={({ props }: { props: QuizProps }) => ({
+        durationInFrames: buildTimeline(FPS, props.vo).totalFrames,
+      })}
+    />
+    {/* brand still assets (channel avatar + banner) */}
+    <Composition id="BrandAvatar" component={BrandAvatar} durationInFrames={1} fps={FPS} width={1080} height={1080} />
+    <Composition id="BrandBanner" component={BrandBanner} durationInFrames={1} fps={FPS} width={2560} height={1440} />
+  </>
 );
