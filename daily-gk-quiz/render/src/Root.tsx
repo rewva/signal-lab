@@ -3,7 +3,8 @@ import { Composition } from "remotion";
 import { Quiz } from "./Quiz";
 import { quizSchema, type QuizProps } from "./props";
 import { buildTimeline } from "./timeline";
-import { BrandAvatar, BrandBanner } from "./brand/Assets";
+import { BrandAvatar, BrandBanner, HighlightCover } from "./brand/Assets";
+import { LogoSting } from "./brand/LogoSting";
 
 const FPS = 30;
 
@@ -36,5 +37,10 @@ export const RemotionRoot: React.FC = () => (
     {/* brand still assets (channel avatar + banner) */}
     <Composition id="BrandAvatar" component={BrandAvatar} durationInFrames={1} fps={FPS} width={1080} height={1080} />
     <Composition id="BrandBanner" component={BrandBanner} durationInFrames={1} fps={FPS} width={2560} height={1440} />
+    {/* 4s animated logo sting (intro/outro) */}
+    <Composition id="LogoSting" component={LogoSting} durationInFrames={120} fps={FPS} width={1080} height={1920} />
+    {/* IG story-highlight cover (parametric label via --props) */}
+    <Composition id="HighlightCover" component={HighlightCover} durationInFrames={1} fps={FPS} width={1080} height={1080}
+                 defaultProps={{ label: "GK" }} />
   </>
 );

@@ -49,3 +49,15 @@ export const BrandBanner: React.FC = () => (
     </AbsoluteFill>
   </AbsoluteFill>
 );
+
+// IG story-highlight cover (1080x1080). Keep the mark within the centre ~60% (IG crops to a circle).
+export const HighlightCover: React.FC<{ label?: string }> = ({ label = "GK" }) => (
+  <AbsoluteFill style={{ background: STANDARD.bg, fontFamily: FONT_FAMILY, alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill style={{ background: glow(50, 44, STANDARD.accentRgb, 0.20, 52) + `, ${STANDARD.bgDeep}` }} />
+    <div style={{ zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 30 }}>
+      <span style={{ width: 64, height: 64, borderRadius: 999, background: STANDARD.accent }} />
+      <span style={{ fontWeight: 800, fontSize: label.length > 7 ? 132 : 168, color: STANDARD.text,
+                     letterSpacing: ".01em", textAlign: "center", textTransform: "uppercase", lineHeight: 1 }}>{label}</span>
+    </div>
+  </AbsoluteFill>
+);

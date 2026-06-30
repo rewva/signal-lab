@@ -189,6 +189,10 @@ export const Standard: React.FC<QuizProps> = (props) => {
         </AbsoluteFill>
       )}
 
+      {/* persistent attribution watermark (survives reposts / screen-records) */}
+      <div style={{ position: "absolute", bottom: 30, left: 0, right: 0, textAlign: "center",
+                    fontSize: 30, fontWeight: 800, letterSpacing: ".10em", color: "rgba(238,241,244,0.42)" }}>@pakkagk</div>
+
       <AbsoluteFill style={{ background: "#ffffff", opacity: flash, pointerEvents: "none" }} />
     </AbsoluteFill>
   );

@@ -51,6 +51,13 @@ profile picture on both platforms (YouTube crops to a circle; the lockup sits sa
 - [ ] YouTube: set channel keywords (SSC, IBPS, SBI, RRB, GK, current affairs, quiz).
 - [ ] Connect accounts for auto-posting (publisher.connect youtube / meta) when ready.
 
+## Brand extras (done)
+- **On-video watermark:** `@pakkagk` renders at the bottom of every Short (in `Standard.tsx`) —
+  applies on the next render; the 10 already queued predate it.
+- **Logo sting** (4s intro/outro): `npx remotion render src/index.ts LogoSting out/brand/pakka-sting.mp4`
+- **IG highlight covers** (1080x1080, parametric label):
+  `npx remotion still src/index.ts HighlightCover out/brand/cover-polity.png --props='{"label":"POLITY"}'`
+  Rendered set: DAILY, POLITY, HISTORY, GEOGRAPHY, ECONOMY, SCIENCE, STATIC GK, ABOUT.
+
 ## Backlog (offer-on-request)
-Video end-card/outro, on-video @handle watermark, Instagram story-highlight covers, a 3-5s
-animated logo sting.
+Video end-card variant, an outro CTA frame, a square (1:1) sting for feed posts.
