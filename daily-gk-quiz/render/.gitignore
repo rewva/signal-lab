@@ -3,4 +3,7 @@ out/
 .remotion/
 props.json
 _batch_props.json
+_prep_props.json
+_review_props.json
+_demo_props.json
 public/vo/
