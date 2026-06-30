@@ -1322,5 +1322,1670 @@
     "status": "draft",
     "verified_date": null,
     "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/sebi-statutory-1992",
+      "entity": "SEBI",
+      "question": "In which year was the Securities and Exchange Board of India (SEBI) given statutory powers through the SEBI Act?",
+      "answer": "1992",
+      "distractors": [
+        "1988",
+        "1991",
+        "1995"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.sebi.gov.in/about-sebi.html",
+        "https://en.wikipedia.org/wiki/Securities_and_Exchange_Board_of_India"
+      ],
+      "explanation": "SEBI began in 1988 as a non-statutory body and was accorded statutory powers when the SEBI Act, 1992 came into force on 30 January 1992. The year SEBI became a statutory regulator is a standard banking/SSC GK fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "SEBI.gov.in (About SEBI) / Wikipedia"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/sebi-headquarters-mumbai",
+      "entity": "SEBI",
+      "question": "Where is the headquarters of the Securities and Exchange Board of India (SEBI) located?",
+      "answer": "Mumbai",
+      "distractors": [
+        "New Delhi",
+        "Kolkata",
+        "Hyderabad"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Securities_and_Exchange_Board_of_India",
+        "https://www.sebi.gov.in/about-sebi.html"
+      ],
+      "explanation": "SEBI's headquarters is in the Bandra Kurla Complex business district of Mumbai, with regional offices in New Delhi, Kolkata, Chennai and Ahmedabad. HQ location of regulators is a frequent banking-exam question.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / SEBI.gov.in"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/nabard-established-1982",
+      "entity": "NABARD",
+      "question": "In which year was the National Bank for Agriculture and Rural Development (NABARD) established?",
+      "answer": "1982",
+      "distractors": [
+        "1969",
+        "1975",
+        "1990"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.nabard.org/content.aspx?id=2",
+        "https://en.wikipedia.org/wiki/National_Bank_for_Agriculture_and_Rural_Development"
+      ],
+      "explanation": "NABARD came into existence on 12 July 1982 as the apex development bank for agriculture and rural development. Its founding year is a high-yield banking and RRB GK fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NABARD.org / Wikipedia"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/sidbi-headquarters-lucknow",
+      "entity": "SIDBI",
+      "question": "Where is the headquarters of the Small Industries Development Bank of India (SIDBI) located?",
+      "answer": "Lucknow",
+      "distractors": [
+        "Mumbai",
+        "New Delhi",
+        "Kanpur"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.sidbi.in/about",
+        "https://en.wikipedia.org/wiki/Small_Industries_Development_Bank_of_India"
+      ],
+      "explanation": "SIDBI, set up on 2 April 1990 as the apex financial institution for the MSME sector, is headquartered in Lucknow, Uttar Pradesh. HQ of SIDBI is a common banking-awareness question.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "SIDBI.in (About) / Wikipedia"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/irdai-regulates-insurance",
+      "entity": "IRDAI",
+      "question": "Which sector in India is regulated by the IRDAI?",
+      "answer": "Insurance",
+      "distractors": [
+        "Securities market",
+        "Pension funds",
+        "Banking"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Insurance_Regulatory_and_Development_Authority",
+        "https://irdai.gov.in/"
+      ],
+      "explanation": "The Insurance Regulatory and Development Authority of India (IRDAI) regulates and licenses the insurance and re-insurance industry in India. Matching regulators to their sectors is a staple banking-exam topic.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / IRDAI.gov.in"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/rbi-headquarters-mumbai",
+      "entity": "Reserve Bank of India",
+      "question": "Where is the headquarters of the Reserve Bank of India (RBI) located?",
+      "answer": "Mumbai",
+      "distractors": [
+        "New Delhi",
+        "Kolkata",
+        "Chennai"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Reserve_Bank_of_India",
+        "https://cleartax.in/s/rbi-reserve-bank-of-india"
+      ],
+      "explanation": "The RBI's Central Office was originally in Calcutta but was moved to Bombay (Mumbai) in 1937, where its headquarters remains. RBI's HQ is among the most-asked banking GK facts.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / ClearTax"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/rbi-nationalised-1949",
+      "entity": "Reserve Bank of India",
+      "question": "In which year was the Reserve Bank of India (RBI) nationalised?",
+      "answer": "1949",
+      "distractors": [
+        "1935",
+        "1947",
+        "1951"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Reserve_Bank_of_India",
+        "https://cleartax.in/s/rbi-reserve-bank-of-india"
+      ],
+      "explanation": "Although the RBI was established in 1935 as a shareholders' bank, it was nationalised on 1 January 1949 and has since been fully owned by the Government of India. The nationalisation year is a classic banking-exam distractor against the 1935 founding year.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / ClearTax"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/niti-aayog-full-form",
+      "entity": "NITI Aayog",
+      "question": "What does NITI in 'NITI Aayog' stand for?",
+      "answer": "National Institution for Transforming India",
+      "distractors": [
+        "National Institute for Trade and Industry",
+        "National Investment and Taxation Institute",
+        "National Infrastructure and Technology Initiative"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/NITI_Aayog",
+        "https://www.pmindia.gov.in/en/news_updates/government-establishes-niti-aayog-national-institution-for-transforming-india-to-replace-planning-commission/"
+      ],
+      "explanation": "NITI stands for National Institution for Transforming India, the government's apex public-policy think tank. Acronym full-forms are high-frequency, easy-marks GK questions.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / PMIndia.gov.in"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/ganga-longest-river-india",
+      "entity": "Ganga (Ganges) river",
+      "question": "Which is the longest river flowing within India?",
+      "answer": "Ganga",
+      "distractors": [
+        "Godavari",
+        "Yamuna",
+        "Narmada"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ganges",
+        "https://testbook.com/static-gk/longest-river-in-india"
+      ],
+      "explanation": "The Ganga, about 2,525 km long, is the longest river in India, rising in the Himalayas and draining into the Bay of Bengal. A perennial favourite in SSC/RRB static-GK river questions.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Ganges; Testbook Static GK"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/godavari-second-longest-river-india",
+      "entity": "Godavari river",
+      "question": "Which is the second longest river in India (and longest in peninsular India)?",
+      "answer": "Godavari",
+      "distractors": [
+        "Krishna",
+        "Yamuna",
+        "Narmada"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Godavari_River",
+        "https://www.britannica.com/place/Godavari-River"
+      ],
+      "explanation": "The Godavari (about 1,465 km) is India's second longest river after the Ganga and the longest of peninsular India, rising at Trimbakeshwar near Nashik, Maharashtra. Commonly asked in SSC/RRB geography.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Godavari River; Encyclopaedia Britannica"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/rajasthan-largest-state-by-area",
+      "entity": "Rajasthan",
+      "question": "Which is the largest Indian state by area?",
+      "answer": "Rajasthan",
+      "distractors": [
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Uttar Pradesh"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rajasthan",
+        "https://statisticstimes.com/geography/india/indian-states-area.php"
+      ],
+      "explanation": "Rajasthan, at 342,239 sq km (about 10.4% of India's area), is the largest Indian state by area. A high-frequency static-GK fact across SSC, banking and railway exams.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Rajasthan; StatisticsTimes (state areas)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/thar-desert-rajasthan",
+      "entity": "Thar Desert",
+      "question": "The Thar Desert (Great Indian Desert) lies mostly in which Indian state?",
+      "answer": "Rajasthan",
+      "distractors": [
+        "Gujarat",
+        "Haryana",
+        "Punjab"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thar_Desert",
+        "https://www.britannica.com/place/Thar-Desert"
+      ],
+      "explanation": "The majority of the Thar Desert, India's largest desert, lies in Rajasthan, with smaller portions in Gujarat, Haryana and Punjab. A staple SSC/RRB geography fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Thar Desert; Encyclopaedia Britannica"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/wular-largest-freshwater-lake-india",
+      "entity": "Wular Lake",
+      "question": "Which is the largest freshwater lake in India?",
+      "answer": "Wular Lake",
+      "distractors": [
+        "Loktak Lake",
+        "Vembanad Lake",
+        "Dal Lake"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Wular_Lake",
+        "https://baramulla.nic.in/tourist-place/wular-lake/"
+      ],
+      "explanation": "Wular Lake, in Jammu and Kashmir and fed by the Jhelum river, is widely cited as India's largest freshwater lake. A frequent static-GK 'largest lake' question in SSC/RRB.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Wular Lake; Baramulla District (Govt of India)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/gangotri-glacier-ganga-source",
+      "entity": "Gangotri Glacier",
+      "question": "The Bhagirathi, the headstream of the Ganga, rises from which glacier?",
+      "answer": "Gangotri Glacier",
+      "distractors": [
+        "Siachen Glacier",
+        "Pindari Glacier",
+        "Zemu Glacier"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ganges",
+        "https://www.nextias.com/blog/ganga-river-system/"
+      ],
+      "explanation": "The Bhagirathi, the source stream of the Ganga, rises at the snout of the Gangotri Glacier at Gomukh in Uttarakhand. A common river-origin question in SSC/RRB geography.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Ganges; NEXT IAS (Ganga River System)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/gujarat-longest-coastline",
+      "entity": "Gujarat",
+      "question": "Which Indian state has the longest coastline?",
+      "answer": "Gujarat",
+      "distractors": [
+        "Andhra Pradesh",
+        "Tamil Nadu",
+        "Maharashtra"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.geeksforgeeks.org/social-science/longest-coastline-in-india/",
+        "https://currentaffairs.adda247.com/longest-coastline-in-india/"
+      ],
+      "explanation": "Gujarat has the longest coastline of any Indian state (about 1,600 km), thanks to the Kathiawar peninsula. A recurring SSC/RRB static-GK fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "GeeksforGeeks; Adda247 Current Affairs"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/sundarbans-largest-mangrove-west-bengal",
+      "entity": "Sundarbans",
+      "question": "The Sundarbans, the largest mangrove forest in India, lies mainly in which state?",
+      "answer": "West Bengal",
+      "distractors": [
+        "Odisha",
+        "Andhra Pradesh",
+        "Kerala"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sundarbans_National_Park",
+        "https://culture.gov.in/sundarbans-national-park"
+      ],
+      "explanation": "The Sundarbans, the world's largest mangrove forest and a UNESCO World Heritage Site home to the Royal Bengal tiger, lies in West Bengal in the Ganges delta. A high-yield SSC/RRB fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Sundarbans National Park; Ministry of Culture, Govt of India"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/everest-highest-mountain-world",
+      "entity": "Mount Everest",
+      "question": "Which is the highest mountain on Earth above sea level?",
+      "answer": "Mount Everest",
+      "distractors": [
+        "K2",
+        "Kanchenjunga",
+        "Lhotse"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Mount_Everest",
+        "https://www.britannica.com/place/Mount-Everest"
+      ],
+      "explanation": "Mount Everest, at 8,848.86 m in the Himalayas on the Nepal-China border, is the highest mountain above sea level on Earth. A foundational world-geography fact in SSC/RRB exams.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Mount Everest; Encyclopaedia Britannica"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/lucknow-pact-1916",
+      "entity": "Lucknow Pact",
+      "question": "The Lucknow Pact of 1916 was an agreement between the Indian National Congress and which other organization?",
+      "answer": "All-India Muslim League",
+      "distractors": [
+        "Hindu Mahasabha",
+        "Ghadar Party",
+        "Khilafat Committee"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Lucknow_Pact",
+        "https://www.britannica.com/event/Lucknow-Pact"
+      ],
+      "explanation": "Signed at the December 1916 Lucknow session, the pact was a joint scheme of constitutional reform agreed by the Indian National Congress and the All-India Muslim League, and also marked the reunion of the moderate and extremist Congress factions. A high-yield modern-history fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Britannica / Wikipedia (Lucknow Pact)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/champaran-satyagraha-1917",
+      "entity": "Champaran Satyagraha",
+      "question": "Gandhi's first satyagraha in India, the 1917 Champaran movement in Bihar, was launched against the forced cultivation of which crop?",
+      "answer": "Indigo",
+      "distractors": [
+        "Cotton",
+        "Jute",
+        "Opium"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Champaran_Satyagraha",
+        "https://www.pib.gov.in/newsite/printrelease.aspx?relid=160650&reg=3&lang=2"
+      ],
+      "explanation": "In Champaran (Bihar), peasants were forced under the teenkathia/tinkathia system to grow indigo for European planters; Gandhi's 1917 intervention was his first satyagraha in India and led to the Champaran Agrarian Act of 1918. Frequently tested as Gandhi's first Indian movement.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "PIB, Government of India / Wikipedia (Champaran Satyagraha)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/lahore-session-1929",
+      "entity": "Lahore Congress Session 1929",
+      "question": "Who presided over the 1929 Lahore session of the Indian National Congress, which adopted the Purna Swaraj (complete independence) resolution?",
+      "answer": "Jawaharlal Nehru",
+      "distractors": [
+        "Motilal Nehru",
+        "Subhas Chandra Bose",
+        "Vallabhbhai Patel"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Purna_Swaraj",
+        "https://www.insightsonindia.com/modern-indian-history/national-movement-1919-1939/lahore-session-1929/"
+      ],
+      "explanation": "Jawaharlal Nehru presided over the Lahore session where, on 31 December 1929, the Congress declared Purna Swaraj and fixed 26 January 1930 as the first Independence Day. A staple INC-session question.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia (Purna Swaraj) / Insights IAS"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/karachi-session-1931",
+      "entity": "Karachi Congress Session 1931",
+      "question": "Who presided over the 1931 Karachi session of the Indian National Congress, which passed the resolution on Fundamental Rights and the National Economic Programme?",
+      "answer": "Vallabhbhai Patel",
+      "distractors": [
+        "Jawaharlal Nehru",
+        "Rajendra Prasad",
+        "Maulana Abul Kalam Azad"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/blog/this-month-in-constitution-making-march-1931-bhagat-singh-hanged-karachi-resolution-passed/",
+        "https://vajiramandravi.com/current-affairs/karachi-session-1931/"
+      ],
+      "explanation": "Sardar Vallabhbhai Patel presided over the Karachi session (March 1931), which endorsed the Gandhi-Irwin Pact and adopted the landmark Fundamental Rights resolution (drafted mainly by Nehru). Commonly confused with Nehru, who drafted but did not preside.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "ConstitutionOfIndia.net / Vajiram & Ravi (Karachi Session 1931)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/poona-pact-1932",
+      "entity": "Poona Pact",
+      "question": "The Poona Pact of 1932, which replaced separate electorates for the Depressed Classes with reserved seats in joint electorates, was signed between Mahatma Gandhi and whom?",
+      "answer": "B. R. Ambedkar",
+      "distractors": [
+        "Muhammad Ali Jinnah",
+        "Madan Mohan Malaviya",
+        "Jagjivan Ram"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Poona_Pact",
+        "https://www.constitutionofindia.net/historical-constitution/poona-pact-1932-b-r-ambedkar-and-m-k-gandhi/"
+      ],
+      "explanation": "Signed on 24 September 1932 at Yerwada Jail after Gandhi's fast against the Communal Award, the Poona Pact between Gandhi and Ambedkar gave the Depressed Classes reserved seats (148) in joint electorates instead of separate electorates. A high-frequency exam fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / ConstitutionOfIndia.net (Poona Pact)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/battle-of-buxar-1764",
+      "entity": "Battle of Buxar",
+      "question": "Which British East India Company commander led the forces that won the Battle of Buxar in 1764?",
+      "answer": "Hector Munro",
+      "distractors": [
+        "Robert Clive",
+        "Warren Hastings",
+        "Eyre Coote"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Battle_of_Buxar",
+        "https://www.worldhistory.org/article/2116/battle-of-buxar/"
+      ],
+      "explanation": "At Buxar (Oct 1764) Major Hector Munro defeated the combined armies of Mir Qasim, Shuja-ud-Daula and Mughal emperor Shah Alam II, paving the way for the Company's Diwani rights in 1765. Robert Clive commanded at Plassey (1757), a common distractor.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / World History Encyclopedia (Battle of Buxar)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/permanent-settlement-1793",
+      "entity": "Permanent Settlement of Bengal",
+      "question": "The Permanent Settlement of 1793, which fixed land revenue and recognised zamindars as proprietors of the soil in Bengal, was introduced by which Governor-General?",
+      "answer": "Lord Cornwallis",
+      "distractors": [
+        "Warren Hastings",
+        "Lord Wellesley",
+        "Lord William Bentinck"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Permanent_Settlement",
+        "https://byjus.com/free-ias-prep/ncert-notes-permanent-settlement-of-bengal/"
+      ],
+      "explanation": "Concluded in 1793 by Lord Cornwallis, the Permanent Settlement fixed land revenue in perpetuity for Bengal, Bihar and Orissa and made zamindars hereditary landowners. A high-yield land-revenue-systems question.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / NCERT-based notes (Permanent Settlement)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/cripps-mission-1942",
+      "entity": "Cripps Mission",
+      "question": "The 1942 British mission that offered India dominion status after World War II, famously called a 'post-dated cheque' by Gandhi, was headed by whom?",
+      "answer": "Sir Stafford Cripps",
+      "distractors": [
+        "Lord Pethick-Lawrence",
+        "A. V. Alexander",
+        "Lord Wavell"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cripps_Mission",
+        "https://www.britannica.com/topic/Cripps-Mission"
+      ],
+      "explanation": "Sir Stafford Cripps led the March 1942 mission offering post-war dominion status; Congress rejected it and the failure preceded the Quit India movement. The distractors were members of the later 1946 Cabinet Mission, a common trap.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica (Cripps Mission)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "medium",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/government-of-india-act-1935-provincial-autonomy",
+      "entity": "Government of India Act 1935",
+      "question": "Which act abolished dyarchy at the provincial level and introduced provincial autonomy in British India?",
+      "answer": "Government of India Act 1935",
+      "distractors": [
+        "Government of India Act 1919",
+        "Indian Councils Act 1909",
+        "Government of India Act 1858"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Government_of_India_Act_1935",
+        "https://vajiramandravi.com/upsc-exam/government-of-india-act-1935/"
+      ],
+      "explanation": "The Government of India Act 1935 ended the dyarchy introduced by the 1919 Act in the provinces and granted provincial autonomy, while proposing an all-India federation that never materialised. A frequently tested constitutional milestone.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Vajiram & Ravi (GoI Act 1935)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "history",
+      "difficulty": "intermediate",
+      "fact_key": "history/doctrine-of-lapse-dalhousie",
+      "entity": "Doctrine of Lapse",
+      "question": "The Doctrine of Lapse, used to annex states such as Satara, Jhansi and Nagpur, is associated with which Governor-General?",
+      "answer": "Lord Dalhousie",
+      "distractors": [
+        "Lord Wellesley",
+        "Lord Hastings",
+        "Lord Canning"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Doctrine_of_lapse",
+        "https://www.britannica.com/topic/doctrine-of-lapse"
+      ],
+      "explanation": "Lord Dalhousie (1848-1856) applied the Doctrine of Lapse, annexing states like Satara, Jhansi and Nagpur whose rulers died without a natural male heir; the resulting resentment was a key cause of the 1857 revolt. Wellesley is linked instead with the Subsidiary Alliance, a common distractor.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica (Doctrine of Lapse)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/article-280-finance-commission",
+      "entity": "Finance Commission",
+      "question": "Which Article of the Indian Constitution provides for the constitution of a Finance Commission?",
+      "answer": "Article 280",
+      "distractors": [
+        "Article 263",
+        "Article 270",
+        "Article 282"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-280-finance-commission/",
+        "https://en.wikipedia.org/wiki/Finance_Commission"
+      ],
+      "explanation": "Article 280 empowers the President to constitute a Finance Commission every fifth year to recommend the distribution of tax proceeds between the Union and States; a recurring favourite in SSC/banking polity sections.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Article 280) / NCERT Polity"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/article-324-election-commission",
+      "entity": "Election Commission of India",
+      "question": "The superintendence, direction and control of elections is vested in the Election Commission under which Article?",
+      "answer": "Article 324",
+      "distractors": [
+        "Article 315",
+        "Article 320",
+        "Article 338"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-324-superintendence-direction-and-control-of-elections-to-be-vested-in-an-election-commission/",
+        "https://www.mea.gov.in/Images/pdf1/Part15.pdf"
+      ],
+      "explanation": "Article 324 vests the superintendence, direction and control of elections to Parliament, State legislatures, and the offices of President and Vice-President in the Election Commission; a high-yield constitutional-bodies fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Article 324, Part XV)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/article-148-cag",
+      "entity": "Comptroller and Auditor-General of India",
+      "question": "The office of the Comptroller and Auditor-General of India is established under which Article of the Constitution?",
+      "answer": "Article 148",
+      "distractors": [
+        "Article 76",
+        "Article 124",
+        "Article 150"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-148-comptroller-and-auditor-general-of-india/",
+        "https://en.wikipedia.org/wiki/Comptroller_and_Auditor_General_of_India"
+      ],
+      "explanation": "Article 148 provides for the CAG, appointed by the President and removable like a Supreme Court judge; commonly asked alongside other constitutional offices.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Article 148)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/article-76-attorney-general",
+      "entity": "Attorney-General for India",
+      "question": "Which Article of the Constitution deals with the office of the Attorney-General for India?",
+      "answer": "Article 76",
+      "distractors": [
+        "Article 78",
+        "Article 88",
+        "Article 165"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-76-attorney-general-for-india/",
+        "https://indiankanoon.org/doc/1985537/"
+      ],
+      "explanation": "Article 76 provides for the Attorney-General, the highest law officer of India, appointed by the President; Article 165 (a distractor) is the parallel office of Advocate-General at the State level.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Article 76)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/tenth-schedule-anti-defection",
+      "entity": "Anti-defection law",
+      "question": "The anti-defection law is contained in which Schedule of the Indian Constitution?",
+      "answer": "Tenth Schedule",
+      "distractors": [
+        "Seventh Schedule",
+        "Eighth Schedule",
+        "Ninth Schedule"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.mea.gov.in/Images/pdf1/S10.pdf",
+        "https://en.wikipedia.org/wiki/Anti-defection_law_(India)"
+      ],
+      "explanation": "The Tenth Schedule, added by the 52nd Amendment (1985), contains the anti-defection provisions for disqualifying legislators who defect; a frequently tested schedule-mapping fact.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Tenth Schedule)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/42nd-amendment-mini-constitution",
+      "entity": "42nd Constitutional Amendment Act",
+      "question": "Which Constitutional Amendment Act is popularly known as the 'Mini-Constitution' for the sweeping changes it made?",
+      "answer": "42nd Amendment Act, 1976",
+      "distractors": [
+        "44th Amendment Act, 1978",
+        "1st Amendment Act, 1951",
+        "7th Amendment Act, 1956"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Forty-second_Amendment_of_the_Constitution_of_India",
+        "https://www.studyandscore.com/studymaterial-detail/constitution-42nd-amendment-act-1976-mini-constitution"
+      ],
+      "explanation": "The 42nd Amendment (1976), enacted during the Emergency, made extensive changes (added Fundamental Duties, 'Socialist Secular' to the Preamble) earning it the nickname 'Mini-Constitution'; a staple amendments question.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution (42nd Amendment) Act, 1976"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/dpsp-borrowed-ireland",
+      "entity": "Directive Principles of State Policy",
+      "question": "The Directive Principles of State Policy in the Indian Constitution were borrowed from the Constitution of which country?",
+      "answer": "Ireland",
+      "distractors": [
+        "United States of America",
+        "United Kingdom",
+        "Canada"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Directive_Principles",
+        "https://www.drishtiias.com/to-the-points/Paper2/directive-principles-of-state-policy-dpsp"
+      ],
+      "explanation": "The DPSP (Part IV) were inspired by the Irish Constitution (Article 45); contrast with Fundamental Rights from the USA and the parliamentary system from the UK, a classic 'borrowed features' question.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "NCERT Polity / Constitution of India (Part IV)"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/article-368-amendment-procedure",
+      "entity": "Amendment of the Constitution",
+      "question": "Which Article lays down the power of Parliament to amend the Constitution and the procedure for it?",
+      "answer": "Article 368",
+      "distractors": [
+        "Article 352",
+        "Article 356",
+        "Article 370"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-368-power-of-parliament-to-amend-the-constitution-and-procedure-therefor/",
+        "https://indiankanoon.org/doc/594125/"
+      ],
+      "explanation": "Article 368 in Part XX deals with Parliament's constituent power to amend the Constitution by addition, variation or repeal and the procedure therefor; central to the basic-structure doctrine.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Article 368, Part XX)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/article-360-financial-emergency",
+      "entity": "Financial Emergency",
+      "question": "Provisions for the proclamation of a Financial Emergency are contained in which Article of the Constitution?",
+      "answer": "Article 360",
+      "distractors": [
+        "Article 352",
+        "Article 356",
+        "Article 365"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://www.constitutionofindia.net/articles/article-360-provisions-as-to-financial-emergency/",
+        "https://indiankanoon.org/doc/1850059/"
+      ],
+      "explanation": "Article 360 in Part XVIII empowers the President to declare a Financial Emergency if India's financial stability or credit is threatened; never invoked, and tested against National (352) and President's Rule (356) emergencies.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Article 360, Part XVIII)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "polity",
+      "difficulty": "intermediate",
+      "fact_key": "polity/eighth-schedule-languages",
+      "entity": "Eighth Schedule",
+      "question": "The list of officially recognised languages of India is given in which Schedule of the Constitution?",
+      "answer": "Eighth Schedule",
+      "distractors": [
+        "Seventh Schedule",
+        "Ninth Schedule",
+        "Tenth Schedule"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Eighth_Schedule_to_the_Constitution_of_India",
+        "https://www.mha.gov.in/sites/default/files/EighthSchedule_19052017.pdf"
+      ],
+      "explanation": "The Eighth Schedule lists the officially recognised languages (currently 22, up from the original 14); commonly confused with the Seventh (Union/State/Concurrent lists) and Tenth (anti-defection) Schedules.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Constitution of India (Eighth Schedule) / Ministry of Home Affairs"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/ranji-trophy-cricket",
+      "entity": "Ranji Trophy",
+      "question": "The Ranji Trophy, India's premier domestic championship, is associated with which sport?",
+      "answer": "Cricket",
+      "distractors": [
+        "Hockey",
+        "Football",
+        "Badminton"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ranji_Trophy",
+        "https://www.britannica.com/sports/Ranji-Trophy"
+      ],
+      "explanation": "The Ranji Trophy is India's annual domestic first-class cricket championship, organised by the BCCI and named after Ranjitsinhji. Trophy-to-sport associations are staple GK in SSC and bank exams.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica - Ranji Trophy"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/thomas-cup-badminton",
+      "entity": "Thomas Cup",
+      "question": "The Thomas Cup is the world men's team championship in which sport?",
+      "answer": "Badminton",
+      "distractors": [
+        "Tennis",
+        "Table tennis",
+        "Squash"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Thomas_Cup",
+        "https://www.britannica.com/sports/Thomas-Cup"
+      ],
+      "explanation": "The Thomas Cup is the international men's team badminton championship run by the Badminton World Federation. Cup-to-sport pairings appear regularly in static GK sections.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica - Thomas Cup"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/param-vir-chakra-highest-wartime-gallantry",
+      "entity": "Param Vir Chakra",
+      "question": "Which is India's highest wartime military gallantry award?",
+      "answer": "Param Vir Chakra",
+      "distractors": [
+        "Maha Vir Chakra",
+        "Vir Chakra",
+        "Ashoka Chakra"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Param_Vir_Chakra",
+        "https://nationalwarmemorial.gov.in/param-yoddhas"
+      ],
+      "explanation": "The Param Vir Chakra is the highest military decoration awarded for valour during wartime, ranking above the Maha Vir Chakra and Vir Chakra. The order of gallantry awards is a frequent exam topic.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / National War Memorial (Govt. of India)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/khel-ratna-highest-sporting-honour",
+      "entity": "Major Dhyan Chand Khel Ratna Award",
+      "question": "Which is the highest sporting honour of India?",
+      "answer": "Major Dhyan Chand Khel Ratna Award",
+      "distractors": [
+        "Arjuna Award",
+        "Dronacharya Award",
+        "Dhyan Chand Award"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Khel_Ratna_Award",
+        "https://www.olympics.com/en/news/national-sports-awards-2025-nominations-list"
+      ],
+      "explanation": "The Major Dhyan Chand Khel Ratna Award is India's highest sporting honour, given for outstanding performance over four years; it ranks above the Arjuna Award. National sports awards and their hierarchy are core static GK.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Olympics.com - National Sports Awards"
+    },
+    "static_class": "permanent",
+    "source_tier": 2,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/arjuna-award-second-highest-sporting",
+      "entity": "Arjuna Award",
+      "question": "Which award is the second-highest sporting honour of India, given for outstanding performance in sports?",
+      "answer": "Arjuna Award",
+      "distractors": [
+        "Major Dhyan Chand Khel Ratna Award",
+        "Dronacharya Award",
+        "Dhyan Chand Award"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Arjuna_Award",
+        "https://www.britannica.com/sports/Arjuna-Award"
+      ],
+      "explanation": "Instituted in 1961, the Arjuna Award is the second-highest sporting honour (after the Khel Ratna), given to sportspersons for outstanding performance. Awards and their precedence recur in SSC/bank GK.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica - Arjuna Award"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/dronacharya-award-coaches",
+      "entity": "Dronacharya Award",
+      "question": "Which national award is given to outstanding sports coaches in India?",
+      "answer": "Dronacharya Award",
+      "distractors": [
+        "Arjuna Award",
+        "Major Dhyan Chand Khel Ratna Award",
+        "Dhyan Chand Award"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dronacharya_Award",
+        "https://www.olympics.com/en/news/dronacharya-award-given-india-coaches-excellence-first-recipient"
+      ],
+      "explanation": "Instituted in 1985, the Dronacharya Award honours coaches whose trainees excel in international events, unlike the Arjuna and Khel Ratna awards given to players. Award-purpose questions are common in exams.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Olympics.com - Dronacharya Award"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/kabaddi-players-per-side",
+      "entity": "Kabaddi",
+      "question": "How many players from each team are on the court at the start of a standard kabaddi match?",
+      "answer": "7",
+      "distractors": [
+        "6",
+        "9",
+        "11"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kabaddi",
+        "https://www.britannica.com/sports/kabaddi"
+      ],
+      "explanation": "In standard team kabaddi, two teams of seven players each occupy opposite halves of the court. Number-of-players-per-team facts are frequent static GK items.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica - Kabaddi"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/santosh-trophy-football",
+      "entity": "Santosh Trophy",
+      "question": "The Santosh Trophy, an inter-state national competition in India, is associated with which sport?",
+      "answer": "Football",
+      "distractors": [
+        "Cricket",
+        "Hockey",
+        "Kabaddi"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Santosh_Trophy",
+        "https://www.olympics.com/en/news/santosh-trophy-winners-champions-indian-football"
+      ],
+      "explanation": "The Santosh Trophy is India's inter-state national football competition contested under the All India Football Federation. Trophy-to-sport associations are reliable exam fodder.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Olympics.com - Santosh Trophy"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/davis-cup-tennis",
+      "entity": "Davis Cup",
+      "question": "The Davis Cup is the premier international team event in which sport?",
+      "answer": "Tennis",
+      "distractors": [
+        "Badminton",
+        "Table tennis",
+        "Squash"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Davis_Cup",
+        "https://www.britannica.com/sports/Davis-Cup"
+      ],
+      "explanation": "The Davis Cup is the premier international men's team tennis competition, often called the 'World Cup of Tennis'. Cup-to-sport links are standard static GK.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Britannica - Davis Cup"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "sports-awards-misc",
+      "difficulty": "basic",
+      "fact_key": "sports-awards-misc/field-hockey-players-per-side",
+      "entity": "Field hockey",
+      "question": "How many players, including the goalkeeper, make up a field hockey team on the pitch?",
+      "answer": "11",
+      "distractors": [
+        "7",
+        "9",
+        "6"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Field_hockey",
+        "https://www.olympics.com/en/news/field-hockey-rules-how-to-play"
+      ],
+      "explanation": "Under the FIH Rules of Hockey, each field hockey team consists of eleven players on the pitch (ten outfield players and one goalkeeper). Players-per-team counts are common exam questions.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / Olympics.com - Field hockey"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "economy",
+      "difficulty": "basic",
+      "fact_key": "economy/pfrda-regulates-pension",
+      "entity": "PFRDA",
+      "question": "The PFRDA is the statutory body that regulates which of the following in India?",
+      "answer": "Pension",
+      "distractors": [
+        "Insurance",
+        "Mutual funds",
+        "Commodity markets"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Pension_Fund_Regulatory_and_Development_Authority",
+        "https://www.pfrda.org.in/"
+      ],
+      "explanation": "The Pension Fund Regulatory and Development Authority (PFRDA) is the statutory regulator for pensions in India, overseeing schemes such as the National Pension System (NPS) and Atal Pension Yojana. Regulator-to-sector matching is high-yield for banking exams.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia / PFRDA.org.in"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
+  },
+  {
+    "question": {
+      "domain": "geography",
+      "difficulty": "basic",
+      "fact_key": "geography/goa-smallest-state-by-area",
+      "entity": "Goa",
+      "question": "By total geographical area, which is the tiniest state in India?",
+      "answer": "Goa",
+      "distractors": [
+        "Sikkim",
+        "Tripura",
+        "Nagaland"
+      ],
+      "exam_relevance": [
+        "SSC",
+        "IBPS-SBI",
+        "RRB"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Goa",
+        "https://statisticstimes.com/geography/india/indian-states-area.php"
+      ],
+      "explanation": "Goa, covering just 3,702 sq km, is India's smallest state by area. Frequently paired with 'largest state' questions in SSC/RRB static GK.",
+      "mnemonic": null,
+      "is_trick": false,
+      "source_citation": "Wikipedia: Goa; StatisticsTimes (state areas)"
+    },
+    "static_class": "permanent",
+    "source_tier": 1,
+    "yield_weight": "high",
+    "status": "draft",
+    "verified_date": null,
+    "review_due_date": null
   }
 ]
