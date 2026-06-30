@@ -3,9 +3,10 @@ import { render, screen } from "@testing-library/react";
 import { BrandHeaderView, DifficultyChipView, CategoryBandView, DayNumberView } from "../blocks/StaticBlocks";
 
 describe("static block views", () => {
-  it("brand header shows wordmark + day", () => {
+  it("brand header shows the Pakka + GK lockup and day", () => {
     render(<BrandHeaderView dayNumber={47} />);
-    expect(screen.getByText((_, el) => el?.textContent === "Pakka GK" && el?.tagName === "SPAN")).toBeTruthy();
+    expect(screen.getByText("Pakka")).toBeTruthy();
+    expect(screen.getByText("GK")).toBeTruthy();
     expect(screen.getByText("DAY 47")).toBeTruthy();
   });
   it("difficulty chip shows mapped label + exam prefix", () => {

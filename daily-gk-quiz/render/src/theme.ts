@@ -1,9 +1,16 @@
+// Pakka brand palette (see docs/brand/pakka-identity.md).
+// Brand accent (Stamp Vermilion) is intentionally separate from the semantic
+// correct-answer green: the brand stamps; the content marks the right answer.
 export const STANDARD = {
-  bg: "#15123b",
-  accent: "#c6f24e",
-  text: "#f4f1ff",
-  muted: "#c2bdec",
-  pillOutline: "#4b4780",
+  bg: "#15233B",          // Exam Ink (primary ground)
+  bgDeep: "#0E1828",      // gradient floor
+  accent: "#FF5436",      // Stamp Vermilion (brand)
+  accentRgb: "255,84,54",
+  correct: "#36C26E",     // correct-answer semantic (content, not brand)
+  correctRgb: "54,194,110",
+  text: "#EEF1F4",        // Paper
+  muted: "#9DB0C6",
+  pillOutline: "#33425C",
 } as const;
 
 export const TRICK = {
