@@ -4,7 +4,7 @@ import { STANDARD, difficultyColor, type Difficulty } from "../theme";
 export const BrandHeaderView: React.FC<{ dayNumber: number }> = ({ dayNumber }) => (
   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
     <span style={{ fontWeight: 900, fontSize: 34, color: STANDARD.text }}>
-      Daily <span style={{ color: STANDARD.accent }}>GK</span>
+      Pakka <span style={{ color: STANDARD.accent }}>GK</span>
     </span>
     <span style={{ fontWeight: 800, fontSize: 26, color: STANDARD.bg,
                    background: STANDARD.accent, padding: "8px 18px", borderRadius: 999 }}>

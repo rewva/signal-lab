@@ -67,7 +67,7 @@ def main() -> int:
         hook = HOOKS[i % len(HOOKS)]
         tags = " ".join(sub["tags"])
         caption = (f"{hook}\n\n"
-                   f"Daily GK #{n}: {category} ({props['examPrefix']} level)\n\n"
+                   f"Pakka GK #{n}: {category} ({props['examPrefix']} level)\n\n"
                    f"{plan.cta}\n\n"
                    f"Source: {q.source_citation}\n\n{tags}")
         manifest.append(f"## {n:02d}. {out_name}\n\n{caption}\n")

@@ -5,7 +5,7 @@ import { BrandHeaderView, DifficultyChipView, CategoryBandView, DayNumberView } 
 describe("static block views", () => {
   it("brand header shows wordmark + day", () => {
     render(<BrandHeaderView dayNumber={47} />);
-    expect(screen.getByText((_, el) => el?.textContent === "Daily GK" && el?.tagName === "SPAN")).toBeTruthy();
+    expect(screen.getByText((_, el) => el?.textContent === "Pakka GK" && el?.tagName === "SPAN")).toBeTruthy();
     expect(screen.getByText("DAY 47")).toBeTruthy();
   });
   it("difficulty chip shows mapped label + exam prefix", () => {

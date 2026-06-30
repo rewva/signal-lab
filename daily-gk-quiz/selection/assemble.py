@@ -70,12 +70,12 @@ def job_submission(question, day_number: int, video_path: str, description: str,
     """Build the POST /api/jobs body for one verified, rendered question."""
     category = _category_label(question.domain, labels)
     tags = [_hashtag(e) for e in question.exam_relevance]
-    tags += [_hashtag(category), "#DailyGK", "#GKQuiz"]
+    tags += [_hashtag(category), "#PakkaGK", "#GKQuiz"]
     full_description = f"{description}\n\nSource: {question.source_citation}"
     return {
         "channel_id": channel_id,
         "video_path": video_path,
-        "title": f"Daily GK #{day_number} - {category}",
+        "title": f"Pakka GK #{day_number} - {category}",
         "description": full_description,
         "tags": tags,
         "platforms": list(platforms) if platforms is not None else list(DEFAULT_PLATFORMS),
